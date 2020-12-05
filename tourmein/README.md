@@ -4,6 +4,8 @@
 
 ```
 npm install
+
+sudo npm install // radilo na mac-u
 ```
 
 ### Compiles and hot-reloads for development
@@ -78,4 +80,11 @@ Luka Đurašinović:
 - izrada UML Use Case i UML Class dijagrama
 - pomoć i zadavanje napomena/natuknica pri izradi prototipa na Figmi
 - dogovaranje s kolegama oko raspodjele zadataka pri izradi projekta
-- izrada 1/3 stranica/dijelova naše aplikacije (npr. početna stranica, stranica registracije, profilna stranica vodiča/korisnika...)
+- izrada 1/3 stranica/dijelova naše aplikacije (npr. početna stranica, stranica registracije, profilna stranica vodiča/korisnika...)  
+  
+Matija Hamer:  
+- dodatak ideja vezanih uz aplikaciju  
+- prijedlog korištenja Trella, te prebacivanje ideja u kartice  
+- nalazak i izrada komponenti potrebnih za prototip na Figmi  
+- izrada 1/3 stranica/dijelova naše aplikacije i provjera funkcionalnosti  
+- povezivanje back-end dijela aplikacije na Firebase-u  
