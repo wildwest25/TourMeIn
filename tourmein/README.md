@@ -88,3 +88,9 @@ Matija Hamer:
 - nalazak i izrada komponenti potrebnih za prototip na Figmi  
 - izrada 1/3 stranica/dijelova naše aplikacije i provjera funkcionalnosti  
 - povezivanje back-end dijela aplikacije na Firebase-u  
+
+Josip Plejić:
+- dodavanje ideja vezanih uz aplikaciju
+- izrada logo-a
+- Poboljšanje cijelokupog izgleda svake pojedine stranice
+- izrada 1/3 stranica/dijelova naše aplikacije izrada css koda u skladu sa prototipom
