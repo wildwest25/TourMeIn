@@ -93,4 +93,5 @@ Josip Plejić:
 - dodavanje ideja vezanih uz aplikaciju
 - izrada logo-a
 - Poboljšanje cijelokupog izgleda svake pojedine stranice
-- izrada 1/3 stranica/dijelova naše aplikacije izrada css koda u skladu sa prototipom
+- izrada 1/3 stranica/dijelova naše aplikacije 
+- izrada css koda u skladu sa prototipom
