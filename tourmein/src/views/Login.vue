@@ -27,6 +27,9 @@
                 placeholder="Password"
               />
             </div>
+            <!--<button type="submit" class="btn btn-primary">Log In</button> -->
+          </form><br>
+          <form method="get" action="/guide_profile"> <!-- povremeno dok ne rijesimo firebase -->
             <button type="submit" class="btn btn-primary">Log In</button>
           </form><br>
           <form method="get" action="/register">
