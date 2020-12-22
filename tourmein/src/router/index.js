@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    meta: { hideNavigation: true },
+    meta: { hideNavigation: true }, /* za skrivanje menia */
     component: Home
   },
   {
@@ -20,37 +20,35 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/login',
-    name: 'Login',
-    meta: { hideNavigation: true },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
-  },
-  {
     path: '/guide_profile',
     name: 'Guide_profile',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Guide_profile.vue')
   },
   {
     path: '/my_previous_tours_guide',
     name: 'My_previous_tours_guide',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/My_pervious_tours-guide.vue')
+  },
+  {
+    path: '/notifications',
+    name: 'Notifications',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Notifications.vue')
+  },
+  {
+    path: '/messages',
+    name: 'Messages',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Messages.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    meta: { hideNavigation: true },
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
   },
   {
     path: '/register',
     name: 'Register',
     meta: { hideNavigation: true },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Register.vue')
   }
 ]

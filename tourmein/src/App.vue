@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <navigation v-if="!$route.meta.hideNavigation" >
-    <div id="nav">
-      <!--<router-link to="/">Home</router-link> | -->
-      <router-link to="/guide_profile">My Profile</router-link> | 
-      <router-link to="/my_previous_tours_guide">My Previous Tours</router-link> | 
-      <router-link to="/my_previous_tours_guide">Notifications</router-link> | 
-      <router-link to="/my_previous_tours_guide">Messages</router-link>
-    </div>
+    <navigation v-if="!$route.meta.hideNavigation">
+      <div id="nav">
+        <!--<router-link to="/">Home</router-link> | -->
+        <router-link to="/guide_profile">My Profile</router-link> |
+        <router-link to="/my_previous_tours_guide">My Previous Tours</router-link> |
+        <router-link to="/notifications">Notifications</router-link> |
+        <router-link to="/messages">Messages</router-link>
+      </div>
     </navigation>
-    <router-view/>
+    <router-view />
   </div>
-  
 </template>
 
 <style lang="scss">
