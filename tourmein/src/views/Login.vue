@@ -32,6 +32,9 @@
           <form method="get" action="/guide_profile"> <!-- povremeno dok ne rijesimo firebase -->
             <button type="submit" class="btn btn-primary">Log In</button>
           </form><br>
+          <form method="get" action="/user_page"> <!-- povremeno dok ne rijesimo firebase -->
+            <button type="submit" class="btn btn-primary">Log In/User</button>
+          </form><br>
           <form method="get" action="/register">
             <button type="submit" class="btn btn-primary">Register</button>
           </form>

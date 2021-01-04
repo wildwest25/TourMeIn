@@ -49,6 +49,7 @@ cards = [
 
 export default {
   name: "home",
+  props: ["id"],
   data: function () {
     return {
       cards,
