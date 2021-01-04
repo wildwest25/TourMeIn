@@ -6,12 +6,16 @@
 npm install
 
 sudo npm install // radilo na mac-u
+
 ```
 
 ### Compiles and hot-reloads for development
 
 ```
 npm run serve
+
+U slučaju 'vue-cli-service' is not recognized as an internal or external command, operable program or batch file.
+Pokrenuti Command Prompt kao administrator i 'npm install'
 ```
 
 ### Compiles and minifies for production

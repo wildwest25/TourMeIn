@@ -1,0 +1,35 @@
+<template>
+<div class="card text-left">
+    <div class="row">
+        <div class="col-md-auto">
+            <div class="card-header">{{ info.description }}</div>
+            <div class="card-body p-0">
+                <img class="card-img-top offset-1" style="width: 6rem;" :src="info.url" />
+            </div>
+            <div class="card-footer text-muted">
+                Tour Date: {{ info.time }}
+            </div>
+        </div>
+        <div class="col-sm">
+                <div class="card-header">Rated: {{ info.rated }}</div>
+                <div class="card-body p-0">Languages: {{ info.languages }}</div>
+                <div class="card-body p-0">Monuments: {{ info.monuments }}</div>
+        </div>
+    </div>
+</div> 
+
+</template>
+
+<script>
+//JS kod
+export default {
+  props: ["info"],
+  name: "UserCard",
+};
+</script>
+
+<style lang="scss">
+.card {
+  margin-bottom: 20px;
+}
+</style>
