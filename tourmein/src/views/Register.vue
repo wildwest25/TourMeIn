@@ -9,6 +9,7 @@
               <label for="exampleInputEmail1">Email address</label>
               <input
                 type="email"
+                v-model="email"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
@@ -22,6 +23,7 @@
               <label for="exampleUsername">Username</label>
               <input
                 type="username"
+                v-model="username"
                 class="form-control"
                 id="exampleUsername"
                 placeholder="Enter username"
@@ -31,6 +33,7 @@
               <label for="exampleInputPassword1">Password</label>
               <input
                 type="password"
+                v-model="password"
                 class="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
@@ -214,10 +217,38 @@
                 </div>
             </form>
             
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="button" @click="signup" class="btn btn-primary">Register</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import firebase from '@/firebase';
+
+export default {
+  name: 'Signup',
+  data() {
+    return {
+      email: '',
+      username: '',
+      password: '',
+    };
+  },
+  methods: {
+    signup() {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(function() {
+          console.log('Uspjesna registracija');
+        })
+        .catch(function(error) {
+          console.error('Doslo je do greske, error');
+        });
+    },
+  },
+};
+</script>

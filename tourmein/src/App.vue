@@ -5,7 +5,7 @@
         <img src="@/assets/tourmein_logo.png" height="40" class="d-inline-block align-top" alt="" loading="lazy" />
         <h1>TourMeIn</h1>
         <!--<router-link to="/">Home</router-link> | -->
-        <router-link to="/guide_profile">My Profile</router-link> |
+        <router-link to="/guide_profile" class="offset-1">My Profile</router-link> |
         <router-link to="/my_previous_tours_guide">My Previous Tours</router-link> |
         <router-link to="/notifications">Notifications</router-link> |
         <router-link to="/messages">Messages</router-link>
@@ -16,7 +16,7 @@
         <img src="@/assets/tourmein_logo.png" height="40" class="d-inline-block align-top" alt="" loading="lazy" />
         <h1>TourMeIn</h1>
         <!--<router-link to="/">Home</router-link> | -->
-        <router-link to="/user_profile">My Profile</router-link> |
+        <router-link to="/user_profile" class="offset-1">My Profile</router-link> |
         <router-link to="/user_page">Search Guides</router-link> |
         <router-link to="/my_guides">My Guides</router-link> |
         <router-link to="/notifications">Notifications</router-link> |
