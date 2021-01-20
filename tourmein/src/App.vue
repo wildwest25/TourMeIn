@@ -9,6 +9,12 @@
         <router-link to="/my_previous_tours_guide">My Previous Tours</router-link> |
         <router-link to="/notifications">Notifications</router-link> |
         <router-link to="/messages">Messages</router-link>
+
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="#" @click="logout()" class="nav-link">Logout</a>
+        </li>
+      </ul>
       </div>
     </navigation>
     <navigation v-if="$route.meta.User">
@@ -21,11 +27,58 @@
         <router-link to="/my_guides">My Guides</router-link> |
         <router-link to="/notifications">Notifications</router-link> |
         <router-link to="/messages">Messages</router-link>
+
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="#" @click.prevent="logout()" class="nav-link">Logout</a>
+        </li>
+      </ul>
       </div>
     </navigation>
     <router-view />
   </div>
 </template>
+
+<script>
+import store from '@/store';
+import firebase from '@/firebase';
+import router from '@/router';
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in.
+    console.log(user.email);
+    store.currentUser = user.email;
+  } else {
+    // User is not signed in.
+    console.log('No user');
+    store.currentUser = null;
+
+    if (router.name !== 'login'){
+      router.push({ name: 'Login'});
+    }
+  }
+});
+
+export default {
+  name: 'app',
+  data() {
+    return {
+      store,
+    };
+  },
+
+  methods: {
+    logout() {
+      firebase.auth().signOut().then(() => {
+        this.$router.push({ name: 'Login'});
+      });
+    }
+  }
+};
+
+
+</script>
 
 <style lang="scss">
 #app {

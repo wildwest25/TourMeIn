@@ -10,6 +10,7 @@
             <div class="form-group">
               <input
                 type="email"
+                v-model="email"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
@@ -22,18 +23,19 @@
             <div class="form-group">
               <input
                 type="password"
+                v-model="password"
                 class="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
               />
             </div>
-            <!--<button type="submit" class="btn btn-primary">Log In</button> -->
+            <button type="button" @click="login()" class="btn btn-primary">Log In</button>
           </form><br>
           <form method="get" action="/guide_profile"> <!-- povremeno dok ne rijesimo firebase -->
-            <button type="submit" class="btn btn-primary">Log In</button>
+            <button type="submit" class="btn btn-primary">Log In/guide test</button>
           </form><br>
           <form method="get" action="/user_page"> <!-- povremeno dok ne rijesimo firebase -->
-            <button type="submit" class="btn btn-primary">Log In/User</button>
+            <button type="submit" class="btn btn-primary">Log In/User test</button>
           </form><br>
           <form method="get" action="/register">
             <button type="submit" class="btn btn-primary">Register</button>
@@ -44,3 +46,31 @@
     </div>
   </div>
 </template>
+<script>
+import firebase from '@/firebase';
+
+export default {
+  name: 'login',
+  data() {
+    return {
+      email: '',
+      password: '',
+    };
+  },
+  methods: {
+    login() {
+      console.log('login...' + this.email);
+
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+      .then((result) => {
+        console.log('Uspjesna prijava', result);
+
+        this.$router.replace({ name: 'Guide_profile'});
+      })
+      .catch(function(e) {
+        console.error('Greska', e);
+      });
+    }
+  }
+}
+</script>
