@@ -21,11 +21,12 @@
 // @ is an alias to /src
 import UserCard from "@/components/UserCard.vue";
 import store from "@/store";
+import { db } from "@/firebase";
 
-let cards = [];
+// let cards = [];
 
 //... API/Firebase -> sve kartice -> cards
-
+/*
 cards = [
   {
     url: "https://picsum.photos/id/1/400/400",
@@ -45,16 +46,27 @@ cards = [
     description: "David Janković",
     time: "few hours ago...",
   },
-];
+];*/
 
 export default {
   name: "home",
   props: ["id"],
   data: function () {
     return {
-      cards,
+      cards: [],
       store,
     };
+  },
+  mounted() {
+    //* dohvat iz Firebasea
+    this.getPosts();
+  },
+  methods: { 
+    getPosts() {
+      console.log("firebase dohvat...")
+
+      db.collection("posts")
+    },
   },
   computed: {
     filteredCards() {

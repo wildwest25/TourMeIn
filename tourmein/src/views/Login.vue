@@ -1,76 +1,73 @@
 <template>
-  <div class="login">
-    <h1>TourMeIn</h1>
-    <h4>Travel and learn</h4>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm"></div>
-        <div class="col-sm">
-          <form>
-            <div class="form-group">
-              <input
-                type="email"
-                v-model="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-              />
-              <small id="emailHelp" class="form-text text-muted"
-                >We'll never share your email with anyone else.</small
-              >
-            </div>
-            <div class="form-group">
-              <input
-                type="password"
-                v-model="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-              />
-            </div>
-            <button type="button" @click="login()" class="btn btn-primary">Log In</button>
-          </form><br>
-          <form method="get" action="/guide_profile"> <!-- povremeno dok ne rijesimo firebase -->
-            <button type="submit" class="btn btn-primary">Log In/guide test</button>
-          </form><br>
-          <form method="get" action="/user_page"> <!-- povremeno dok ne rijesimo firebase -->
-            <button type="submit" class="btn btn-primary">Log In/User test</button>
-          </form><br>
-          <form method="get" action="/register">
-            <button type="submit" class="btn btn-primary">Register</button>
-          </form>
-        </div>
-        <div class="col-sm"></div>
-      </div>
-    </div>
-  </div>
+	<div class="login">
+		<h1>TourMeIn</h1>
+		<h4>Travel and learn</h4>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm"></div>
+				<div class="col-sm">
+					<form>
+						<div class="form-group">
+							<input
+								type="email"
+								v-model="email"
+								class="form-control"
+								id="exampleInputEmail1"
+								aria-describedby="emailHelp"
+								placeholder="Enter email"
+							/>
+							<small id="emailHelp" class="form-text text-muted"
+								>We'll never share your email with anyone else.</small
+							>
+						</div>
+						<div class="form-group">
+							<input
+								type="password"
+								v-model="password"
+								class="form-control"
+								id="exampleInputPassword1"
+								placeholder="Password"
+							/>
+						</div>
+						<button type="button" @click="login()" class="btn btn-primary">Log In</button>
+					</form>
+					<br />
+					<form method="get" action="/register">
+						<button type="submit" class="btn btn-primary">Register</button>
+					</form>
+				</div>
+				<div class="col-sm"></div>
+			</div>
+		</div>
+	</div>
 </template>
 <script>
-import firebase from '@/firebase';
+import { firebase } from '@/firebase';
 
 export default {
-  name: 'login',
-  data() {
-    return {
-      email: '',
-      password: '',
-    };
-  },
-  methods: {
-    login() {
-      console.log('login...' + this.email);
+	name: 'login',
+	data() {
+		return {
+			email: '',
+			password: '',
+		};
+	},
+	methods: {
+		login() {
+			console.log('login...' + this.email);
 
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-      .then((result) => {
-        console.log('Uspjesna prijava', result);
+			firebase
+				.auth()
+				.signInWithEmailAndPassword(this.email, this.password)
+				.then((result) => {
+					console.log('Uspjesna prijava', result);
 
-        this.$router.replace({ name: 'Guide_profile'});
-      })
-      .catch(function(e) {
-        console.error('Greska', e);
-      });
-    }
-  }
-}
+					//this.$router.replace({ name: 'Guide_profile'});
+				})
+				.catch(function(e) {
+					console.error('Greska', e);
+				});
+		},
+	},
+};
 </script>
