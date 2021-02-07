@@ -1,27 +1,23 @@
 <template>
-  <div class="row">
-    <div class="col-8">
-      <div class="float-left offset-1">
-        <h1>My Previous Tours</h1>
-      </div>
-    </div>
-    <div class="col-8 offset-1">
-      <user-card
-        v-for="card in filteredCards"
-        :key="card.url"
-        :info="card"
-      />
-    </div>
-    <!--<div class="col-4">
+	<div class="row">
+		<div class="col-8">
+			<div class="float-left offset-1">
+				<h1>My Previous Tours</h1>
+			</div>
+		</div>
+		<div class="col-8 offset-1">
+			<user-card v-for="card in filteredCards" :key="card.url" :info="card" />
+		</div>
+		<!--<div class="col-4">
             Sidebar
         </div>-->
-  </div>
+	</div>
 </template>
 <script>
 // @ is an alias to /src
-import UserCard from "@/components/UserCard.vue";
-import store from "@/store";
-import { db } from "@/firebase";
+import UserCard from '@/components/UserCard.vue';
+import store from '@/store';
+import { db } from '@/firebase';
 
 // let cards = [];
 
@@ -49,35 +45,54 @@ cards = [
 ];*/
 
 export default {
-  name: "home",
-  props: ["id"],
-  data: function () {
-    return {
-      cards: [],
-      store,
-    };
-  },
-  mounted() {
-    //* dohvat iz Firebasea
-    this.getPosts();
-  },
-  methods: { 
-    getPosts() {
-      console.log("firebase dohvat...")
+	name: 'home',
+	props: ['id'],
+	data: function() {
+		return {
+			cards: [],
+			store,
+		};
+	},
+	mounted() {
+		//* dohvat iz Firebasea
+		this.getPrevTours();
+	},
+	methods: {
+		getPrevTours() {
+			console.log('firebase dohvat...');
 
-      db.collection("posts")
-    },
-  },
-  computed: {
-    filteredCards() {
-      // logika koja filtrira cards
-      let termin = this.store.searchTerm;
+			db.collection('tours')
+				.get()
+				.then((query) => {
+					this.cards = [];
+					query.forEach((doc) => {
+						//console.log('ID: ', doc.id);
+						//console.log('Podaci: ', doc.data());
 
-      return this.cards.filter((card) => card.description.includes(termin));
-    },
-  },
-  components: {
-    UserCard,
-  },
+						const data = doc.data();
+
+						this.cards.push({
+							id: doc.id,
+							time: data.date, //TODO: 17:31 timestamp #5 part 2
+							description: data.userName,
+							rated: data.rated,
+							monuments: data.monuments,
+							lang: doc.languages,
+						});
+					});
+				});
+		},
+	},
+	computed: {
+		filteredCards() {
+			// logika koja filtrira cards
+			let termin = this.store.searchTerm;
+
+			return this.cards.filter((card) => card.description.includes(termin));
+		},
+	},
+	components: {
+		UserCard,
+	},
 };
 </script>

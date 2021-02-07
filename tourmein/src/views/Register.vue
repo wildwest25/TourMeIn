@@ -62,14 +62,24 @@
 						<div class="form-inline">
 							<label for="gender"> Gender: </label>
 							<div>
-								<input type="radio" name="gen" id="male" style="width: 20px" class="form-control" />
+								<input
+									type="radio"
+									v-model="newGender"
+									name="gen"
+									id="male"
+									value="male"
+									style="width: 20px"
+									class="form-control"
+								/>
 							</div>
 							<label for="male"> Male </label>
 							<div>
 								<input
 									type="radio"
+									v-model="newGender"
 									name="gen"
 									id="female"
+									value="female"
 									style="width: 20px"
 									class="form-control"
 								/>
@@ -78,8 +88,10 @@
 							<div>
 								<input
 									type="radio"
+									v-model="newGender"
 									name="gen"
 									id="other"
+									value="other"
 									style="width: 20px"
 									class="form-control"
 								/>
@@ -118,68 +130,60 @@
 						<div class="form-inline">
 							<label for="costPerHour"> Country: </label>
 							<div class="form-group">
-								<select class="form-control" id="country">
-									<option>Croatia</option>
-									<option>Germany</option>
-									<option>Italy</option>
-									<option>Slovenia</option>
+								<select class="form-control" id="fromcountry" v-model="fromCountry">
+									<option value="Croatia">Croatia</option>
+									<option value="Germany">Germany</option>
+									<option value="Italy">Italy</option>
+									<option value="Slovenia">Slovenia</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-inline">
 							<label for="registerAs"> Register as: </label>
 							<div class="form-group">
-								<select class="form-control" id="registerAs">
-									<option>Tourist</option>
-									<option>Guide</option>
+								<select class="form-control" id="registerAs" v-model="isGuide">
+									<option value="">Tourist</option>
+									<option value="true">Guide</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-inline">
 							<label for="exampleCity">City:</label>
-							<input type="city" class="form-control" id="exampleCity" placeholder="City" />
+							<input
+								type="city"
+								class="form-control"
+								id="exampleCity"
+								placeholder="City"
+								v-model="newCity"
+							/>
 						</div>
 						<div class="form-inline">
 							<input
 								type="checkbox"
-								name="agree"
-								id="agree"
+								id="terms_and_conditions"
 								style="width: 20px"
 								class="form-control"
+								onchange="document.getElementById('btRegister').disabled = !this.checked;"
 							/>
 							<label for="perHour">
 								I have read and agree with Terms and Conditions Agreement
 							</label>
 						</div>
 						<div class="form-group">
-							<label for="imageUrl">Image URL</label>
-							<input
-								v-model="newImageUrl"
-								type="text"
-								class="form-control ml-2"
-								placeholder="Enter the image URL"
-								id="imageUrl"
-							/>
-						</div>
-						<div class="form-group">
-							<label for="imageDescription">Description</label>
-							<input
-								v-model="newImageDescription"
-								type="text"
-								class="form-control ml-2"
-								placeholder="Enter the image description"
-								id="imageDescription"
-							/>
-						</div>
-						<div class="form-group">
 							<button
 								type="button"
+								id="btRegister"
 								@click="signup"
 								@click.prevent="postNewInfo"
 								class="btn btn-primary"
+								disabled="disabled"
 							>
 								Register
 							</button>
+							<div>
+								<br />
+								<a href="login" class="btn btn-secondary">Back</a>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -199,27 +203,35 @@ export default {
 			email: '',
 			newUsername: '',
 			password: '',
-			newImageDescription: '',
-			newimageUrl: '',
 			firstname: '',
 			lastname: '',
+			gender: '',
+			//! country: '',
+			city: '',
+			isguide: '',
 		};
 	},
 	methods: {
 		postNewInfo() {
+			const email = this.email;
 			const username = this.newUsername;
 			const firstname = this.newFirstname;
 			const lastname = this.newLastname;
-			const imageUrl = this.newImageUrl;
-			const imageDescription = this.newImageDescription;
+			const gender = this.newGender;
+			//! const country = this.newfromCountry;
+			const city = this.newCity;
+			const isguide = this.isGuide;
 
-			db.collection('users')
+			db.collection('user')
 				.add({
+					email: email,
 					username: username,
 					firstname: firstname,
 					lastname: lastname,
-					url: imageUrl,
-					desc: imageDescription,
+					gender: gender,
+					//! country: country,
+					city: city,
+					guide: isguide,
 					registered_at: Date.now(),
 				})
 				.then(() => {

@@ -53,21 +53,36 @@
 
 <script>
 import store from '@/store';
-import { firebase } from '@/firebase';
+import { firebase, db } from '@/firebase';
 import router from '@/router';
 
 firebase.auth().onAuthStateChanged((user) => {
 	const currentRoute = router.currentRoute;
 
-	// TODO: zamjenit i sloziti da ako je guide logiran da ide na guide profile ako ne na user pocetnu
+	// * RIJESENO :) zamjenit i sloziti da ako je guide logiran da ide na guide profile ako ne na user pocetnu
 	if (user) {
 		// User is signed in.
 		console.log(user.email);
 		store.currentUser = user.email;
 
-		if (!currentRoute.meta.needsUser) {
-			router.push({ name: 'Guide_profile' });
-		}
+		db.collection('user')
+			.where('email', '==', user.email)
+			.get()
+			.then((querySnapshot) => {
+				querySnapshot.forEach((doc) => {
+					// doc.data() is never undefined for query doc snapshots
+					console.log(doc.id, ' => ', doc.data());
+
+					if (!currentRoute.meta.needsUser && doc.guide == 'true') {
+						router.push({ name: 'Guide_profile' });
+					} else if (!currentRoute.meta.needsUser && !doc.guide) {
+						router.push({ name: 'User_profile' });
+					}
+				});
+			})
+			.catch((error) => {
+				console.log('Error getting documents: ', error);
+			});
 	} else {
 		// User is not signed in.
 		console.log('No user');

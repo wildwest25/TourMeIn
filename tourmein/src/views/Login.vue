@@ -54,8 +54,6 @@ export default {
 	},
 	methods: {
 		login() {
-			console.log('login...' + this.email);
-
 			firebase
 				.auth()
 				.signInWithEmailAndPassword(this.email, this.password)
