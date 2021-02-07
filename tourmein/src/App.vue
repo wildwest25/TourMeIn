@@ -73,9 +73,11 @@ firebase.auth().onAuthStateChanged((user) => {
 					// doc.data() is never undefined for query doc snapshots
 					console.log(doc.id, ' => ', doc.data());
 
-					if (!currentRoute.meta.needsUser && doc.guide == 'true') {
+					const data = doc.data();
+
+					if (!currentRoute.meta.needsUser && data.guide == 'true') {
 						router.push({ name: 'Guide_profile' });
-					} else if (!currentRoute.meta.needsUser && !doc.guide) {
+					} else {
 						router.push({ name: 'User_profile' });
 					}
 				});
