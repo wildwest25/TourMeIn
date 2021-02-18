@@ -142,7 +142,7 @@
 							<label for="registerAs"> Register as: </label>
 							<div class="form-group">
 								<select class="form-control" id="registerAs" v-model="isGuide">
-									<option value="">Tourist</option>
+									<option value="false">Tourist</option>
 									<option value="true">Guide</option>
 								</select>
 							</div>
