@@ -1,20 +1,71 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div class="login">
+		<h1>TourMeIn</h1>
+		<h4>Travel and learn</h4>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm"></div>
+				<div class="col-sm">
+					<form>
+						<div class="form-group">
+							<input
+								type="email"
+								v-model="email"
+								class="form-control"
+								id="exampleInputEmail1"
+								aria-describedby="emailHelp"
+								placeholder="Enter email"
+							/>
+							<small id="emailHelp" class="form-text text-muted"
+								>We'll never share your email with anyone else.</small
+							>
+						</div>
+						<div class="form-group">
+							<input
+								type="password"
+								v-model="password"
+								class="form-control"
+								id="exampleInputPassword1"
+								placeholder="Password"
+							/>
+						</div>
+						<button type="button" @click="login()" class="btn btn-primary">Log In</button>
+					</form>
+					<br />
+					<form method="get" action="/register">
+						<button type="submit" class="btn btn-primary">Register</button>
+					</form>
+				</div>
+				<div class="col-sm"></div>
+			</div>
+		</div>
+	</div>
 </template>
-
 <script>
-// @ is an alias to /src
-
-import HelloWorld from '@/components/HelloWorld.vue'
-//import Login from '@/components/Login.vue'
+import { firebase } from '@/firebase';
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+	name: 'login',
+	data() {
+		return {
+			email: '',
+			password: '',
+		};
+	},
+	methods: {
+		login() {
+			firebase
+				.auth()
+				.signInWithEmailAndPassword(this.email, this.password)
+				.then((result) => {
+					console.log('Uspjesna prijava', result);
+
+					//this.$router.replace({ name: 'Guide_profile'});
+				})
+				.catch(function(e) {
+					console.error('Greska', e);
+				});
+		},
+	},
+};
 </script>
