@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Login.vue';
+import Home from '../views/Home.vue';
 import User from '../views/User_page.vue';
 import Guide from '../views/My_pervious_tours-guide.vue';
 import store from '@/store';
@@ -11,14 +11,8 @@ const routes = [
 	{
 		path: '/',
 		name: 'Home',
-		meta: { hideNavigation: true } /* za skrivanje menia */,
-		component: Home,
-	},
-	{
-		path: '/login',
-		name: 'Login',
 		meta: { hideNavigation: true },
-		component: () => import('../views/Login.vue'),
+		component: () => import('../views/Home.vue'),
 	},
 	{
 		path: '/register',
@@ -96,7 +90,7 @@ router.beforeEach((to, from, next) => {
 	const noUser = store.currentUser === null;
 
 	if (noUser && to.meta.needsUser) {
-		next('login');
+		next('Home');
 	} else {
 		next();
 	}
