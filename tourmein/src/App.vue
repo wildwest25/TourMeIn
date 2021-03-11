@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<navigation v-if="$route.meta.Guide">
+		<navigation v-if="store.isGuide === 'true'">
 			<div id="nav" class="navbar navbar-expand-md navbar-light">
 				<img
 					src="@/assets/tourmein_logo.png"
@@ -23,7 +23,7 @@
 				</ul>
 			</div>
 		</navigation>
-		<navigation v-if="$route.meta.User">
+		<navigation v-if="store.isGuide === 'false'">
 			<div id="nav" class="navbar navbar-expand-md navbar-light">
 				<img
 					src="@/assets/tourmein_logo.png"
@@ -33,7 +33,6 @@
 					loading="lazy"
 				/>
 				<h1>TourMeIn</h1>
-				<!--<router-link to="/">Home</router-link> | -->
 				<router-link to="/user_profile" class="offset-1">My Profile</router-link> |
 				<router-link to="/user_page">Search Guides</router-link> |
 				<router-link to="/my_guides">My Guides</router-link> |
@@ -74,11 +73,13 @@ firebase.auth().onAuthStateChanged((user) => {
 					console.log(doc.id, ' => ', doc.data());
 
 					const data = doc.data();
+					store.isGuide = data.guide;
+					console.log(store.isGuide);
 
 					if (!currentRoute.meta.needsUser && data.guide == 'true') {
 						router.push({ name: 'Guide_profile' });
 					} else {
-						router.push({ name: 'User_profile' });
+						router.push({ name: 'User_page' });
 					}
 				});
 			})
@@ -111,6 +112,7 @@ export default {
 				.signOut()
 				.then(() => {
 					this.$router.push({ name: 'Login' });
+					store.isGuide = null;
 				});
 		},
 	},
