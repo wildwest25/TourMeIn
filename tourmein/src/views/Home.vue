@@ -1,5 +1,12 @@
 <template>
 	<div class="login">
+			<img
+					src="@/assets/pocetni_screen.png"
+					alt="pocetna stranica"
+					height= 50%
+					width= 100%
+					loading="lazy"
+				/>
 		<h1>TourMeIn</h1>
 		<h4>Travel and learn</h4>
 		<div class="container">

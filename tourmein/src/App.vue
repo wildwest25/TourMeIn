@@ -92,7 +92,7 @@ firebase.auth().onAuthStateChanged((user) => {
 		store.currentUser = null;
 
 		if (currentRoute.meta.needsUser) {
-			router.push({ name: 'Login' });
+			router.push({ name: 'Home' });
 		}
 	}
 });
@@ -111,7 +111,7 @@ export default {
 				.auth()
 				.signOut()
 				.then(() => {
-					this.$router.push({ name: 'Login' });
+					this.$router.push({ name: 'Home' });
 					store.isGuide = null;
 				});
 		},
