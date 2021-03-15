@@ -20,16 +20,6 @@
 							>
 						</div>
 						<div class="form-group">
-							<label for="exampleUsername">Username</label>
-							<input
-								type="username"
-								v-model="newUsername"
-								class="form-control"
-								id="exampleUsername"
-								placeholder="Enter username"
-							/>
-						</div>
-						<div class="form-group">
 							<label for="exampleInputPassword1">Password</label>
 							<input
 								type="password"
@@ -38,6 +28,7 @@
 								id="exampleInputPassword1"
 								placeholder="Password"
 							/>
+							//TODO: Repeat password
 						</div>
 						<div class="form-group">
 							<label for="exampleName">Name</label>
@@ -214,7 +205,6 @@ export default {
 	methods: {
 		postNewInfo() {
 			const email = this.email;
-			const username = this.newUsername;
 			const firstname = this.newFirstname;
 			const lastname = this.newLastname;
 			const gender = this.newGender;
@@ -225,7 +215,6 @@ export default {
 			db.collection('user')
 				.add({
 					email: email,
-					username: username,
 					firstname: firstname,
 					lastname: lastname,
 					gender: gender,
