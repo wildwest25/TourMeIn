@@ -20,6 +20,14 @@ const routes = [
 		meta: { hideNavigation: true },
 		component: () => import('../views/Register.vue'),
 	},
+
+	{
+		path: '/registracija_uspjesna',
+		name: 'Registracija_uspjesna',
+		meta: { hideNavigation: true },
+		component: () => import('../views/Registracija_uspjesna.vue'),
+	},
+
 	{
 		path: '/guide_profile',
 		name: 'Guide_profile',
