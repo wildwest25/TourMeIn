@@ -162,7 +162,7 @@
 						</div>
 						<div class="form-group">
 							<button
-								type="button" 
+								type="button"
 								id="btRegister"
 								@click.prevent="signup"
 								@click="postNewInfo"
@@ -238,16 +238,9 @@ export default {
 				.then(function() {
 					console.log('Uspjesna registracija');
 
-			
-
-                    user
-                        .sendEmailVerification() //to do 
-                        .then(function() {
-                        })
-                        .catch(function(error) {
-                            // An error happened.
-						});
-						})
+					user
+						.sendEmailVerification() //to do
+						.then(function() {})
 						.catch(function(error) {
 							// An error happened.
 						});
@@ -257,8 +250,6 @@ export default {
 					console.error('Doslo je do greske, error');
 				});
 		},
-		
 	},
-
 };
 </script>
