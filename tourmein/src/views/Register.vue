@@ -162,10 +162,11 @@
 						</div>
 						<div class="form-group">
 							<button
-								type="button"
+								type="button" 
 								id="btRegister"
-								@click="signup"
-								@click.prevent="postNewInfo"
+								@click.prevent="signup"
+								@click="postNewInfo"
+								onclick="location.href = '/Registracija_uspjesna';"
 								class="btn btn-primary"
 								disabled="disabled"
 							>
@@ -173,7 +174,7 @@
 							</button>
 							<div>
 								<br />
-								<a href="login" class="btn btn-secondary">Back</a>
+								<a href="/" class="btn btn-secondary">Back</a>
 							</div>
 						</div>
 					</form>
@@ -229,6 +230,7 @@ export default {
 					console.error(e);
 				});
 		},
+
 		signup() {
 			firebase
 				.auth()
@@ -236,12 +238,15 @@ export default {
 				.then(function() {
 					console.log('Uspjesna registracija');
 
-					var user = firebase.auth().currentUser;
+			
 
-					user
-						.sendEmailVerification()
-						.then(function() {
-							// Email sent.
+                    user
+                        .sendEmailVerification() //to do 
+                        .then(function() {
+                        })
+                        .catch(function(error) {
+                            // An error happened.
+						});
 						})
 						.catch(function(error) {
 							// An error happened.
@@ -252,6 +257,8 @@ export default {
 					console.error('Doslo je do greske, error');
 				});
 		},
+		
 	},
+
 };
 </script>
