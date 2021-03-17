@@ -192,14 +192,13 @@ export default {
 	data() {
 		return {
 			email: '',
-			newUsername: '',
 			password: '',
-			firstname: '',
-			lastname: '',
-			gender: '',
-			//! country: '',
-			city: '',
-			isguide: '',
+			newFirstname: '',
+			newLastname: '',
+			newGender: '',
+			fromCountry: '',
+			newCity: '',
+			isGuide: '',
 		};
 	},
 	methods: {
@@ -236,19 +235,19 @@ export default {
 				.createUserWithEmailAndPassword(this.email, this.password)
 				.then(function() {
 					console.log('Uspjesna registracija');
-				
-				var user = firebase.auth().currentUser;
 
-                    user
-                        .sendEmailVerification()
-                        .then(function() {
-                            // Email sent.
-                        })
-                        .catch(function(error) {
-                            // An error happened.
-						});
+					var user = firebase.auth().currentUser;
+
+					user
+						.sendEmailVerification()
+						.then(function() {
+							// Email sent.
 						})
-	
+						.catch(function(error) {
+							// An error happened.
+						});
+				})
+
 				.catch(function(error) {
 					console.error('Doslo je do greske, error');
 				});

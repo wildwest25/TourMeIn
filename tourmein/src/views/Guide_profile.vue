@@ -31,6 +31,7 @@
 								class="form-control"
 								id="exampleContact"
 								placeholder="+385 00000-0000"
+								v-model="newPhoneNumber"
 							/>
 						</div>
 						<div class="form-group">
@@ -40,6 +41,7 @@
 								class="form-control"
 								id="exampleInputLanguages"
 								placeholder="Croatian, English.."
+								v-model="newLanguages"
 							/>
 						</div>
 						<div class="form-group">
@@ -49,6 +51,7 @@
 								class="form-control"
 								id="exampleMonuments"
 								placeholder="Amphiteater, Triumphal Arch.."
+								v-model="newMonuments"
 							/>
 						</div>
 						<form name="someForm" method="post" action="/someAction.do" class="form-inline">
@@ -65,6 +68,7 @@
 											placeholder="00"
 											step="1"
 											maxlength="2"
+											v-model="newStartHour"
 										/>
 									</div>
 								</div>
@@ -80,6 +84,7 @@
 											placeholder="00"
 											step="1"
 											maxlength="2"
+											v-model="newStartMinute"
 										/>
 									</div>
 								</div>
@@ -95,6 +100,7 @@
 											placeholder="00"
 											step="1"
 											maxlength="2"
+											v-model="newEndHour"
 										/>
 									</div>
 								</div>
@@ -110,6 +116,7 @@
 											placeholder="00"
 											step="1"
 											maxlength="2"
+											v-model="newEndMinute"
 										/>
 									</div>
 								</div>
@@ -126,6 +133,7 @@
 											id="monday"
 											style="width: 20px"
 											class="form-control"
+											v-model="newMonday"
 										/>
 									</div>
 								</div>
@@ -138,6 +146,7 @@
 											id="tuesday"
 											style="width: 20px"
 											class="form-control"
+											v-model="newTuesday"
 										/>
 									</div>
 								</div>
@@ -150,6 +159,7 @@
 											id="wednsday"
 											style="width: 20px"
 											class="form-control"
+											v-model="newWednesday"
 										/>
 									</div>
 								</div>
@@ -162,6 +172,7 @@
 											id="thursday"
 											style="width: 20px"
 											class="form-control"
+											v-model="newThursday"
 										/>
 									</div>
 								</div>
@@ -174,6 +185,7 @@
 											id="friday"
 											style="width: 20px"
 											class="form-control"
+											v-model="newFriday"
 										/>
 									</div>
 								</div>
@@ -186,6 +198,7 @@
 											id="saturday"
 											style="width: 20px"
 											class="form-control"
+											v-model="newSaturday"
 										/>
 									</div>
 								</div>
@@ -198,6 +211,7 @@
 											id="sunday"
 											style="width: 20px"
 											class="form-control"
+											v-model="newSunday"
 										/>
 									</div>
 								</div>
@@ -217,6 +231,7 @@
 											id="perHour"
 											style="width: 20px"
 											class="form-control"
+											v-model="newperHour"
 										/>
 									</div>
 								</div>
@@ -229,6 +244,7 @@
 											id="perLandmark"
 											style="width: 20px"
 											class="form-control"
+											v-model="newperLandmark"
 										/>
 									</div>
 								</div>
@@ -252,6 +268,7 @@
 										class="form-control"
 										placeholder="---"
 										maxlength="3"
+										v-model="newcostPerHour"
 									/>
 								</div>
 							</div>
@@ -266,12 +283,13 @@
 										class="form-control"
 										placeholder="---"
 										maxlength="3"
+										v-model="newcostPerLandmark"
 									/>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="form-group">
-									<select class="form-control" id="currency">
+									<select class="form-control" id="currency" v-model="newCurrency" placeholder="€">
 										<option>€</option>
 										<option>£</option>
 										<option>$</option>
@@ -283,7 +301,17 @@
 					</form>
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">About Me</label>
-						<textarea class="form-control" id="aboutMe" rows="3"></textarea>
+						<textarea class="form-control" id="aboutMe" rows="3" v-model="newaboutMe"></textarea>
+					</div>
+					<div class="form-group">
+						<button
+							type="button"
+							id="btRegister"
+							@click.prevent="saveNewInfo"
+							class="btn btn-primary"
+						>
+							Save
+						</button>
 					</div>
 				</div>
 				<div class="col-sm"></div>
@@ -341,12 +369,35 @@ import { db } from '@/firebase';
 
 export default {
 	name: 'Guide_profile',
-	props: ['id'],
 	data: function() {
 		return {
 			store,
 			firstname: '',
 			lastname: '',
+			newPhoneNumber: '',
+			id: '',
+			registered: '',
+			newLanguages: '',
+			newMonuments: '',
+			newStartHour: '',
+			newStartMinute: '',
+			newEndHour: '',
+			newEndMinute: '',
+
+			newMonday: 'false',
+			newTuesday: 'false',
+			newWednesday: 'false',
+			newThursday: 'false',
+			newFriday: 'false',
+			newSaturday: 'false',
+			newSunday: 'false',
+
+			newperHour: 'false',
+			newperLandmark: 'false',
+			newcostPerHour: '',
+			newcostPerLandmark: '',
+			newCurrency: '',
+			newaboutMe: '',
 		};
 	},
 	mounted() {
@@ -368,15 +419,98 @@ export default {
 						const data = doc.data();
 						//store.isGuide = data.guide;
 
+						this.id = doc.id;
+
 						this.firstname = data.firstname;
 						this.lastname = data.lastname;
 						this.registered = new Date(data.registered_at).toLocaleDateString();
 
+						this.newPhoneNumber = data.phone;
+						this.newLanguages = data.languages;
+						this.newMonuments = data.monuments;
+						this.newStartHour = data.starthour;
+						this.newStartMinute = data.startminute;
+						this.newEndHour = data.endhour;
+						this.newEndMinute = data.endminute;
+
+						this.newMonday = data.monday;
+						this.newTuesday = data.tuesday;
+						this.newWednesday = data.wednesday;
+						this.newThursday = data.thursday;
+						this.newFriday = data.friday;
+						this.newSaturday = data.saturday;
+						this.newSunday = data.sunday;
+
+						this.newperHour = data.perhour;
+						this.newperLandmark = data.perlandmark;
+						this.newcostPerHour = data.costhour;
+						this.newcostPerLandmark = data.costlandmark;
+						this.newCurrency = data.currency;
+						this.newaboutMe = data.aboutme;
+
 						document.getElementById('InputEmail').value = store.currentUser;
+						//document.getElementById('exampleContact').value = data.phone;
 					});
 				})
 				.catch((error) => {
 					console.log('Error getting documents: ', error);
+				});
+		},
+		saveNewInfo() {
+			const phone = this.newPhoneNumber;
+			const languages = this.newLanguages;
+			const monuments = this.newMonuments;
+			const starthour = this.newStartHour;
+			const startminute = this.newStartMinute;
+			const endhour = this.newEndHour;
+			const endminute = this.newEndMinute;
+
+			const monday = this.newMonday;
+			const tuesday = this.newTuesday;
+			const wednesday = this.newWednesday;
+			const thursday = this.newThursday;
+			const friday = this.newFriday;
+			const saturday = this.newSaturday;
+			const sunday = this.newSunday;
+
+			const perhour = this.newperHour;
+			const perlandmark = this.newperLandmark;
+			const costhour = this.newcostPerHour;
+			const costlandmark = this.newcostPerLandmark;
+			const currency = this.newCurrency;
+			const aboutme = this.newaboutMe;
+
+			db.collection('user')
+				.doc(this.id)
+				.update({
+					phone: phone,
+					languages: languages,
+					monuments: monuments,
+					starthour: starthour,
+					startminute: startminute,
+					endhour: endhour,
+					endminute: endminute,
+
+					monday: monday,
+					tuesday: tuesday,
+					wednesday: wednesday,
+					thursday: thursday,
+					friday: friday,
+					saturday: saturday,
+					sunday: sunday,
+
+					perhour: perhour,
+					perlandmark: perlandmark,
+					costhour: costhour,
+					costlandmark: costlandmark,
+					currency: currency,
+					aboutme: aboutme,
+				})
+				.then(() => {
+					console.log('spremljeno, doc');
+				})
+				.catch((e) => {
+					console.error(e);
 				});
 		},
 	},
