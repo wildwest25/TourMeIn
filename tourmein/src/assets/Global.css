@@ -1,0 +1,28 @@
+
+h1
+{
+font-family: Peralta;
+color: black;
+}
+
+TMI_BCG.png
+{
+size: 100%;
+}
+
+body
+{
+    background-image: url("TMI_BCG.png");
+    background-size: cover;
+}
+
+.btn.btn-primary
+{
+    background: radial-gradient(50% 555.56% at 50% 50%, #FFA100 0%, #CC7722 100%);
+    font-family: IBM Plex Mono, bold;
+    color: black;
+}
+.form-group
+{
+    font-family: IBM Plex Mono;
+}
