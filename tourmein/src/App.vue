@@ -3,8 +3,8 @@
 		<navigation v-if="store.isGuide === 'true'">
 			<div id="nav" class="navbar navbar-expand-md navbar-light">
 				<img
-					src="@/assets/tourmein_logo.png"
-					height="40"
+					src="@/assets/Logo-01.png"
+					height="60"
 					class="d-inline-block align-top"
 					alt=""
 					loading="lazy"
@@ -18,7 +18,7 @@
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a href="#" @click="logout()" class="nav-link">Logout</a>
+						<button type="button" @click.prevent="logout()" class="btn btn-primary">Logout</button>
 					</li>
 				</ul>
 			</div>
@@ -26,8 +26,8 @@
 		<navigation v-if="store.isGuide === 'false'">
 			<div id="nav" class="navbar navbar-expand-md navbar-light">
 				<img
-					src="@/assets/tourmein_logo.png"
-					height="40"
+					src="@/assets/Logo-01.png"
+					height="60"
 					class="d-inline-block align-top"
 					alt=""
 					loading="lazy"
@@ -41,7 +41,7 @@
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a href="#" @click.prevent="logout()" class="nav-link">Logout</a>
+						<button type="button" @click.prevent="logout()" class="btn btn-primary">Logout</button>
 					</li>
 				</ul>
 			</div>
