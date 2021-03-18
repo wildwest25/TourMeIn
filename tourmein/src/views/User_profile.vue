@@ -1,5 +1,5 @@
 <template>
-  <div class="guide_profile">
+  <div class="user_profile">
     <div class="container">
       <div class="row">
         <div class="col-sm">
@@ -12,7 +12,9 @@
         <div class="col-fluid">
           <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
+              <div id="form-text">
+              <label for="exampleInputEmail1" float=left>Email address</label>
+              </div>
               <input
                 type="email"
                 class="form-control"
@@ -39,46 +41,23 @@
                 placeholder="Croatian, English.."
               />
             </div>
-            <form
-              name="someForm"
-              method="post"
-              action="/someAction.do"
-              class="form-inline"
-            >
-            </form>
-            <form
-              name="someForm"
-              method="post"
-              action="/someAction.do"
-              class="form-inline"
-            >
-            </form>
-            <form
-              name="someForm"
-              method="post"
-              action="/someAction.do"
-              class="form-inline"
-            >
-            </form>
-            <!--<button type="submit" class="btn btn-primary">Register</button> save? -->
-          </form>
-          <form
-            name="someForm"
-            method="post"
-            action="/someAction.do"
-            class="form-inline"
-          >
+            <div class="form-group">
+              <label for="examplevisited">Places I visited</label>
+              <input
+               type="placesvisited"
+               class="form-control"
+               id="examplevisited"
+               placeholder="Amphiteathre, Kastel Fort..."
+               />
+            </div>
+            <div class="form-group">
+              <label for="userinfo">About me</label>
+              <textarea id="userInfo" rows="3" class="form-control"></textarea>
+            </div>
           </form>
         </div>
         <div class="col-sm"></div>
       </div>
-      <form
-            name="someForm"
-            method="post"
-            action="/someAction.do"
-            class="form-inline"
-          >
-          </form>
     </div>
   </div>
 </template>
