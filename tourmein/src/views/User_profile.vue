@@ -50,9 +50,9 @@
                placeholder="Amphiteathre, Kastel Fort..."
                />
             </div>
-            <div class="form-group">
-              <label for="userinfo">About me</label>
-              <textarea id="userInfo" rows="3" class="form-control"></textarea>
+            <div id="aboutMe" class="form-group">
+              <label  for="userinfo">About me</label>
+              <textarea id="userInfo" rows="10" class="form-control"></textarea>
             </div>
           </form>
         </div>
