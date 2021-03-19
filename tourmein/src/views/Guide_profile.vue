@@ -156,7 +156,7 @@
 										<input
 											type="checkbox"
 											name="wed"
-											id="wednsday"
+											id="wednesday"
 											style="width: 20px"
 											class="form-control"
 											v-model="newWednesday"
@@ -301,7 +301,7 @@
 					</form>
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">About Me</label>
-						<textarea class="form-control" id="aboutMe" rows="3" v-model="newaboutMe"></textarea>
+						<textarea class="form-control" id="aboutMe" rows="10" v-model="newaboutMe"></textarea>
 					</div>
 					<div class="form-group">
 						<button
