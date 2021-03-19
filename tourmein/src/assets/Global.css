@@ -26,3 +26,206 @@ body
 {
     font-family: IBM Plex Mono;
 }
+
+#search-focus
+{
+    width: 1000px;
+    height: 65px;
+}
+
+#Search-butt
+{
+    height: 65px;
+    width: 100px;
+}
+
+.form-control
+{
+width: 750px;
+height: 48px;
+left: 564px;
+top: 132px;
+margin: 10px;
+
+box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 4px 0px 8px rgba(0, 0, 0, 0.25);
+}
+
+#perHour
+{
+left: 0%;
+right: 72.34%;
+top: 17.5%;
+bottom: 17.5%;
+margin: 10px;
+
+border: 1px solid rgba(0, 0, 0, 0.54);
+box-sizing: border-box;
+border-radius: 2px;
+box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+#perLandmark
+{
+left: 0%;
+right: 72.34%;
+top: 17.5%;
+bottom: 17.5%;
+margin: 10px;
+
+border: 1px solid rgba(0, 0, 0, 0.54);
+box-sizing: border-box;
+border-radius: 2px;
+box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+#sunday
+{
+    left: 0%;
+right: 72.34%;
+top: 17.5%;
+bottom: 17.5%;
+margin: 10px;
+
+border: 1px solid rgba(0, 0, 0, 0.54);
+box-sizing: border-box;
+border-radius: 2px;
+box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+} 
+#saturday
+{
+    left: 0%;
+right: 72.34%;
+top: 17.5%;
+bottom: 17.5%;
+margin: 10px;
+
+border: 1px solid rgba(0, 0, 0, 0.54);
+box-sizing: border-box;
+border-radius: 2px;
+box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+} 
+
+#friday
+{
+    left: 0%;
+right: 72.34%;
+top: 17.5%;
+bottom: 17.5%;
+margin: 10px;
+
+border: 1px solid rgba(0, 0, 0, 0.54);
+box-sizing: border-box;
+border-radius: 2px;
+box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+#thursday
+{
+    left: 0%;
+right: 72.34%;
+top: 17.5%;
+bottom: 17.5%;
+margin: 10px;
+
+border: 1px solid rgba(0, 0, 0, 0.54);
+box-sizing: border-box;
+border-radius: 2px;
+box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+#wednesday
+{
+    left: 0%;
+right: 72.34%;
+top: 17.5%;
+bottom: 17.5%;
+margin: 10px;
+
+border: 1px solid rgba(0, 0, 0, 0.54);
+box-sizing: border-box;
+border-radius: 2px;
+box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+#tuesday
+{
+    left: 0%;
+right: 72.34%;
+top: 17.5%;
+bottom: 17.5%;
+margin: 10px;
+
+border: 1px solid rgba(0, 0, 0, 0.54);
+box-sizing: border-box;
+border-radius: 2px;
+box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+#monday
+{
+    left: 0%;
+    right: 72.34%;
+    top: 17.5%;
+    bottom: 17.5%;
+    margin: 10px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.54);
+    box-sizing: border-box;
+    border-radius: 2px;
+    box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+#male
+{
+    left: 0%;
+    right: 72.34%;
+    top: 17.5%;
+    bottom: 17.5%;
+    margin: 10px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.54);
+    box-sizing: border-box;
+    border-radius: 2px;
+    box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+}
+#female
+{
+    left: 0%;
+    right: 72.34%;
+    top: 17.5%;
+    bottom: 17.5%;
+    margin: 10px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.54);
+    box-sizing: border-box;
+    border-radius: 2px;
+    box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+#other
+{
+    left: 0%;
+    right: 72.34%;
+    top: 17.5%;
+    bottom: 17.5%;
+    margin: 10px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.54);
+    box-sizing: border-box;
+    border-radius: 2px;
+    box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+#terms_and_conditions
+{
+    left: 0%;
+    right: 72.34%;
+    top: 17.5%;
+    bottom: 17.5%;
+    margin: 10px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.54);
+    box-sizing: border-box;
+    border-radius: 2px;
+    box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 0);
+}
