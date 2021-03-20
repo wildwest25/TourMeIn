@@ -368,7 +368,7 @@ import store from '@/store';
 import { db } from '@/firebase';
 
 export default {
-	name: 'Guide_profile',
+	name: 'Guide_functions',
 	data: function() {
 		return {
 			store,
