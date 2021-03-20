@@ -90,7 +90,7 @@
 							<label for="other"> Other </label>
 						</div>
 						<div class="form-inline">
-							<label for="costPerHour"> Date of Birth: </label>
+							<label for="dob"> Date of Birth: </label>
 							<div class="form-group">
 								<div class="form-group">
 									<select class="form-control" id="day">
@@ -119,9 +119,9 @@
 							</div>
 						</div>
 						<div class="form-inline">
-							<label for="costPerHour"> Country: </label>
+							<label for="country"> Country: </label>
 							<div class="form-group">
-								<select class="form-control" id="fromcountry" v-model="fromCountry">
+								<select class="form-control" id="fromcountry" v-model="newfromCountry">
 									<option value="Croatia">Croatia</option>
 									<option value="Germany">Germany</option>
 									<option value="Italy">Italy</option>
@@ -139,7 +139,7 @@
 							</div>
 						</div>
 						<div class="form-inline">
-							<label for="exampleCity">City:</label>
+							<label for="city">City:</label>
 							<input
 								type="city"
 								class="form-control"
@@ -196,7 +196,7 @@ export default {
 			newFirstname: '',
 			newLastname: '',
 			newGender: '',
-			fromCountry: '',
+			newfromCountry: '',
 			newCity: '',
 			isGuide: '',
 		};
@@ -207,7 +207,7 @@ export default {
 			const firstname = this.newFirstname;
 			const lastname = this.newLastname;
 			const gender = this.newGender;
-			//! const country = this.newfromCountry;
+			const country = this.newfromCountry;
 			const city = this.newCity;
 			const isguide = this.isGuide;
 
@@ -217,7 +217,7 @@ export default {
 					firstname: firstname,
 					lastname: lastname,
 					gender: gender,
-					//! country: country,
+					country: country,
 					city: city,
 					guide: isguide,
 					registered_at: Date.now(),
@@ -236,11 +236,11 @@ export default {
 				.createUserWithEmailAndPassword(this.email, this.password)
 				.then(function() {
 					console.log('Uspjesna registracija');
-					
+
 					var user = firebase.auth().currentUser;
 
 					user
-					
+
 						.sendEmailVerification() //to do
 						.then(function() {})
 						.catch(function(error) {

@@ -31,10 +31,8 @@ const routes = [
 	{
 		path: '/guide_profile',
 		name: 'Guide_profile',
-		meta: {
-		},
+		meta: { needsUser: true },
 		component: () => import('../views/Guide_profile.vue'),
-		needsUser: true,
 	},
 	{
 		path: '/my_previous_tours_guide',
@@ -71,7 +69,7 @@ const routes = [
 	{
 		path: '/user_page',
 		name: 'User_page',
-		meta:{
+		meta: {
 			needsUser: true,
 		},
 		component: () => import('../views/User_page.vue'),

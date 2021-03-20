@@ -77,10 +77,8 @@ firebase.auth().onAuthStateChanged((user) => {
 					console.log(store.isGuide);
 
 					if (currentRoute.name == 'Register') {
-                        router.push({ name: 'Registracija_uspjesna' });}
-					
-
-					else if (!currentRoute.meta.needsUser && data.guide == 'true') {
+						router.replace({ name: 'Registracija_uspjesna' });
+					} else if (!currentRoute.meta.needsUser && data.guide == 'true') {
 						router.push({ name: 'Guide_profile' });
 					} else {
 						router.push({ name: 'User_page' });

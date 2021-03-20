@@ -1,12 +1,12 @@
 <template>
 	<div class="login">
-			<img
-					src="@/assets/pocetni_screen.png"
-					alt="pocetna stranica"
-					height= 50%
-					width= 100%
-					loading="lazy"
-				/>
+		<img
+			src="@/assets/pocetni_screen.png"
+			alt="pocetna stranica"
+			height="50%"
+			width="100%"
+			loading="lazy"
+		/>
 		<h1>TourMeIn</h1>
 		<h4>Travel and learn</h4>
 		<div class="container">
@@ -34,9 +34,12 @@
 								class="form-control"
 								id="exampleInputPassword1"
 								placeholder="Password"
+								@keyup.enter="login()"
 							/>
 						</div>
-						<button type="button" @click="login()" class="btn btn-primary">Log In</button>
+						<button type="button" @click="login()" class="btn btn-primary">
+							Log In
+						</button>
 					</form>
 					<br />
 					<form method="get" action="/register">
