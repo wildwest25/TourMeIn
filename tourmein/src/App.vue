@@ -18,7 +18,7 @@
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<button type="button" @click.prevent="logout()" class="btn btn-primary">Logout</button>
+						<a href="#" @click="logout()" class="nav-link">Logout</a>
 					</li>
 				</ul>
 			</div>
@@ -41,7 +41,7 @@
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<button type="button" @click.prevent="logout()" class="btn btn-primary">Logout</button>
+						<a href="#" @click.prevent="logout()" class="nav-link">Logout</a>
 					</li>
 				</ul>
 			</div>
@@ -76,7 +76,11 @@ firebase.auth().onAuthStateChanged((user) => {
 					store.isGuide = data.guide;
 					console.log(store.isGuide);
 
-					if (!currentRoute.meta.needsUser && data.guide == 'true') {
+					if (currentRoute.name == 'Register') {
+                        router.push({ name: 'Registracija_uspjesna' });}
+					
+
+					else if (!currentRoute.meta.needsUser && data.guide == 'true') {
 						router.push({ name: 'Guide_profile' });
 					} else {
 						router.push({ name: 'User_page' });

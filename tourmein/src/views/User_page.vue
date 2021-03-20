@@ -3,9 +3,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <div class="input-group">
+                    <div class="d-flex justify-content-center">
                         <div class="form-outline" style = "width:1000;">
-                            <input id="search-focus" type="search" class="form-control"/>
+                            <input id="search-focus" type="search" class="d-flex justify-content-center"/>
                             <label class="form-label" for="form1">Search</label>
                         </div>
                         <button id="Search-butt" type="button" class="btn btn-primary">

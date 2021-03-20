@@ -164,9 +164,8 @@
 							<button
 								type="button"
 								id="btRegister"
-								@click.prevent="signup"
-								@click="postNewInfo"
-								onclick="location.href = '/Registracija_uspjesna';"
+								@click="signup"
+								@click.prevent="postNewInfo"
 								class="btn btn-primary"
 								disabled="disabled"
 							>
@@ -237,8 +236,11 @@ export default {
 				.createUserWithEmailAndPassword(this.email, this.password)
 				.then(function() {
 					console.log('Uspjesna registracija');
+					
+					var user = firebase.auth().currentUser;
 
 					user
+					
 						.sendEmailVerification() //to do
 						.then(function() {})
 						.catch(function(error) {
