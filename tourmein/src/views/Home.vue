@@ -45,6 +45,7 @@
 					<form method="get" action="/register">
 						<button type="submit" class="btn btn-primary">Register</button>
 					</form>
+					<a href="#" @click="forgotpassword()">Forgot Password?</a>
 				</div>
 				<div class="col-sm"></div>
 			</div>
@@ -75,7 +76,20 @@ export default {
 				.catch(function(e) {
 					console.error('Greska', e);
 				});
-		},
+		}, 
+
+		forgotpassword(){
+
+		var auth = firebase.auth();
+		var emailAddress = this.email;
+		auth.sendPasswordResetEmail(emailAddress).then(function() {
+			alert("Password reset email has been sent, check your inbox");
+
+			}).catch(function(error) {
+				// An error happened.
+				});
+		},	
+
 	},
 };
 </script>
