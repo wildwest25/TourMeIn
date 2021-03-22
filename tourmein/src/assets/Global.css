@@ -39,6 +39,37 @@ body
     width: 100px;
 }
 
+#exampleInputEmail1{
+    width: 500px;
+    height: 48px;
+    left: 564px;
+    top: 132px;
+    margin: 10px;
+}
+
+#exampleInputPassword1{
+    width: 500px;
+height: 48px;
+left: 564px;
+top: 132px;
+margin: 10px;
+}
+
+#exampleLastName{
+    width: 500px;
+height: 48px;
+left: 564px;
+top: 132px;
+margin: 10px;
+}
+
+#exampleName{
+    width: 500px;
+    height: 48px;
+    left: 564px;
+    top: 132px;
+    margin: 10px;
+}
 .form-control
 {
 width: 750px;
@@ -233,4 +264,17 @@ box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 
 #TRM
 {
     font-family: Ribeye, cursive;
+}
+
+.verify
+{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.complete_profile
+{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.start_touring
+{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

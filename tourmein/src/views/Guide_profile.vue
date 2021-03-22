@@ -35,7 +35,12 @@
 						><br />
 						<label for="DOB">{{ registered }}</label
 						><br />
-						<label for="rating">4.6</label>
+						<label for="rating">
+						<img src=@/assets/A_star.png
+						height=15%
+						width=15%
+						/>
+						4.6</label>
 					</div>
 				</div>
 				<div class="col-fluid">
@@ -344,9 +349,12 @@
 			</div>
 			<form name="someForm" method="post" action="/someAction.do" class="form-inline">
 				<div class="input-group">
-					<div class="form-group">
-						<label for="costPerHour"> FB </label>
-						<div>
+					<div style="width: 370px;" class="form-group">
+						
+						<div><img src=@/assets/FB_Logo.png
+						height=100%
+						width=12%
+						/>
 							<input
 								type="text"
 								name="fb"
@@ -357,10 +365,14 @@
 							/>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="costPerLandmark"> TW </label>
+					<div style="width: 370px;" class="form-group">
+						<label></label>
 						<div>
-							<input
+								<img src=@/assets/TW.png
+						height=100%
+						width=12%
+						/>
+						<input
 								type="text"
 								name="tw"
 								id="twitterLink"
@@ -370,8 +382,12 @@
 							/>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="costPerLandmark"> INSTA </label>
+					<div style="width: 370px;" class="form-group">
+						<label></label>
+						<img src=@/assets/INST.png
+						height=60%
+						width=10%
+						/>
 						<div>
 							<input
 								type="text"

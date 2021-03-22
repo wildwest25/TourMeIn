@@ -11,9 +11,10 @@
         <div class="container">
     <div class="row">
     <div class="col">
-      <h1> You have successfully registered! </h1>
-      <p>Your registration was successful, please check your e-mail for verification link to complete your registration process.</p>
+      
      <div class="verify">
+        <h2> You have successfully registered! </h2>
+        <p>Your registration was successful, please check your e-mail for verification link to complete your registration process.</p>
             <p> ---------------------------------------------------------------------------------------------</p>
             <h2> 1. Verify your Email </h2>
             <p>To ensure you're a legitimate user and not a robot, Email with verification link has been sent.</p> 
@@ -61,7 +62,7 @@
 				/>
     </div>
 
-     <div style= font-family: Ribeye> TourMeIn </div> 
+     <h1> TourMeIn </h1> 
     </div>
   </div>
 </div>
