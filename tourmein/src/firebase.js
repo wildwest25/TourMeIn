@@ -14,6 +14,10 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+firebase.firestore().settings({
+	ignoreUndefinedProperties: true,
+});
+
 let db = firebase.firestore();
 let storage = firebase.storage();
 

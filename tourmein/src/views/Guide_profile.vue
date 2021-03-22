@@ -19,6 +19,13 @@
 						:show-loading="true"
 						v-model="imageReference"
 					></croppa>
+					<croppa
+						v-else-if="imageisHere === undefined"
+						:width="200"
+						:height="200"
+						:show-loading="true"
+						v-model="imageReference"
+					></croppa>
 					<a href="#" class="btn btn-primary" @click="addImage()">Save image</a>
 					<a href="#" class="btn btn-secondary" @click="removeImage()">Remove image</a>
 
@@ -308,8 +315,8 @@
 							</div>
 							<div class="form-group">
 								<div class="form-group">
-									<select class="form-control" id="currency" v-model="newCurrency" placeholder="€">
-										<option>€</option>
+									<select class="form-control" id="currency" v-model="newCurrency">
+										<option selected>€</option>
 										<option>£</option>
 										<option>$</option>
 										<option>¥</option>
@@ -399,7 +406,7 @@ export default {
 			newPhoneNumber: '',
 			id: '',
 			registered: '',
-			newLanguages: '',
+			newLanguages: null,
 			newMonuments: '',
 			newStartHour: '',
 			newStartMinute: '',
@@ -474,12 +481,12 @@ export default {
 						document.getElementById('InputEmail').value = store.currentUser;
 						//document.getElementById('exampleContact').value = data.phone;
 
+						//* Asinkrona funckcija
 						var img = new Image();
 						img.onload = (e) => {
 							this.image = img;
 						};
 						img.src = data.image;
-						console.log('Image', this.image);
 						console.log('Imageishere', this.imageisHere);
 					});
 				})
