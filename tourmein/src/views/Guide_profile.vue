@@ -35,12 +35,7 @@
 						><br />
 						<label for="DOB">{{ registered }}</label
 						><br />
-						<label for="rating">
-						<img src=@/assets/A_star.png
-						height=15%
-						width=15%
-						/>
-						4.6</label>
+						<label for="rating"> <img src=@/assets/A_star.png height=15% width=15% /> 4.6</label>
 					</div>
 				</div>
 				<div class="col-fluid">
@@ -350,11 +345,10 @@
 			<form name="someForm" method="post" action="/someAction.do" class="form-inline">
 				<div class="input-group">
 					<div style="width: 370px;" class="form-group">
-						
-						<div><img src=@/assets/FB_Logo.png
-						height=100%
-						width=12%
-						/>
+						<div>
+							<a :href="newFBlink">
+								<img src=@/assets/FB_Logo.png height=100% width=12%/>
+							</a>
 							<input
 								type="text"
 								name="fb"
@@ -362,32 +356,32 @@
 								style="width: 300px"
 								class="form-control"
 								placeholder="Facebook Link"
+								v-model="newFBlink"
 							/>
 						</div>
 					</div>
 					<div style="width: 370px;" class="form-group">
 						<label></label>
 						<div>
-								<img src=@/assets/TW.png
-						height=100%
-						width=12%
-						/>
-						<input
+							<a :href="newTwitterlink">
+								<img src=@/assets/TW.png height=100% width=12% />
+							</a>
+							<input
 								type="text"
 								name="tw"
 								id="twitterLink"
 								style="width: 300px"
 								class="form-control"
 								placeholder="Twitter Link"
+								v-model="newTwitterlink"
 							/>
 						</div>
 					</div>
 					<div style="width: 370px;" class="form-group">
 						<label></label>
-						<img src=@/assets/INST.png
-						height=60%
-						width=10%
-						/>
+						<a :href="newInstalink">
+							<img src=@/assets/INST.png height=60% width=10% />
+						</a>
 						<div>
 							<input
 								type="text"
@@ -396,6 +390,7 @@
 								style="width: 300px"
 								class="form-control"
 								placeholder="Instagram Link"
+								v-model="newInstalink"
 							/>
 						</div>
 					</div>
@@ -422,7 +417,7 @@ export default {
 			newPhoneNumber: '',
 			id: '',
 			registered: '',
-			newLanguages: null,
+			newLanguages: '',
 			newMonuments: '',
 			newStartHour: '',
 			newStartMinute: '',
@@ -443,6 +438,10 @@ export default {
 			newcostPerLandmark: '',
 			newCurrency: '',
 			newaboutMe: '',
+
+			newFBlink: '',
+			newTwitterlink: '',
+			newInstalink: '',
 		};
 	},
 	mounted() {
@@ -494,6 +493,10 @@ export default {
 						this.newCurrency = data.currency;
 						this.newaboutMe = data.aboutme;
 
+						this.newFBlink = data.fblink;
+						this.newTwitterlink = data.twlink;
+						this.newInstalink = data.instalink;
+
 						document.getElementById('InputEmail').value = store.currentUser;
 						//document.getElementById('exampleContact').value = data.phone;
 
@@ -534,6 +537,10 @@ export default {
 			const currency = this.newCurrency;
 			const aboutme = this.newaboutMe;
 
+			const fblink = this.newFBlink;
+			const twlink = this.newTwitterlink;
+			const instalink = this.newInstalink;
+
 			db.collection('user')
 				.doc(this.id)
 				.update({
@@ -559,6 +566,10 @@ export default {
 					costlandmark: costlandmark,
 					currency: currency,
 					aboutme: aboutme,
+
+					fblink: fblink,
+					twlink: twlink,
+					instalink: instalink,
 				})
 				.then(() => {
 					console.log('spremljeno, doc');

@@ -10,9 +10,12 @@
 				<div class="card-footer text-muted">Tour Date: {{ info.time }}</div>
 			</div>
 			<div class="col-sm">
-				<div class="card-header">Rated: {{ info.rated }}</div>
+				<!--<div class="card-header">Rated: {{ info.rated }}</div>-->
+				<div class="card-header">Monuments: {{ info.monuments }}</div>
 				<div class="card-body p-0">Languages: {{ info.languages }}</div>
-				<div class="card-body p-0">Monuments: {{ info.monuments }}</div>
+				<img class="card-img-top offset-1" style="width: 3rem;" src="@/assets/FB_Logo.png" />
+				<img class="card-img-top offset-1" style="width: 3rem;" src="@/assets/TW.png" />
+				<img class="card-img-top offset-1" style="width: 3rem;" src="@/assets/INST.png" />
 			</div>
 		</div>
 	</div>

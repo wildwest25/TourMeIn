@@ -73,11 +73,12 @@ firebase.auth().onAuthStateChanged((user) => {
 					console.log(doc.id, ' => ', doc.data());
 
 					const data = doc.data();
-					store.isGuide = data.guide;
 					console.log(store.isGuide);
+					store.isGuide = data.guide;
 
 					if (currentRoute.name == 'Register') {
 						router.replace({ name: 'Registracija_uspjesna' });
+						store.isGuide = null; //! trenutacni fix za maknuti menu bar
 					} else if (!currentRoute.meta.needsUser && data.guide == 'true') {
 						router.push({ name: 'Guide_profile' });
 					} else {
