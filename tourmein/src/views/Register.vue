@@ -16,8 +16,7 @@
 								placeholder="Enter email"
 							/>
 							<small id="emailHelp" class="form-text text-muted"
-								>We'll never share your email with anyone else.</small
-							>
+								>We'll never share your email with anyone else.</small>
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">Password</label>
@@ -90,44 +89,12 @@
 							<label for="other"> Other </label>
 						</div>
 						<div class="form-inline">
-							<label for="dob"> Date of Birth: </label>
-							<div class="form-group">
-								<div class="form-group">
-									<select class="form-control" id="day">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<select class="form-control" id="month">
-									<option>Jan</option>
-									<option>Feb</option>
-									<option>Mar</option>
-									<option>Apr</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<select class="form-control" id="year">
-									<option>1950</option>
-									<option>1951</option>
-									<option>1952</option>
-									<option>1953</option>
-								</select>
-							</div>
+							<label for="start"> Date of birth: </label>
+							<input type="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1901-01-01" max="2021-03-23">
 						</div>
 						<div class="form-inline">
 							<label for="country"> Country: </label>
-							<div class="form-group">
-								<select class="form-control" id="fromcountry" v-model="newfromCountry">
-									<option value="Croatia">Croatia</option>
-									<option value="Germany">Germany</option>
-									<option value="Italy">Italy</option>
-									<option value="Slovenia">Slovenia</option>
-								</select>
-							</div>
+								 <select class="selectpicker countrypicker" data-flag="true" ></select> 
 						</div>
 						<div class="form-inline">
 							<label for="registerAs"> Register as: </label>
@@ -187,6 +154,7 @@
 import { firebase, db } from '@/firebase';
 import store from '@/store';
 
+
 export default {
 	name: 'Signup',
 	data() {
@@ -210,6 +178,7 @@ export default {
 			const country = this.newfromCountry;
 			const city = this.newCity;
 			const isguide = this.isGuide;
+
 
 			db.collection('user')
 				.add({
@@ -254,4 +223,12 @@ export default {
 		},
 	},
 };
+
+jQuery(document).ready(function($){
+$('.countrypicker').countrypicker();
+
+// standard on load code goes here with $ prefix
+// note: the $ is setup inside the anonymous function of the ready command
+});
+
 </script>

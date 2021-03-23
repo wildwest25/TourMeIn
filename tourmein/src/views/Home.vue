@@ -3,11 +3,11 @@
 		<img
 			src="@/assets/pocetni_screen.png"
 			alt="pocetna stranica"
-			height="50%"
-			width="100%"
+			height="560"
+			width="2045"
 			loading="lazy"
 		/>
-		<h1>TourMeIn</h1>
+		<h1> <img src="@/assets/Logo-01.png" alt="logo" height="109" width="99"/>TourMeIn</h1>
 		<h4>Travel and learn</h4>
 		<div class="container">
 			<div class="row">
