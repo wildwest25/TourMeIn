@@ -139,7 +139,10 @@ export default {
 		color: #2c3e50;
 
 		&.router-link-exact-active {
-			color: #ee9f38;
+			height: 10%;
+			width: 8%;
+			background: radial-gradient(50% 50% at 50% 50%, #ffffff 0%, #fd7a00 100%);
+			border-radius: 100px;
 		}
 	}
 }
