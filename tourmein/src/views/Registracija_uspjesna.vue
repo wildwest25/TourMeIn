@@ -8,9 +8,9 @@
 					width= 100%
 					loading="lazy"
 				/>
-        <div class="container">
-    <div class="row">
-    <div class="col">
+        <div>
+    <div  class="row">
+    <div  class="col">
       
      <div class="verify">
         <h2> You have successfully registered! </h2>
