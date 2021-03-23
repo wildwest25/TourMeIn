@@ -14,6 +14,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+//! omogucjue da ne moraju sva polja biti popunjena za save
 firebase.firestore().settings({
 	ignoreUndefinedProperties: true,
 });

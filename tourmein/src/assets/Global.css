@@ -266,6 +266,12 @@ box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 
     font-family: Ribeye, cursive;
 }
 
+.croppa-container {
+    background-color: lightblue;
+    border: 2px solid #FFA100;
+    border-radius: 8px;
+  }
+
 .verify
 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
