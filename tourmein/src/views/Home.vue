@@ -7,14 +7,14 @@
 			width="2045"
 			loading="lazy"
 		/>
-		<h1> <img src="@/assets/Logo-01.png" alt="logo" height="109" width="99"/>TourMeIn</h1>
+		<h1><img src="@/assets/Logo-01.png" alt="logo" height="109" width="99" />TourMeIn</h1>
 		<h4>Travel and learn</h4>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm"></div>
 				<div class="col-sm">
 					<form>
-						<div class="form-group">
+						<div class="form-group" :class="{ error: validation.hasError('email') }">
 							<input
 								type="email"
 								v-model="email"
@@ -23,11 +23,12 @@
 								aria-describedby="emailHelp"
 								placeholder="Enter email"
 							/>
+							<div class="message" style="color">{{ validation.firstError('email') }}</div>
 							<small id="emailHelp" class="form-text text-muted"
 								>We'll never share your email with anyone else.</small
 							>
 						</div>
-						<div class="form-group">
+						<div class="form-group" :class="{ error: validation.hasError('password') }">
 							<input
 								type="password"
 								v-model="password"
@@ -36,6 +37,7 @@
 								placeholder="Password"
 								@keyup.enter="login()"
 							/>
+							<div class="message" style="color">{{ validation.firstError('password') }}</div>
 						</div>
 						<button type="button" @click="login()" class="btn btn-primary">
 							Log In
@@ -54,6 +56,8 @@
 </template>
 <script>
 import { firebase } from '@/firebase';
+import SimpleVueValidation from 'simple-vue-validator';
+const Validator = SimpleVueValidation.Validator;
 
 export default {
 	name: 'login',
@@ -63,33 +67,50 @@ export default {
 			password: '',
 		};
 	},
+	validators: {
+		email: function(value) {
+			return Validator.value(value)
+				.required()
+				.email();
+		},
+		password: function(value) {
+			return Validator.value(value).required();
+		},
+	},
 	methods: {
 		login() {
-			firebase
-				.auth()
-				.signInWithEmailAndPassword(this.email, this.password)
-				.then((result) => {
-					console.log('Uspjesna prijava', result);
+			this.$validate().then((success) => {
+				if (success) {
+					firebase
+						.auth()
+						.signInWithEmailAndPassword(this.email, this.password)
+						.then((result) => {
+							console.log('Uspjesna prijava', result);
 
-					//this.$router.replace({ name: 'Guide_profile'});
+							//this.$router.replace({ name: 'Guide_profile'});
+						})
+						.catch(function(e) {
+							console.error('Greska', e);
+							alert(e);
+						});
+				} else {
+					console.error('Nisu sva polja unesena za login, error');
+				}
+			});
+		},
+
+		forgotpassword() {
+			var auth = firebase.auth();
+			var emailAddress = this.email;
+			auth
+				.sendPasswordResetEmail(emailAddress)
+				.then(function() {
+					alert('Password reset email has been sent, check your inbox');
 				})
-				.catch(function(e) {
-					console.error('Greska', e);
+				.catch(function(error) {
+					// An error happened.
 				});
-		}, 
-
-		forgotpassword(){
-
-		var auth = firebase.auth();
-		var emailAddress = this.email;
-		auth.sendPasswordResetEmail(emailAddress).then(function() {
-			alert("Password reset email has been sent, check your inbox");
-
-			}).catch(function(error) {
-				// An error happened.
-				});
-		},	
-
+		},
 	},
 };
 </script>

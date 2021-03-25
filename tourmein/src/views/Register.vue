@@ -37,7 +37,7 @@
 								v-model="repeat"
 								class="form-control"
 								id="exampleInputPassword2"
-								placeholder="Please repeat password"
+								placeholder="Please Repeat Password"
 							/>
 							<div class="message">{{ validation.firstError('repeat') }}</div>
 						</div>
@@ -249,7 +249,7 @@ export default {
 		postNewInfo() {
 			this.$validate().then((success) => {
 				if (success) {
-					alert('Validation succeeded!');
+					//alert('Validation succeeded!');
 					const email = this.email;
 					const firstname = this.newFirstname;
 					const lastname = this.newLastname;
@@ -300,6 +300,12 @@ export default {
 								.then(function() {})
 								.catch(function(error) {
 									// An error happened.
+								});
+							firebase
+								.auth()
+								.signOut()
+								.then(() => {
+									store.isGuide = null;
 								});
 						})
 						.catch(function(error) {
