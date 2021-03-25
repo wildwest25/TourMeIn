@@ -33,7 +33,7 @@
 					<div class="form-group">
 						<label for="nameSurname">{{ firstname }} {{ lastname }}</label
 						><br />
-						<label for="DOB">{{ registered }}</label
+						<label for="DOB">{{ dob }}</label
 						><br />
 						<label for="rating"> <img src=@/assets/A_star.png height=15% width=15% /> 4.6</label>
 					</div>
@@ -380,9 +380,9 @@
 					<div style="width: 370px;" class="form-group">
 						<label></label>
 						<div>
-						<a :href="newInstalink">
-							<img src=@/assets/INST.png height=60% width=10% />
-						</a>
+							<a :href="newInstalink">
+								<img src=@/assets/INST.png height=60% width=10% />
+							</a>
 							<input
 								type="text"
 								name="insta"
@@ -492,6 +492,7 @@ export default {
 						this.newcostPerLandmark = data.costlandmark;
 						this.newCurrency = data.currency;
 						this.newaboutMe = data.aboutme;
+						this.dob = data.dob;
 
 						this.newFBlink = data.fblink;
 						this.newTwitterlink = data.twlink;
