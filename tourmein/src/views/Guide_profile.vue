@@ -379,10 +379,10 @@
 					</div>
 					<div style="width: 370px;" class="form-group">
 						<label></label>
+						<div>
 						<a :href="newInstalink">
 							<img src=@/assets/INST.png height=60% width=10% />
 						</a>
-						<div>
 							<input
 								type="text"
 								name="insta"
