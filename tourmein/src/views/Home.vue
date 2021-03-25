@@ -7,7 +7,7 @@
 			width="2045"
 			loading="lazy"
 		/>
-		<h1><img src="@/assets/Logo-01.png" alt="logo" height="109" width="99" />TourMeIn</h1>
+		<div id="Home_Txt"><img id="TMI_Log" src="@/assets/Logo-01.png" alt="logo" />TourMeIn</div>
 		<h4>Travel and learn</h4>
 		<div class="container">
 			<div class="row">

@@ -10,6 +10,16 @@ TMI_BCG.png
 size: 100%;
 }
 
+#Home_Txt
+{   
+    position: relative;
+    font-family: Peralta;
+    color: black;
+    font-size:xxx-large;
+    right: 45px;
+    top: 25px
+}
+
 body
 {
     background-image: url("TMI_BCG.png");
@@ -21,6 +31,15 @@ body
     background: radial-gradient(50% 555.56% at 50% 50%, #FFA100 0%, #CC7722 100%);
     font-family: IBM Plex Mono, bold;
     color: black;
+    margin-bottom: 20px;
+}
+
+#TMI_Log
+{
+    position:relative;
+width: 99px;
+height: 109px;
+right: 10px;
 }
 
 .nav-link
