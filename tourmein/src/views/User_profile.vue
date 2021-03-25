@@ -1,5 +1,5 @@
 <template>
-	<div class="guide_profile">
+	<div class="user_profile">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm">
@@ -32,51 +32,61 @@
 					<div class="form-group">
 						<label for="nameSurname">{{ firstname }} {{ lastname }}</label
 						><br />
-						<label for="DOB">{{ registered }}</label
+						<label for="DOB">{{ dob }}</label
 						><br />
 					</div>
 				</div>
 				<div class="col-fluid">
-						<div class="form-group">
-							<label for="InputEmail">Email address</label>
-							<input
-								type="email"
-								class="form-control"
-								id="InputEmail"
-								aria-describedby="emailHelp"
-								value=""
-							/>
-						</div>
-						<div class="form-group">
-							<label for="exampleContact">Contact Number</label>
-							<input
-								type="contact"
-								class="form-control"
-								id="exampleContact"
-								placeholder="+385 00000-0000"
-								v-model="newPhoneNumber"
-							/>
-						</div>
-						<div class="form-group">
-							<label for="exampleInputLanguages">Languages</label>
-							<input
-								type="languages"
-								class="form-control"
-								id="exampleInputLanguages"
-								placeholder="Croatian, English.."
-								v-model="newLanguages"
-							/>
-						</div>
-						<div class="form-group">
-							<label for="exampleMonuments">Monuments I Tour</label>
-							<input
-								type="monuments"
-								class="form-control"
-								id="exampleMonuments"
-								placeholder="Amphiteater, Triumphal Arch.."
-								v-model="newMonuments"
-							/>
-						</div>
+					<div class="form-group">
+						<label for="InputEmail">Email address</label>
+						<input
+							type="email"
+							class="form-control"
+							id="InputEmail"
+							aria-describedby="emailHelp"
+							value=""
+						/>
+					</div>
+					<div class="form-group">
+						<label for="exampleContact">Contact Number</label>
+						<input
+							type="contact"
+							class="form-control"
+							id="exampleContact"
+							placeholder="+385 00000-0000"
+							v-model="newPhoneNumber"
+						/>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputLanguages">Languages</label>
+						<input
+							type="languages"
+							class="form-control"
+							id="exampleInputLanguages"
+							placeholder="Croatian, English.."
+							v-model="newLanguages"
+						/>
+					</div>
+					<div class="form-group">
+						<label for="exampleMonuments">Places I visited</label>
+						<input
+							type="monuments"
+							class="form-control"
+							id="exampleMonuments"
+							placeholder="Amphiteater, Triumphal Arch.."
+							v-model="iVisited"
+						/>
+					</div>
+					<div class="form-group">
+						<label for="exampleMonuments">Places I'd like to visit'</label>
+						<input
+							type="monuments"
+							class="form-control"
+							id="exampleMonuments"
+							placeholder="Amphiteater, Triumphal Arch.."
+							v-model="wouldVisit"
+						/>
+					</div>
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">About Me</label>
 						<textarea class="form-control" id="aboutMe" rows="10" v-model="newaboutMe"></textarea>
@@ -116,30 +126,11 @@ export default {
 			id: '',
 			registered: '',
 			newLanguages: '',
-			newMonuments: '',
-			newStartHour: '',
-			newStartMinute: '',
-			newEndHour: '',
-			newEndMinute: '',
 
-			newMonday: 'false',
-			newTuesday: 'false',
-			newWednesday: 'false',
-			newThursday: 'false',
-			newFriday: 'false',
-			newSaturday: 'false',
-			newSunday: 'false',
-
-			newperHour: 'false',
-			newperLandmark: 'false',
-			newcostPerHour: '',
-			newcostPerLandmark: '',
-			newCurrency: '',
+			dob: '',
+			iVisited: '',
+			wouldVisit: '',
 			newaboutMe: '',
-
-			newFBlink: '',
-			newTwitterlink: '',
-			newInstalink: '',
 		};
 	},
 	mounted() {
@@ -170,30 +161,11 @@ export default {
 
 						this.newPhoneNumber = data.phone;
 						this.newLanguages = data.languages;
-						this.newMonuments = data.monuments;
-						this.newStartHour = data.starthour;
-						this.newStartMinute = data.startminute;
-						this.newEndHour = data.endhour;
-						this.newEndMinute = data.endminute;
 
-						this.newMonday = data.monday;
-						this.newTuesday = data.tuesday;
-						this.newWednesday = data.wednesday;
-						this.newThursday = data.thursday;
-						this.newFriday = data.friday;
-						this.newSaturday = data.saturday;
-						this.newSunday = data.sunday;
-
-						this.newperHour = data.perhour;
-						this.newperLandmark = data.perlandmark;
-						this.newcostPerHour = data.costhour;
-						this.newcostPerLandmark = data.costlandmark;
-						this.newCurrency = data.currency;
+						this.iVisited = data.ivisited;
+						this.wouldVisit = data.wouldvisit;
 						this.newaboutMe = data.aboutme;
-
-						this.newFBlink = data.fblink;
-						this.newTwitterlink = data.twlink;
-						this.newInstalink = data.instalink;
+						this.dob = data.dob;
 
 						document.getElementById('InputEmail').value = store.currentUser;
 						//document.getElementById('exampleContact').value = data.phone;
@@ -214,60 +186,20 @@ export default {
 		saveNewInfo() {
 			const phone = this.newPhoneNumber;
 			const languages = this.newLanguages;
-			const monuments = this.newMonuments;
-			const starthour = this.newStartHour;
-			const startminute = this.newStartMinute;
-			const endhour = this.newEndHour;
-			const endminute = this.newEndMinute;
 
-			const monday = this.newMonday;
-			const tuesday = this.newTuesday;
-			const wednesday = this.newWednesday;
-			const thursday = this.newThursday;
-			const friday = this.newFriday;
-			const saturday = this.newSaturday;
-			const sunday = this.newSunday;
-
-			const perhour = this.newperHour;
-			const perlandmark = this.newperLandmark;
-			const costhour = this.newcostPerHour;
-			const costlandmark = this.newcostPerLandmark;
-			const currency = this.newCurrency;
+			const ivisited = this.iVisited;
+			const wouldvisit = this.wouldVisit;
 			const aboutme = this.newaboutMe;
-
-			const fblink = this.newFBlink;
-			const twlink = this.newTwitterlink;
-			const instalink = this.newInstalink;
 
 			db.collection('user')
 				.doc(this.id)
 				.update({
 					phone: phone,
 					languages: languages,
-					monuments: monuments,
-					starthour: starthour,
-					startminute: startminute,
-					endhour: endhour,
-					endminute: endminute,
 
-					monday: monday,
-					tuesday: tuesday,
-					wednesday: wednesday,
-					thursday: thursday,
-					friday: friday,
-					saturday: saturday,
-					sunday: sunday,
-
-					perhour: perhour,
-					perlandmark: perlandmark,
-					costhour: costhour,
-					costlandmark: costlandmark,
-					currency: currency,
+					ivisited: ivisited,
+					wouldvisit: wouldvisit,
 					aboutme: aboutme,
-
-					fblink: fblink,
-					twlink: twlink,
-					instalink: instalink,
 				})
 				.then(() => {
 					console.log('spremljeno, doc');
