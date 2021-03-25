@@ -4,7 +4,7 @@
 			src="@/assets/pocetni_screen.png"
 			alt="pocetna stranica"
 			height="560"
-			width="2045"
+			width="2130"
 			loading="lazy"
 		/>
 		<div id="Home_Txt"><img id="TMI_Log" src="@/assets/Logo-01.png" alt="logo" />TourMeIn</div>

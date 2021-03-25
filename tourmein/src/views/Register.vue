@@ -106,6 +106,7 @@
 						<div class="form-inline" :class="{ error: validation.hasError('newdob') }">
 							<label for="start"> Date of birth: </label>
 							<input
+								id="DOB"
 								type="date"
 								name="begin"
 								placeholder="dd-mm-yyyy"
@@ -118,11 +119,13 @@
 						</div>
 						<div class="form-inline">
 							<label for="country"> Country: </label>
+							<div id="CO">
 							<select
 								class="selectpicker countrypicker"
 								data-flag="true"
 								v-model="newfromCountry"
 							></select>
+							</div>
 						</div>
 						<div class="form-inline" :class="{ error: validation.hasError('isGuide') }">
 							<label for="registerAs"> Register as: </label>

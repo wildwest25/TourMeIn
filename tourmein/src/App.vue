@@ -18,7 +18,7 @@
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<button type="button" href="#" @click="logout()" class="nav-link">
+						<button type="button" href="#" @click="logout()" class="btn btn-primary">
 							Log Out
 						</button>
 					</li>
@@ -43,7 +43,7 @@
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<button type="button" href="#" @click.prevent="logout()" class="nav-link">
+						<button type="button" href="#" @click.prevent="logout()" class="btn btn-primary">
 							Log Out
 						</button>
 					</li>

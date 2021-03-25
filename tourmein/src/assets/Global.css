@@ -5,9 +5,9 @@ font-family: Peralta;
 color: black;
 }
 
-TMI_BCG.png
+.login
 {
-size: 100%;
+    overflow: visible;
 }
 
 #Home_Txt
@@ -29,6 +29,17 @@ body
 .form-inline
 {
     margin-bottom: 10px;
+}
+
+#DOB
+{
+    margin-left:20px;
+    width: 200px;
+}
+
+#CO
+{
+    margin-left: 20px;
 }
 
 .message
