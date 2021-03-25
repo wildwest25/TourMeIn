@@ -5,7 +5,7 @@
 			<div class="row justify-content-md-center">
 				<div class="col-lg-6">
 					<form>
-						<div class="form-group">
+						<div class="form-group" :class="{ error: validation.hasError('email') }">
 							<label for="exampleInputEmail1">Email address</label>
 							<input
 								type="email"
@@ -15,10 +15,12 @@
 								aria-describedby="emailHelp"
 								placeholder="Enter email"
 							/>
+							<div class="message" style="color">{{ validation.firstError('email') }}</div>
 							<small id="emailHelp" class="form-text text-muted"
-								>We'll never share your email with anyone else.</small>
+								>We'll never share your email with anyone else.</small
+							>
 						</div>
-						<div class="form-group">
+						<div class="form-group" :class="{ error: validation.hasError('password') }">
 							<label for="exampleInputPassword1">Password</label>
 							<input
 								type="password"
@@ -27,9 +29,19 @@
 								id="exampleInputPassword1"
 								placeholder="Password"
 							/>
-							//TODO: Repeat password
+							<div class="message">{{ validation.firstError('password') }}</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group" :class="{ error: validation.hasError('repeat') }">
+							<input
+								type="password"
+								v-model="repeat"
+								class="form-control"
+								id="exampleInputPassword2"
+								placeholder="Please repeat password"
+							/>
+							<div class="message">{{ validation.firstError('repeat') }}</div>
+						</div>
+						<div class="form-group" :class="{ error: validation.hasError('newFirstname') }">
 							<label for="exampleName">Name</label>
 							<input
 								type="name"
@@ -38,8 +50,9 @@
 								id="exampleName"
 								placeholder="Enter name"
 							/>
+							<div class="message">{{ validation.firstError('newFirstname') }}</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group" :class="{ error: validation.hasError('newLastname') }">
 							<label for="exampleSurename">Last Name</label>
 							<input
 								type="lastname"
@@ -48,8 +61,9 @@
 								id="exampleLastName"
 								placeholder="Enter Last Name"
 							/>
+							<div class="message">{{ validation.firstError('newLastname') }}</div>
 						</div>
-						<div class="form-inline">
+						<div class="form-inline" :class="{ error: validation.hasError('newGender') }">
 							<label for="gender"> Gender: </label>
 							<div>
 								<input
@@ -87,16 +101,30 @@
 								/>
 							</div>
 							<label for="other"> Other </label>
+							<div class="message">{{ validation.firstError('newGender') }}</div>
 						</div>
-						<div class="form-inline">
+						<div class="form-inline" :class="{ error: validation.hasError('newdob') }">
 							<label for="start"> Date of birth: </label>
-							<input type="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1901-01-01" max="2021-03-23">
+							<input
+								type="date"
+								name="begin"
+								placeholder="dd-mm-yyyy"
+								value=""
+								min="1901-01-01"
+								max="2021-03-23"
+								v-model="newdob"
+							/>
+							<div class="message">{{ validation.firstError('newdob') }}</div>
 						</div>
 						<div class="form-inline">
 							<label for="country"> Country: </label>
-								 <select class="selectpicker countrypicker" data-flag="true" ></select> 
+							<select
+								class="selectpicker countrypicker"
+								data-flag="true"
+								v-model="newfromCountry"
+							></select>
 						</div>
-						<div class="form-inline">
+						<div class="form-inline" :class="{ error: validation.hasError('isGuide') }">
 							<label for="registerAs"> Register as: </label>
 							<div class="form-group">
 								<select class="form-control" id="registerAs" v-model="isGuide">
@@ -104,8 +132,9 @@
 									<option value="true">Guide</option>
 								</select>
 							</div>
+							<div class="message">{{ validation.firstError('isGuide') }}</div>
 						</div>
-						<div class="form-inline">
+						<div class="form-inline" :class="{ error: validation.hasError('newCity') }">
 							<label for="city">City:</label>
 							<input
 								type="city"
@@ -114,6 +143,7 @@
 								placeholder="City"
 								v-model="newCity"
 							/>
+							<div class="message">{{ validation.firstError('newCity') }}</div>
 						</div>
 						<div class="form-inline">
 							<input
@@ -153,82 +183,140 @@
 <script>
 import { firebase, db } from '@/firebase';
 import store from '@/store';
-
+import SimpleVueValidation from 'simple-vue-validator';
+const Validator = SimpleVueValidation.Validator;
 
 export default {
 	name: 'Signup',
 	data() {
 		return {
-			email: '',
+			email: null,
 			password: '',
+			repeat: '',
 			newFirstname: '',
 			newLastname: '',
 			newGender: '',
+			newdob: '',
 			newfromCountry: '',
 			newCity: '',
 			isGuide: '',
 		};
 	},
+	validators: {
+		email: function(value) {
+			return Validator.value(value)
+				.required()
+				.email();
+		},
+		password: function(value) {
+			return Validator.value(value)
+				.required()
+				.minLength(6);
+		},
+		'repeat, password': function(repeat, password) {
+			if (this.submitted || this.validation.isTouched('repeat')) {
+				return Validator.value(repeat)
+					.required()
+					.match(password);
+			}
+		},
+		newFirstname: function(value) {
+			return Validator.value(value)
+				.required()
+				.regex('^[A-Za-z]*$', 'Must only contain alphabetic characters.');
+		},
+		newLastname: function(value) {
+			return Validator.value(value)
+				.required()
+				.regex('^[A-Za-z]*$', 'Must only contain alphabetic characters.');
+		},
+		newGender: function(value) {
+			return Validator.value(value).required();
+		},
+		isGuide: function(value) {
+			return Validator.value(value).required();
+		},
+		newCity: function(value) {
+			return Validator.value(value)
+				.required()
+				.regex('^[A-Za-z]*$', 'Must only contain alphabetic characters.');
+		},
+		newdob: function(value) {
+			return Validator.value(value).required();
+		},
+	},
 	methods: {
 		postNewInfo() {
-			const email = this.email;
-			const firstname = this.newFirstname;
-			const lastname = this.newLastname;
-			const gender = this.newGender;
-			const country = this.newfromCountry;
-			const city = this.newCity;
-			const isguide = this.isGuide;
+			this.$validate().then((success) => {
+				if (success) {
+					alert('Validation succeeded!');
+					const email = this.email;
+					const firstname = this.newFirstname;
+					const lastname = this.newLastname;
+					const gender = this.newGender;
+					const dob = this.newdob;
+					const country = this.newfromCountry;
+					const city = this.newCity;
+					const isguide = this.isGuide;
 
-
-			db.collection('user')
-				.add({
-					email: email,
-					firstname: firstname,
-					lastname: lastname,
-					gender: gender,
-					country: country,
-					city: city,
-					guide: isguide,
-					registered_at: Date.now(),
-				})
-				.then(() => {
-					console.log('spremljeno, doc');
-				})
-				.catch((e) => {
-					console.error(e);
-				});
+					db.collection('user')
+						.add({
+							email: email,
+							firstname: firstname,
+							lastname: lastname,
+							gender: gender,
+							dob: dob,
+							country: country,
+							city: city,
+							guide: isguide,
+							registered_at: Date.now(),
+						})
+						.then(() => {
+							console.log('spremljeno, doc');
+						})
+						.catch((e) => {
+							console.error(e);
+						});
+				} else {
+					console.error('Podaci nisu spremljeni, error');
+				}
+			});
 		},
 
 		signup() {
-			firebase
-				.auth()
-				.createUserWithEmailAndPassword(this.email, this.password)
-				.then(function() {
-					console.log('Uspjesna registracija');
+			this.$validate().then((success) => {
+				if (success) {
+					firebase
+						.auth()
+						.createUserWithEmailAndPassword(this.email, this.password)
+						.then(function() {
+							console.log('Uspjesna registracija');
 
-					var user = firebase.auth().currentUser;
+							var user = firebase.auth().currentUser;
 
-					user
+							user
 
-						.sendEmailVerification() //to do
-						.then(function() {})
+								.sendEmailVerification() //to do
+								.then(function() {})
+								.catch(function(error) {
+									// An error happened.
+								});
+						})
 						.catch(function(error) {
-							// An error happened.
+							console.error('Doslo je do greske, error');
 						});
-				})
-
-				.catch(function(error) {
-					console.error('Doslo je do greske, error');
-				});
+				} else {
+					console.error('User nije kreiran, error');
+				}
+			});
 		},
 	},
 };
 
-jQuery(document).ready(function($){
-$('.countrypicker').countrypicker();
+jQuery(document).ready(function($) {
+	$('.countrypicker').countrypicker();
 
-// standard on load code goes here with $ prefix
-// note: the $ is setup inside the anonymous function of the ready command
+	// standard on load code goes here with $ prefix
+	// note: the $ is setup inside the anonymous function of the ready command
 });
-
 </script>
