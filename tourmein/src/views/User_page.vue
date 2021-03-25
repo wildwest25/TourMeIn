@@ -16,7 +16,6 @@
 			</div>
 			<div class="row">
 				<div class="col-8 offset-1">
-					<!-- //! primjer sa my previous tours, najbolje prilagoditi ka sta je tamo -->
 					<user-card v-for="card in filteredCards" :key="card.url" :info="card" />
 				</div>
 			</div>
@@ -57,11 +56,16 @@ export default {
 
 						this.cards.push({
 							id: doc.id,
-							time: data.date, //TODO: 17:31 timestamp #5 part 2
+							time: data.date,
 							description: data.userName,
 							rated: data.rated,
 							monuments: data.monuments,
-							lang: doc.languages,
+							lang: data.languages,
+							starthour: data.starthour,
+							startminute: data.startminute,
+							endhour: data.endhour,
+							endminute: data.endminute,
+							prices: data.prices,
 						});
 					});
 				});
