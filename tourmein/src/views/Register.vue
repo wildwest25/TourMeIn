@@ -301,12 +301,12 @@ export default {
 								.catch(function(error) {
 									// An error happened.
 								});
-							firebase
+							/*firebase
 								.auth()
 								.signOut()
 								.then(() => {
 									store.isGuide = null;
-								});
+								});*/
 						})
 						.catch(function(error) {
 							console.error('Doslo je do greske, error');

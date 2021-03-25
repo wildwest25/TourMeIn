@@ -25,37 +25,12 @@
 </template>
 <script>
 // @ is an alias to /src
-import UserCard from '@/components/UserCard.vue';
+import UserCard from '@/components/SearchGuide.vue';
 import store from '@/store';
 import { db } from '@/firebase';
 
-// let cards = [];
-
-//... API/Firebase -> sve kartice -> cards
-/*
-cards = [
-  {
-    url: "https://picsum.photos/id/1/400/400",
-    description: "Tina Mandarić",
-    time: "19.03.2020",
-    rated: 3,
-    languages: "English, Polish",
-    monuments: "Arena Amphitheater, Arco dei Sergi",
-  },
-  {
-    url: "https://picsum.photos/id/2/400/400",
-    description: "Lucijan Separović",
-    time: "hour ago...",
-  },
-  {
-    url: "https://picsum.photos/id/3/400/400",
-    description: "David Janković",
-    time: "few hours ago...",
-  },
-];*/
-
 export default {
-	name: 'user_cards',
+	name: 'user_search',
 	props: ['id'],
 	data: function() {
 		return {
@@ -64,11 +39,10 @@ export default {
 		};
 	},
 	mounted() {
-		//* dohvat iz Firebasea
-		this.getPrevTours();
+		this.getGuides();
 	},
 	methods: {
-		getPrevTours() {
+		getGuides() {
 			console.log('firebase dohvat...');
 
 			db.collection('tours')
