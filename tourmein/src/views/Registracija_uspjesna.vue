@@ -7,7 +7,7 @@
 			width="100%"
 			loading="lazy"
 		/>
-		<div class="container">
+		<div>
 			<div class="row">
 				<div class="col">
 					<h1>You have successfully registered!</h1>
@@ -53,7 +53,7 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="start_touring">
+					<div class="start_touring" style="margin-top: 100px;">
 						<p>
 							----------------------------------------------------------------------------------------------
 						</p>
@@ -81,7 +81,7 @@
 
 					<div>
 						<br />
-						<a href="/" class="btn btn-secondary" @click="goHomeandlogout">Home</a>
+						<a href="/" class="btn btn-primary" @click="goHomeandlogout">Home</a>
 					</div>
 				</div>
 			</div>
