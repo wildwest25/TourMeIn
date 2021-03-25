@@ -18,7 +18,9 @@
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a href="#" @click="logout()" class="nav-link">Logout</a>
+						<button type="button" href="#" @click="logout()" class="nav-link">
+							Log Out
+						</button>
 					</li>
 				</ul>
 			</div>
@@ -41,7 +43,9 @@
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a href="#" @click.prevent="logout()" class="nav-link">Logout</a>
+						<button type="button" href="#" @click.prevent="logout()" class="nav-link">
+							Log Out
+						</button>
 					</li>
 				</ul>
 			</div>

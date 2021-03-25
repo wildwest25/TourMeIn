@@ -22,6 +22,13 @@ body
     font-family: IBM Plex Mono, bold;
     color: black;
 }
+
+.nav-link
+{
+    background: radial-gradient(50% 555.56% at 50% 50%, #FFA100 0%, #CC7722 100%);
+    font-family: IBM Plex Mono, bold;
+    color: black;
+}
 .form-group
 {
     font-family: IBM Plex Mono;
