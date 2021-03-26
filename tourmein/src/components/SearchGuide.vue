@@ -1,23 +1,11 @@
 <template>
 	<div class="card text-left">
 		<div class="row">
-			<div class="col-md-auto">
-				<div class="card-header">{{ info.description }}</div>
+			<div class="col-sm">
+				<div class="card-header">{{ info.name }}</div>
 				<div class="card-body p-0">
-					<img :src="info.image" />
-					<img class="card-img-top offset-1" style="width: 7rem;" src="@/assets/Rectangle_2.png" />
-					<div class="card-header">Languages: {{ info.lang }}</div>
-					<div class="card-header">Monuments I tour: {{ info.monuments }}</div>
-					<div class="card-header">Prices: {{ info.prices }}</div>
+					<img class="card-img-top offset-1" style="width: 7rem;" :src="info.image" />
 				</div>
-				<div class="card-footer text-muted">
-					Hours Avaiable: {{ info.starthour }}:{{ info.startminute }} - {{ info.endhour }}:{{
-						info.endminute
-					}}
-				</div>
-				<img class="card-img-top offset-1" style="width: 3rem;" src="@/assets/FB_Logo.png" />
-				<img class="card-img-top offset-1" style="width: 3rem;" src="@/assets/TW.png" />
-				<img class="card-img-top offset-1" style="width: 3rem;" src="@/assets/INST.png" />
 			</div>
 			<div class="col-sm">
 				<div class="card-header">
@@ -27,6 +15,31 @@
 					Start touring with this guide
 				</button>
 			</div>
+		</div>
+		<div class="row-sm">
+			<div class="col-sm">
+				<div class="card-body p-0">
+					<div class="card-header">Languages: {{ info.lang }}</div>
+					<div class="card-header">Monuments I tour: {{ info.monuments }}</div>
+					<div class="card-header">Prices: {{ info.prices }}</div>
+				</div>
+				<div class="card-footer text-muted">
+					Hours Avaiable: {{ info.starthour }}:{{ info.startminute }} - {{ info.endhour }}:{{
+						info.endminute
+					}}
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-between">
+			<a :href="info.fblink">
+				<img src=@/assets/FB_Logo.png style="width: 3rem;"/>
+			</a>
+			<a :href="info.twlink">
+				<img src=@/assets/TW.png style="width: 3rem;"/>
+			</a>
+			<a :href="info.instalink">
+				<img src=@/assets/INST.png style="width: 3rem;"/>
+			</a>
 		</div>
 	</div>
 </template>
