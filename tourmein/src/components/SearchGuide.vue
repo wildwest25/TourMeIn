@@ -9,9 +9,11 @@
 			</div>
 			<div class="col-sm">
 				<div id="card_text_Star">
-					<img src=@/assets/A_star.png height=30% width=30% /> <div id="star_text">{{ info.rated }}</div>
+					<img src=@/assets/A_star.png height=30% width=30% />
+					<div id="star_text">{{ info.rated }}</div>
 				</div>
-				<button type="button" id="btRegister" @click="start" class="btn btn-primary">
+				<!--<button type="button" id="btRegister" @click="start" class="btn btn-primary">-->
+				<button type="button" id="btRegister" class="btn btn-primary">
 					<div id="btn_txt">Start touring with this guide</div>
 				</button>
 			</div>

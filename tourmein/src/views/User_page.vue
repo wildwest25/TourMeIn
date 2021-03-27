@@ -4,15 +4,70 @@
 			<div class="row">
 				<div class="col-sm">
 					<div class="d-flex justify-content-center">
-						<div class="form-outline" style="width:1000;">
+						<div class="form-group has-search">
+							<span class="fa fa-search form-control-feedback"></span>
 							<input
-								id="search-focus"
-								type="search"
-								class="d-flex justify-content-center"
+								type="text"
+								class="form-control"
+								placeholder="Search"
 								v-model="store.searchTerm"
 							/>
-							<label class="form-label" for="form1">Search</label>
+							<div class="form-inline">
+								<label> Show only guides that charge: </label>
+								<div>
+									<input
+										type="checkbox"
+										v-model="byHour"
+										name="gen"
+										id="male"
+										value="male"
+										style="width: 20px"
+										class="form-control"
+									/>
+								</div>
+								<label> By Hour </label>
+								<div>
+									<input
+										type="checkbox"
+										v-model="byMonument"
+										name="gen"
+										id="female"
+										value="female"
+										style="width: 20px"
+										class="form-control"
+									/>
+								</div>
+								<label> By Monument</label>
+							</div>
+							<div class="form-inline">
+								<label> Sort by: </label>
+								<div>
+									<input
+										type="checkbox"
+										v-model="byRating"
+										name="gen"
+										id="other"
+										value="other"
+										style="width: 20px"
+										class="form-control"
+									/>
+								</div>
+								<label> Rating </label>
+								<div>
+									<input
+										type="checkbox"
+										v-model="byPrice"
+										name="gen"
+										id="other"
+										value="other"
+										style="width: 20px"
+										class="form-control"
+									/>
+								</div>
+								<label> Price </label>
+							</div>
 						</div>
+						<div class="form-outline" style="width:1000;"></div>
 						<!--<button id="Search-butt" type="button" class="btn btn-primary" @click="filteredCards">
 							<i class="fas fa-search">Search</i>
 						</button>-->
@@ -20,7 +75,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="form-group float-left">
+				<div class="form-group float-left" v-if="this.store.searchTerm === ''">
 					<label> Guides near you: </label>
 				</div>
 			</div>
@@ -43,6 +98,11 @@ export default {
 		return {
 			cards: [],
 			store,
+
+			byHour: '',
+			byMonument: '',
+			byRating: '',
+			byPrice: '',
 		};
 	},
 	mounted() {
@@ -94,12 +154,14 @@ export default {
 	computed: {
 		filteredCards() {
 			// logika koja filtrira cards
-			let termin = this.store.searchTerm;
+			let termin = this.store.searchTerm.toLowerCase();
+
+			console.log(termin);
 
 			return this.cards.filter(
-				(card) => card.name.includes(termin),
-				(card) => card.lang.includes(termin),
-				(card) => card.monuments.includes(termin)
+				(card) => card.name.toLowerCase().includes(termin)
+				//(card) => card.lang.toLowerCase().includes(termin),
+				//(card) => card.monuments.toLowerCase().includes(termin)
 			);
 		},
 	},
