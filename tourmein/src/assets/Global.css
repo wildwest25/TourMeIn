@@ -74,6 +74,19 @@ body
     margin-top: 40px;
 }
 
+#charge
+{
+    position:relative;
+    left: 100px;
+}
+
+#sorts
+{
+    position:relative;
+    left: 300px;
+    bottom: 35px;
+}
+
 #btn_txt
 {
     font-family: IBM Plex Mono;

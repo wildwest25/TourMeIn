@@ -12,7 +12,7 @@
 								placeholder="Search"
 								v-model="store.searchTerm"
 							/>
-							<div class="form-inline">
+							<div id="charge" class="form-inline">
 								<label> Show only guides that charge: </label>
 								<div>
 									<input
@@ -39,7 +39,7 @@
 								</div>
 								<label> By Monument</label>
 							</div>
-							<div class="form-inline">
+							<div id="sorts" class="form-inline">
 								<label> Sort by: </label>
 								<div>
 									<input
@@ -53,7 +53,7 @@
 									/>
 								</div>
 								<label> Rating </label>
-								<div>
+								<div style="margin-left:12px;">
 									<input
 										type="checkbox"
 										v-model="byPrice"
