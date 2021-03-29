@@ -12,7 +12,7 @@
 		</div>
 		<!-- odvojeno ovisno dali je guide/user -->
 		<div class="row" v-if="store.isGuide === 'false'">
-			<div>
+			<div v-if="info.accepted===null">
 				<div class="col-md-auto">
 					<div class="card-body p-0">
 						<img class="card-img-top offset-1" style="width: 2rem;" src="@/assets/warning.png" />
@@ -24,7 +24,7 @@
 					</div>
 				</div>
 			</div>
-			<div>
+			<div v-if="info.accepted==='false'">
 				<div class="col-md-auto">
 					<div class="card-body p-0">
 						<img class="card-img-top offset-1" style="width: 2rem;" src="@/assets/error.png" />

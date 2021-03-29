@@ -50,6 +50,7 @@ export default {
 							user: data.user,
 							name: data.name,
 							guidename: data.guidename,
+							accepted: data.accepted,
 						});
 					});
 				});
@@ -70,6 +71,7 @@ export default {
 							user: data.user,
 							name: data.name,
 							guidename: data.guidename,
+							accepted: data.accepted,
 						});
 					});
 				});

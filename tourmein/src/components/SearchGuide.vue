@@ -91,6 +91,7 @@ export default {
 					guide: guide,
 					name: name,
 					guidename: this.info.name,
+					accepted: null,
 				})
 				.then(() => {
 					console.log('spremljeno, doc');
