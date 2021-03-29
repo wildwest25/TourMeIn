@@ -112,6 +112,18 @@ export default {
 		};
 	},
 
+	mounted() {
+		console.log('firebase dohvat...za tour in progress');
+
+		db.collection('tour')
+		.where('user', '==', store.currentUser)
+		.get()
+		.then((query) => {
+			store.tourInProgress = true;
+		});
+	console.log('tour in progress: ', store.tourInProgress);
+	},
+
 	methods: {
 		logout() {
 			firebase
@@ -120,6 +132,7 @@ export default {
 				.then(() => {
 					this.$router.push({ name: 'Home' });
 					store.isGuide = null;
+					store.tourInProgress = null;
 				});
 		},
 	},

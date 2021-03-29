@@ -85,6 +85,7 @@ export default {
 			const name = this.userFullname;
 			const guidename = this.guideFullname;
 
+		if (store.tourInProgress == null){
 			db.collection('tour')
 				.add({
 					user: user,
@@ -100,6 +101,9 @@ export default {
 				.catch((e) => {
 					console.error(e);
 				});
+		    } else {
+				alert ('There is already pending tour request!');
+			}	
 		},
 	},
 	computed: {},
