@@ -16,7 +16,7 @@
 								<label> Show only guides that charge: </label>
 								<div>
 									<input
-										type="checkbox"
+										type="radio"
 										v-model="byHour"
 										name="gen"
 										id="male"
@@ -28,7 +28,7 @@
 								<label> By Hour </label>
 								<div>
 									<input
-										type="checkbox"
+										type="radio"
 										v-model="byMonument"
 										name="gen"
 										id="female"
@@ -128,6 +128,7 @@ export default {
 							rated: data.rated,
 							monuments: data.monuments,
 							lang: data.languages,
+							email: data.email,
 
 							starthour: data.starthour,
 							startminute: data.startminute,
@@ -152,11 +153,19 @@ export default {
 		},
 	},
 	computed: {
+		//! treba jos doraditi search
 		filteredCards() {
 			// logika koja filtrira cards
 			let termin = this.store.searchTerm.toLowerCase();
 
 			console.log(termin);
+
+			//! experimentno za sad
+			if (this.byHour) {
+				return this.cards.filter((card) => card.prices.toLowerCase().includes(termin));
+			} else if (this.byMonument) {
+				return this.cards.filter((card) => card.monuments.toLowerCase().includes(termin));
+			}
 
 			return this.cards.filter(
 				(card) => card.name.toLowerCase().includes(termin)

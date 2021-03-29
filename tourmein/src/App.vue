@@ -82,7 +82,7 @@ firebase.auth().onAuthStateChanged((user) => {
 
 					if (currentRoute.name == 'Register') {
 						router.replace({ name: 'Registracija_uspjesna' });
-						store.isGuide = null; //! trenutacni fix za maknuti menu bar
+						//store.isGuide = null; //! trenutacni fix za maknuti menu bar
 					} else if (!currentRoute.meta.needsUser && data.guide == 'true') {
 						router.push({ name: 'Guide_profile' });
 					} else {

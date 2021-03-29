@@ -12,8 +12,7 @@
 					<img src=@/assets/A_star.png height=30% width=30% />
 					<div id="star_text">{{ info.rated }}</div>
 				</div>
-				<!--<button type="button" id="btRegister" @click="start" class="btn btn-primary">-->
-				<button type="button" id="btRegister" class="btn btn-primary">
+				<button type="button" id="btRegister" @click="startTouring" class="btn btn-primary">
 					<div id="btn_txt">Start touring with this guide</div>
 				</button>
 			</div>
@@ -47,10 +46,63 @@
 </template>
 
 <script>
-//JS kod
+import store from '@/store';
+import { db } from '@/firebase';
+
 export default {
 	props: ['info'],
 	name: 'UserCard',
+	data: function() {
+		return {
+			store,
+
+			byHour: '',
+			byMonument: '',
+			byRating: '',
+			byPrice: '',
+			userFullname: '',
+		};
+	},
+	mounted() {
+		db.collection('user')
+			.where('email', '==', store.currentUser)
+			.get()
+			.then((querySnapshot) => {
+				querySnapshot.forEach((doc) => {
+					console.log(doc.id, ' => ', doc.data());
+
+					const data = doc.data();
+
+					this.userFullname = data.firstname + ' ' + data.lastname;
+				});
+				console.log(this.userFullname);
+			});
+	},
+	methods: {
+		startTouring() {
+			const user = store.currentUser;
+			const guide = this.info.email;
+			const name = this.userFullname;
+			const guidename = this.guideFullname;
+
+			db.collection('tour')
+				.add({
+					user: user,
+					guide: guide,
+					name: name,
+					guidename: this.info.name,
+				})
+				.then(() => {
+					console.log('spremljeno, doc');
+					alert('Request has been sent!');
+				})
+				.catch((e) => {
+					console.error(e);
+				});
+		},
+	},
+	computed: {},
+	components: {},
 };
 </script>
 
