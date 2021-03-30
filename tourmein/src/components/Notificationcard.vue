@@ -1,9 +1,9 @@
 <template>
-	<div class="card text-left">
+	<div id="notcard" class="card text-left">
 		<div class="row" v-if="store.isGuide === 'true'">
 			<div class="col-md-auto">
 				<div class="card-body p-0">
-					<img class="card-img-top offset-1" style="width: 2rem;" src="@/assets/warning.png" />
+					<img class="card-img-top offset-1" style="width: 2rem; position:absolute;" src="@/assets/warning.png" />
 				</div>
 			</div>
 			<div class="col-md">
@@ -15,7 +15,7 @@
 			<div v-if="info.accepted===null">
 				<div class="col-md-auto">
 					<div class="card-body p-0">
-						<img class="card-img-top offset-1" style="width: 2rem;" src="@/assets/warning.png" />
+						<img class="card-img-top offset-1" style="width: 2rem; position:absolute;" src="@/assets/warning.png" />
 					</div>
 				</div>
 				<div class="col-md">
@@ -27,7 +27,7 @@
 			<div v-if="info.accepted==='false'">
 				<div class="col-md-auto">
 					<div class="card-body p-0">
-						<img class="card-img-top offset-1" style="width: 2rem;" src="@/assets/error.png" />
+						<img class="card-img-top offset-1" style="width: 2rem; position:absolute;" src="@/assets/error.png" />
 					</div>
 				</div>
 				<div class="col-md">
