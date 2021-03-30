@@ -5,7 +5,7 @@
 				<div class="card-body p-0">
 					<img
 						class="card-img-top offset-1"
-						style="width: 2rem; margin-top:20px; position:absolute;"
+						style="width: 2rem; margin-bottom:15px; margin-left:70px; position:absolute;"
 						src="@/assets/warning.png"
 					/>
 				</div>
