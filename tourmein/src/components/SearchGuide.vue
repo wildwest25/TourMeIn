@@ -32,13 +32,13 @@
 			</div>
 		</div>
 		<div class="row justify-content-between">
-			<a :href="info.fblink" style="margin-left:50px;">
+			<a :href="info.fb" style="margin-left:50px;">
 				<img src=@/assets/FB_Logo.png style="width: 3rem;"/>
 			</a>
-			<a :href="info.twlink">
+			<a :href="info.tw">
 				<img src=@/assets/TW.png style="width: 3rem;"/>
 			</a>
-			<a :href="info.instalink" style="margin-right:50px; margin-top:10px;">
+			<a :href="info.inst" style="margin-right:50px; margin-top:10px;">
 				<img src=@/assets/INST.png style="width: 2rem;"/>
 			</a>
 		</div>
