@@ -50,6 +50,23 @@ body
     
 }
 
+.col-md
+{
+    margin-left: 150px;
+    margin-top: 5px;
+}
+
+#notcard
+{
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0);
+    max-width: 1000px;
+    margin: 20px;
+    text-align: center;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 3px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
 #star_text
 {
     margin-right: 25px;
