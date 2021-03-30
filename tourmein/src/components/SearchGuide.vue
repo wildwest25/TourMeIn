@@ -75,17 +75,18 @@ export default {
 
 					this.userFullname = data.firstname + ' ' + data.lastname;
 				});
-				console.log(this.userFullname);
-			});
-		db.collection('tour')
-			.where('user', '==', store.currentUser)
-			.get()
-			.then((query) => {
-				store.tourInProgress = true;
 			});
 	},
 	methods: {
 		startTouring() {
+			db.collection('tour')
+				.where('user', '==', store.currentUser)
+				.get()
+				.then((query) => {
+					store.tourInProgress = true;
+				});
+			console.log('tour in progress: ', store.tourInProgress);
+
 			const user = store.currentUser;
 			const guide = this.info.email;
 			const name = this.userFullname;

@@ -115,18 +115,6 @@ export default {
 		};
 	},
 
-	mounted() {
-		console.log('firebase dohvat...za tour in progress');
-
-		// ucitavanje sa firebase-a dali je user vec zatrazio guide-a ili je vec u tour-u
-		db.collection('tour')
-			.where('user', '==', store.currentUser)
-			.get()
-			.then((query) => {
-				store.tourInProgress = true;
-			});
-	},
-
 	methods: {
 		logout() {
 			//postavke za login, stavi me na home i resetiraj zapamcene varijable
