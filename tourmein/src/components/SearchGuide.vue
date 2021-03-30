@@ -85,25 +85,26 @@ export default {
 			const name = this.userFullname;
 			const guidename = this.guideFullname;
 
-		if (store.tourInProgress == null){
-			db.collection('tour')
-				.add({
-					user: user,
-					guide: guide,
-					name: name,
-					guidename: this.info.name,
-					accepted: null,
-				})
-				.then(() => {
-					console.log('spremljeno, doc');
-					alert('Request has been sent!');
-				})
-				.catch((e) => {
-					console.error(e);
-				});
-		    } else {
-				alert ('There is already pending tour request!');
-			}	
+			if (store.tourInProgress == null) {
+				db.collection('tour')
+					.add({
+						user: user,
+						guide: guide,
+						name: name,
+						guidename: this.info.name,
+						accepted: null,
+					})
+					.then(() => {
+						console.log('spremljeno, doc');
+						store.tourInProgress = true;
+						alert('Request has been sent!');
+					})
+					.catch((e) => {
+						console.error(e);
+					});
+			} else {
+				alert('There is already pending tour request!');
+			}
 		},
 	},
 	computed: {},

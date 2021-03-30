@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
-		<navigation v-if="store.isGuide === 'true'">
+		<navigation v-if="store.isGuide === 'true'"
+			><!-- Meni vidljivi samo Guide-u -->
 			<div id="nav" class="navbar navbar-expand-md navbar-light">
 				<img
 					src="@/assets/Logo-01.png"
@@ -25,7 +26,8 @@
 				</ul>
 			</div>
 		</navigation>
-		<navigation v-if="store.isGuide === 'false'">
+		<navigation v-if="store.isGuide === 'false'"
+			><!-- Meni vidljivi samo User-u -->
 			<div id="nav" class="navbar navbar-expand-md navbar-light">
 				<img
 					src="@/assets/Logo-01.png"
@@ -62,30 +64,30 @@ import router from '@/router';
 firebase.auth().onAuthStateChanged((user) => {
 	const currentRoute = router.currentRoute;
 
-	// * RIJESENO :) zamjenit i sloziti da ako je guide logiran da ide na guide profile ako ne na user pocetnu
 	if (user) {
 		// User is signed in.
-		console.log(user.email);
-		store.currentUser = user.email;
+		store.currentUser = user.email; // spremljeno u store da je moguce dohvatiti u drugim .vue view-ovima
 
 		db.collection('user')
-			.where('email', '==', user.email)
+			.where('email', '==', user.email) // nadji usera na firebase-u sa istim email-om
 			.get()
 			.then((querySnapshot) => {
 				querySnapshot.forEach((doc) => {
 					// doc.data() is never undefined for query doc snapshots
-					console.log(doc.id, ' => ', doc.data());
+					console.log(doc.id, ' => ', doc.data()); // ispis u konzoli svih podataka za vezanog user sa firebase-a
 
 					const data = doc.data();
-					console.log(store.isGuide);
+					console.log('is guide: ', store.isGuide);
 					store.isGuide = data.guide;
 
 					if (currentRoute.name == 'Register') {
 						router.replace({ name: 'Registracija_uspjesna' });
-						//store.isGuide = null; //! trenutacni fix za maknuti menu bar
+						store.isGuide = null; //! problem sa menu barom
 					} else if (!currentRoute.meta.needsUser && data.guide == 'true') {
+						// na loginu ako je guide pusha ga na guide profile
 						router.push({ name: 'Guide_profile' });
 					} else {
+						// ak ne na user page
 						router.push({ name: 'User_page' });
 					}
 				});
@@ -99,6 +101,7 @@ firebase.auth().onAuthStateChanged((user) => {
 		store.currentUser = null;
 
 		if (currentRoute.meta.needsUser) {
+			// u slucaju da manualno idemo na neku stranicu kao npr search guides bez logina ce nas vratiti na home page
 			router.push({ name: 'Home' });
 		}
 	}
@@ -115,17 +118,18 @@ export default {
 	mounted() {
 		console.log('firebase dohvat...za tour in progress');
 
+		// ucitavanje sa firebase-a dali je user vec zatrazio guide-a ili je vec u tour-u
 		db.collection('tour')
-		.where('user', '==', store.currentUser)
-		.get()
-		.then((query) => {
-			store.tourInProgress = true;
-		});
-	console.log('tour in progress: ', store.tourInProgress);
+			.where('user', '==', store.currentUser)
+			.get()
+			.then((query) => {
+				store.tourInProgress = true;
+			});
 	},
 
 	methods: {
 		logout() {
+			//postavke za login, stavi me na home i resetiraj zapamcene varijable
 			firebase
 				.auth()
 				.signOut()
