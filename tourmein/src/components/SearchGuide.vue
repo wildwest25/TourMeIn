@@ -2,7 +2,7 @@
 	<div class="card text-left">
 		<div class="row">
 			<div class="col-sm">
-				<div id="card_text" style="width:50px;">{{ info.name }}</div>
+				<div id="card_text" style="width:70px;">{{ info.name }}</div>
 				<div class="card-body p-0">
 					<img class="card-img-top offset-1" style="width: 7rem;" :src="info.image" />
 				</div>
