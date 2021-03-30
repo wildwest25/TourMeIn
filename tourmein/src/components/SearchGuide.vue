@@ -77,6 +77,12 @@ export default {
 				});
 				console.log(this.userFullname);
 			});
+		db.collection('tour')
+			.where('user', '==', store.currentUser)
+			.get()
+			.then((query) => {
+				store.tourInProgress = true;
+			});
 	},
 	methods: {
 		startTouring() {
