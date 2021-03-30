@@ -31,7 +31,7 @@
 						You asked guide {{ info.guidename }} to take you on a tour. Waiting for an answer.
 					</div>
 					<button type="button" id="cancel" @click="cancel" class="btn btn-primary">
-						<div id="btn">x</div>
+						<div id="btn">Cancel this tour</div>
 					</button>
 				</div>
 			</div>
