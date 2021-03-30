@@ -226,12 +226,12 @@ export default {
 		newFirstname: function(value) {
 			return Validator.value(value)
 				.required()
-				.regex('^[A-Za-z]*$', 'Must only contain alphabetic characters.');
+				.regex('^[A-Za-zšđčćžŠĐČĆŽ]*$', 'Must only contain alphabetic characters.');
 		},
 		newLastname: function(value) {
 			return Validator.value(value)
 				.required()
-				.regex('^[A-Za-z]*$', 'Must only contain alphabetic characters.');
+				.regex('^[A-Za-zšđčćžŠĐČĆŽ]*$', 'Must only contain alphabetic characters.');
 		},
 		newGender: function(value) {
 			return Validator.value(value).required();
@@ -242,7 +242,7 @@ export default {
 		newCity: function(value) {
 			return Validator.value(value)
 				.required()
-				.regex('^[A-Za-z]*$', 'Must only contain alphabetic characters.');
+				.regex('^[A-Za-zšđčćžŠĐČĆŽ]*$', 'Must only contain alphabetic characters.');
 		},
 		newdob: function(value) {
 			return Validator.value(value).required();
