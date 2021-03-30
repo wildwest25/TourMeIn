@@ -21,16 +21,16 @@
 					<div class="card-body p-0">
 						<img
 							class="card-img-top offset-1"
-							style="width: 2rem; margin-top:20px; position:absolute;"
+							style="width: 2rem; margin-top:40px; position:absolute;"
 							src="@/assets/warning.png"
 						/>
 					</div>
 				</div>
 				<div class="col-md">
 					<div class="card-body p-0">
-						<div style="margin-bottom:50px; display:inline-block;">You asked guide {{ info.guidename }} to take you on a tour. Waiting for an answer.</div>
-						<button type="button" id="cancel" @click="cancel" class="btn btn-primary" style="margin-top:15px;">
-						<div id="btn" >X</div>
+						<div style="margin-top:25px; display:inline-block;">You asked guide {{ info.guidename }} to take you on a tour. Waiting for an answer.</div>
+						<button type="button" id="cancel" @click="cancel" class="btn btn-primary">
+						<div id="btn" >Cancel this tour</div>
 					</button>
 					</div>
 					
