@@ -1,8 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import User from '../views/User_page.vue';
-import Guide from '../views/My_pervious_tours-guide.vue';
 import store from '@/store';
 
 Vue.use(VueRouter);
@@ -31,10 +28,11 @@ const routes = [
 	{
 		path: '/guide_profile',
 		name: 'Guide_profile',
-		meta: {
-		},
+		meta: {},
 		component: () => import('../views/Guide_profile.vue'),
-		needsUser: true,
+		meta: {
+			needsUser: true,
+		},
 	},
 	{
 		path: '/my_previous_tours_guide',
@@ -71,7 +69,7 @@ const routes = [
 	{
 		path: '/user_page',
 		name: 'User_page',
-		meta:{
+		meta: {
 			needsUser: true,
 		},
 		component: () => import('../views/User_page.vue'),
@@ -93,12 +91,10 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-	console.log();
-
 	const noUser = store.currentUser === null;
 
 	if (noUser && to.meta.needsUser) {
-		next('Home');
+		next('');
 	} else {
 		next();
 	}
