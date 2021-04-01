@@ -119,8 +119,6 @@ export default {
 				.then((query) => {
 					this.cards = [];
 					query.forEach((doc) => {
-						console.log(doc.id, ' => ', doc.data());
-
 						const data = doc.data();
 
 						this.cards.push({
