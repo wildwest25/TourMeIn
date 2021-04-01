@@ -69,8 +69,6 @@ export default {
 			.get()
 			.then((querySnapshot) => {
 				querySnapshot.forEach((doc) => {
-					console.log(doc.id, ' => ', doc.data());
-
 					const data = doc.data();
 
 					this.userFullname = data.firstname + ' ' + data.lastname;
@@ -82,36 +80,38 @@ export default {
 			db.collection('tour')
 				.where('user', '==', store.currentUser)
 				.get()
-				.then((query) => {
-					store.tourInProgress = true;
-				});
-			console.log('tour in progress: ', store.tourInProgress);
-
-			const user = store.currentUser;
-			const guide = this.info.email;
-			const name = this.userFullname;
-			const guidename = this.guideFullname;
-
-			if (store.tourInProgress == null) {
-				db.collection('tour')
-					.add({
-						user: user,
-						guide: guide,
-						name: name,
-						guidename: this.info.name,
-						accepted: null,
-					})
-					.then(() => {
-						console.log('spremljeno, doc');
+				.then((querySnapshot) => {
+					querySnapshot.forEach((doc) => {
 						store.tourInProgress = true;
-						alert('Request has been sent!');
-					})
-					.catch((e) => {
-						console.error(e);
 					});
-			} else {
-				alert('There is already pending tour request!');
-			}
+				});
+
+			setTimeout((async) => {
+				const user = store.currentUser;
+				const guide = this.info.email;
+				const name = this.userFullname;
+				const guidename = this.guideFullname;
+				console.log('tour in progress: ', store.tourInProgress);
+				if (store.tourInProgress == null) {
+					db.collection('tour')
+						.add({
+							user: user,
+							guide: guide,
+							name: name,
+							guidename: this.info.name,
+							accepted: null,
+						})
+						.then(() => {
+							console.log('spremljeno, doc');
+							alert('Request has been sent!');
+						})
+						.catch((e) => {
+							console.error(e);
+						});
+				} else {
+					alert('There is already pending tour request!');
+				}
+			}, 500);
 		},
 	},
 	computed: {},

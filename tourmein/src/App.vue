@@ -52,6 +52,7 @@
 				</ul>
 			</div>
 		</navigation>
+
 		<router-view />
 	</div>
 </template>
@@ -67,7 +68,6 @@ firebase.auth().onAuthStateChanged((user) => {
 	if (user) {
 		// User is signed in.
 		store.currentUser = user.email; // spremljeno u store da je moguce dohvatiti u drugim .vue view-ovima
-
 		db.collection('user')
 			.where('email', '==', user.email) // nadji usera na firebase-u sa istim email-om
 			.get()
