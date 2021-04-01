@@ -81,7 +81,7 @@
 			</div>
 			<div class="row">
 				<user-card v-for="card in filteredCards" :key="card.url" :info="card" />
-			</div>
+	        </div>
 		</div>
 	</div>
 </template>
@@ -92,6 +92,7 @@ import store from '@/store';
 import { db } from '@/firebase';
 
 export default {
+
 	name: 'user_search',
 	props: ['id'],
 	data: function() {
@@ -178,4 +179,5 @@ export default {
 		UserCard,
 	},
 };
+
 </script>

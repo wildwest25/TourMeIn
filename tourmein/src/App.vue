@@ -52,6 +52,7 @@
 				</ul>
 			</div>
 		</navigation>
+
 		<router-view />
 	</div>
 </template>

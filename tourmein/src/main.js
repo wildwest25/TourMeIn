@@ -6,12 +6,14 @@ import Croppa from 'vue-croppa';
 import 'vue-croppa/dist/vue-croppa.css';
 import SimpleVueValidation from 'simple-vue-validator';
 import VueCountryCode from 'vue-country-code-select';
+import VuePaginate from 'vue-paginate'
 
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
 Vue.use(Croppa);
 Vue.use(SimpleVueValidation);
 Vue.use(VueCountryCode);
+Vue.use(VuePaginate);
 
 new Vue({
 	router,
