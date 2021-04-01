@@ -169,8 +169,9 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 								placeholder="dd-mm-yyyy"
 								value=""
 								min="1901-01-01"
-								max="2021-03-23"
+								max="2003-04-01"
 								v-model="newdob"
+								
 							/>
 							<div class="message">{{ validation.firstError('newdob') }}</div>
 						</div>
@@ -382,4 +383,6 @@ export default {
 		},
 	},
 };
+
+
 </script>
