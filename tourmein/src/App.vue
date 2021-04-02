@@ -85,10 +85,10 @@ firebase.auth().onAuthStateChanged((user) => {
 						store.isGuide = null; //! problem sa menu barom
 					} else if (!currentRoute.meta.needsUser && data.guide == 'true') {
 						// na loginu ako je guide pusha ga na guide profile
-						router.push({ name: 'Guide_profile' });
+						router.replace({ name: 'Guide_profile' });
 					} else {
 						// ak ne na user page
-						router.push({ name: 'User_page' });
+						router.replace({ name: 'User_page' });
 					}
 				});
 			})
