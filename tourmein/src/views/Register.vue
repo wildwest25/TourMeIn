@@ -162,17 +162,14 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 						</div>
 						<div class="form-inline" :class="{ error: validation.hasError('newdob') }">
 							<label for="start"> Date of birth: </label>
-							<input
-								id="DOB"
-								type="date"
-								name="begin"
-								placeholder="dd-mm-yyyy"
-								value=""
-								min="1901-01-01"
-								max="2003-04-01"
-								v-model="newdob"
-								
-							/>
+							<input 
+							id="DOB" 
+							type="date" 
+							data-relmax="-18" 
+							required=""
+							v-model="newdob"
+							 />
+							 <p> You must be atleast 18 years old to register </p> 
 							<div class="message">{{ validation.firstError('newdob') }}</div>
 						</div>
 						<div class="form-inline">
@@ -384,5 +381,23 @@ export default {
 	},
 };
 
+jQuery(document).ready(function($) {
+    $(function() {
+        $('input[data-relmax]').each(function() {
+            var oldVal = $(this).prop('value');
+            var relmax = $(this).data('relmax');
+            var max = new Date();
+            max.setFullYear(max.getFullYear() + relmax);
+            $.prop(
+                this,
+                'max',
+                $(this)
+                    .prop('valueAsDate', max)
+                    .val()
+            );
+            $.prop(this, 'value', oldVal);
+        });
+    });
+});
 
 </script>
