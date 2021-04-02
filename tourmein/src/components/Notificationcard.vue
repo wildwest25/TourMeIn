@@ -1,7 +1,7 @@
 <template>
 	<div id="notcard" class="card text-left">
 		<div class="row" v-if="store.isGuide === 'true'">
-			<div class="col-md-auto">
+			<div class="col-md-auto" v-if="info.accepted === null">
 				<div class="card-body p-0">
 					<img
 						class="card-img-top offset-1"
@@ -10,12 +10,44 @@
 					/>
 				</div>
 			</div>
-			<div class="col-md">
+			<div class="col-md" v-if="info.accepted === null">
 				<div class="card-body p-0">{{ info.name }} wants you up as a guide</div>
+				<button type="buttonsuccess" id="successbutton" @click="accept" class="btn btn-primary">
+					<img class="card-img-top offset-1" style="width: 1rem;" src="@/assets/success.png" />
+				</button>
+				<button type="buttoncancel" id="cancelbutton" @click="cancelGuide" class="btn btn-primary">
+					<img class="card-img-top offset-1" style="width: 1rem;" src="@/assets/alert close.png" />
+				</button>
+			</div>
+			<div class="col-md-auto" v-if="info.accepted === true">
+				<div class="card-body p-0">
+					<img
+						class="card-img-top offset-1"
+						style="width: 2rem; margin-bottom:15px; margin-left:70px; position:absolute;"
+						src="@/assets/success.png"
+					/>
+				</div>
+			</div>
+			<div class="col-md" v-if="info.accepted === true">
+				<div class="card-body p-0">
+					You have accepted {{ info.name }}'s request, you can now exchange messages with him
+				</div>
+			</div>
+			<div class="col-md-auto" v-if="info.accepted === false">
+				<div class="card-body p-0">
+					<img
+						class="card-img-top offset-1"
+						style="width: 2rem; margin-bottom:15px; margin-left:70px; position:absolute;"
+						src="@/assets/error.png"
+					/>
+				</div>
+			</div>
+			<div class="col-md" v-if="info.accepted === false">
+				<div class="card-body p-0">You have rejected {{ info.name }}'s request</div>
 			</div>
 		</div>
 		<!-- odvojeno ovisno dali je guide/user -->
-		<div class="row" v-if="store.isGuide === 'false'">
+		<div class="row" v-if="store.isGuide === false">
 			<div v-if="info.accepted === null">
 				<div class="col-md-auto">
 					<div class="card-body p-0">
@@ -28,12 +60,13 @@
 				</div>
 				<div class="col-md">
 					<div class="card-body p-0">
-						<div style="margin-top:25px; display:inline-block;">You asked guide {{ info.guidename }} to take you on a tour. Waiting for an answer.</div>
+						<div style="margin-top:25px; display:inline-block;">
+							You asked guide {{ info.guidename }} to take you on a tour. Waiting for an answer.
+						</div>
 						<button type="button" id="cancel" @click="cancel" class="btn btn-primary">
-						<div id="btn" >Cancel this tour</div>
-					</button>
+							<div id="btn">Cancel this tour</div>
+						</button>
 					</div>
-					
 				</div>
 			</div>
 			<div v-if="info.accepted === 'false'">
@@ -77,6 +110,41 @@ export default {
 				alert('Tour has been canceled!');
 				window.location.reload();
 			});
+		},
+		cancelGuide() {
+			var cancelG = db.collection('tour').where('guide', '==', store.currentUser);
+			cancelG.get().then(function(querySnapshot) {
+				querySnapshot.forEach(function(doc) {
+					doc.ref.delete();
+					store.tourInProgress = null;
+				});
+				alert('User has been denied!');
+				window.location.reload();
+			});
+		},
+		accept() {
+			db.collection('tour')
+				.where('guide', '==', store.currentUser)
+				.get()
+				.then((querySnapshot) => {
+					querySnapshot.forEach((doc) => {
+						console.log(doc.id, ' => ', doc.data());
+
+						this.id = doc.id;
+
+						db.collection('tour')
+							.doc(this.id)
+							.update({
+								accepted: true,
+							})
+							.then(() => {
+								console.log('spremljeno, doc');
+							})
+							.catch((e) => {
+								console.error(e);
+							});
+					});
+				});
 		},
 	},
 };
