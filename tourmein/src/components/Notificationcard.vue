@@ -47,7 +47,7 @@
 			</div>
 		</div>
 		<!-- odvojeno ovisno dali je guide/user -->
-		<div class="row" v-if="store.isGuide === false">
+		<div class="row" v-if="store.isGuide === 'false'">
 			<div v-if="info.accepted === null">
 				<div class="col-md-auto">
 					<div class="card-body p-0">
@@ -69,12 +69,29 @@
 					</div>
 				</div>
 			</div>
-			<div v-if="info.accepted === 'false'">
+			<div v-if="info.accepted === true">
+                <div class="col-md-auto">
+                    <div class="card-body p-0">
+                        <img
+                            class="card-img-top offset-1"
+                            style="width: 2rem; margin-top:10px; position:absolute;"
+                            src="@/assets/success.png"
+                        />
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card-body p-0">
+                        Guide {{ info.guidename }} Marko Markić accepted your request. You can now ask each
+                        other a message from the top of the further agreement.
+                    </div>
+                </div>
+            </div>
+			<div v-if="info.accepted === false">
 				<div class="col-md-auto">
 					<div class="card-body p-0">
 						<img
 							class="card-img-top offset-1"
-							style="width: 2rem; margin-top:20px; position:absolute;"
+							style="width: 2rem; position:absolute;"
 							src="@/assets/error.png"
 						/>
 					</div>
