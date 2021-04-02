@@ -169,7 +169,7 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 							required=""
 							v-model="newdob"
 							 />
-							 <p> You must be atleast 18 years old to register </p> 
+							 <div id="Text_age"> You must be atleast 18 years old to register </div> 
 							<div class="message">{{ validation.firstError('newdob') }}</div>
 						</div>
 						<div class="form-inline">
