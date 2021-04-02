@@ -29,7 +29,70 @@
 						info.endminute
 					}}
 				</div>
-			</div>
+				<div class="col-md-auto" v-if="info.monday=== true">
+					<div class="card-body p-0">
+						<img
+							class="card-img-top offset-1"
+							style="width: 1rem; margin-bottom:15px; margin-left:70px; position:absolute;"
+							src="@/assets/success.png"
+						/>MON
+					</div>
+				</div>
+				<div class="col-md-auto" v-if="info.tuesday=== true">
+					<div class="card-body p-0">
+						<img
+							class="card-img-top offset-1"
+							style="width: 1rem; margin-bottom:15px; margin-left:70px; position:absolute;"
+							src="@/assets/success.png"
+						/>TUE
+					</div>
+				</div>
+				<div class="col-md-auto" v-if="info.wednesday=== true">
+					<div class="card-body p-0">
+						<img
+							class="card-img-top offset-1"
+							style="width: 1rem; margin-bottom:15px; margin-left:70px; position:absolute;"
+							src="@/assets/success.png"
+						/>WED
+					</div>
+				</div>
+				<div class="col-md-auto" v-if="info.thursday=== true">
+					<div class="card-body p-0">
+						<img
+							class="card-img-top offset-1"
+							style="width: 1rem; margin-bottom:15px; margin-left:70px; position:absolute;"
+							src="@/assets/success.png"
+						/>THU
+					</div>
+				</div>
+				<div class="col-md-auto" v-if="info.friday=== true">
+					<div class="card-body p-0">
+						<img
+							class="card-img-top offset-1"
+							style="width: 1rem; margin-bottom:15px; margin-left:70px; position:absolute;"
+							src="@/assets/success.png"
+						/>FRI
+					</div>
+				</div>
+				<div class="col-md-auto" v-if="info.saturday=== true">
+					<div class="card-body p-0">
+						<img
+							class="card-img-top offset-1"
+							style="width: 1rem; margin-bottom:15px; margin-left:70px; position:absolute;"
+							src="@/assets/success.png"
+						/>SAT
+					</div>
+				</div>
+				<div class="col-md-auto" v-if="info.sunday=== true">
+					<div class="card-body p-0">
+						<img
+							class="card-img-top offset-1"
+							style="width: 1rem; margin-bottom:15px; margin-left:70px; position:absolute;"
+							src="@/assets/success.png"
+						/>SUN
+					</div>
+				</div>
+            </div>
 		</div>
 		<div class="row justify-content-between">
 			<a :href="info.fb" style="margin-left:50px;">

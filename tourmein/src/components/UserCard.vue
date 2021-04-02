@@ -7,7 +7,7 @@
 					<img :src="info.image" />
 					<img class="card-img-top offset-1" style="width: 7rem;" src="@/assets/Rectangle_2.png" />
 				</div>
-				<div class="card-footer text-muted">Tour Date: {{ info.time }}</div>
+				<div class="card-footer text-muted">Tour Date: {{ info.time }} , {{info.days}}</div>
 			</div>
 			<div class="col-sm">
 				<!--<div class="card-header">Rated: {{ info.rated }}</div>-->

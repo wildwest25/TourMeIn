@@ -134,6 +134,14 @@ export default {
 							endhour: data.endhour,
 							endminute: data.endminute,
 
+							monday : data.monday,
+							tuesday : data.tuesday,
+							wednesday : data.wednesday,
+							thursday : data.thursday,
+							friday : data.friday,
+							saturday : data.saturday,
+							sunday : data.sunday,
+
 							fb: data.fblink,
 							tw: data.twlink,
 							inst: data.instalink,

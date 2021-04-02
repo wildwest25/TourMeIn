@@ -37,6 +37,25 @@ body
   
 }
 
+#successbutton
+{
+    background: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    margin-left: 60px;
+}
+
+#cancelbutton
+{
+    background: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+}
+
+#cancel
+{
+    background: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+}
+
 #c_info
 {
     background-color: rgba(0, 0, 0, 0);

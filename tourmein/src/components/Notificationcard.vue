@@ -13,10 +13,10 @@
 			<div class="col-md" v-if="info.accepted === null">
 				<div class="card-body p-0">{{ info.name }} wants you up as a guide</div>
 				<button type="buttonsuccess" id="successbutton" @click="accept" class="btn btn-primary">
-					<img class="card-img-top offset-1" style="width: 1rem;" src="@/assets/success.png" />
+					<img class="card-img-top offset-1" style="width: 1.2rem; margin-right: 4px;" src="@/assets/success.png" />
 				</button>
 				<button type="buttoncancel" id="cancelbutton" @click="cancelGuide" class="btn btn-primary">
-					<img class="card-img-top offset-1" style="width: 1rem;" src="@/assets/alert close.png" />
+					<img class="card-img-top offset-1" style="width: 1.2rem margin-right: 4px;" src="@/assets/alert close.png" />
 				</button>
 			</div>
 			<div class="col-md-auto" v-if="info.accepted === true">
