@@ -37,6 +37,54 @@ body
   
 }
 
+#msgucard
+{
+    max-width: 100%;
+    border-color: rgba(0, 0, 0,0);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0);
+}
+
+#UInfo
+{
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    display:inline-block;
+}
+
+#UPtext
+{
+    line-height: 16px;
+    text-align:center;
+    margin-top: 6px;
+}
+
+#Utext
+{
+    display:inline-block;
+    border-style:solid;
+    border-color: rgba(0, 0, 0, 0.288);
+    border-radius: 10px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 4px 0px 8px rgba(0, 0, 0, 0.25);
+    width:auto;
+    height: 50%;
+    margin-left: 10px;
+}
+
+#Utime
+{
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+}
+
+#userIMG
+{
+    position:relative;
+    bottom: 15px;
+    left: 10px;
+}
+
 #successbutton
 {
     background: rgba(0, 0, 0, 0);
@@ -48,6 +96,13 @@ body
 {
     font-family: Peralta;
     color: red;
+}
+
+#msgcard
+{
+    background: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    
 }
 
 #cancelbutton

@@ -4,12 +4,13 @@
 			<div class="col-md-auto">
 				<div class="card-body p-0">
 					<img :src="info.image" />
-					<img class="card-img-top offset-1" style="width: 3rem;" src="@/assets/Rectangle_2.png" />
+					<img id="userIMG" class="card-img-top offset-1" style="width: 3rem;" src="@/assets/Rectangle_2.png" />
 				</div>
 			</div>
 			<div class="col-sm">
-				<div class="card-body p-0">{{ info.description }}: {{ info.text }}</div>
-				<div class="card-footer text-muted">{{ info.time }}</div>
+				<div id="UInfo" class="card-body p-0">{{ info.description }}:</div>
+				<div id="Utext" class="card-body p-0"><div id="UPtext">{{ info.text }}</div></div>
+				<div id="Utime" class="card-body p-0">{{ info.time }}</div>
 			</div>
 		</div>
 	</div>
