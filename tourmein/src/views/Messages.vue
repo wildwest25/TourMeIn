@@ -6,7 +6,9 @@
 			<div class="row">
 				<div class="col-8 offset-1">
 					<!-- //! primjer sa my previous tours, najbolje prilagoditi ka sta je tamo -->
-					<user-card v-for="card in filteredCards" :key="card.url" :info="card" />
+					<div id="msgcard" class="btn btn-primary">
+					<user-card id="msgucard" v-for="card in filteredCards" :key="card.url" :info="card" />
+					</div>
 				</div>
 			</div>
 		</div>
