@@ -19,6 +19,7 @@
 import UserCard from '@/components/UserMessage.vue';
 import store from '@/store';
 import { db } from '@/firebase';
+import moment from 'moment';
 
 export default {
 	name: 'message_functions',
@@ -33,7 +34,6 @@ export default {
 		this.getMessages();
 	},
 	methods: {
-
 		getMessages() {
 			console.log('firebase dohvat...');
 
@@ -43,11 +43,12 @@ export default {
 					this.messages = [];
 					query.forEach((doc) => {
 						const data = doc.data();
+						let d = data.createdAt.toDate();
 
 						this.messages.push({
 							id: data.id,
-							time: data.date,
-							description: data.username,
+							time: moment(d).format('HH:mm:ss - DD.MM.YYYY.'),
+							description: data.guidename,
 							text: data.text,
 						});
 					});
