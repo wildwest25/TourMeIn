@@ -1,5 +1,5 @@
 <template>
-	<div class="card text-left">
+	<div id="card" class="card text-left">
 		<div class="row">
 			<div class="col-sm">
 				<div id="card_text" style="width:70px;">{{ info.name }}</div>
