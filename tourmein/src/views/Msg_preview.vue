@@ -1,74 +1,149 @@
 <template>
-	<div class="messages">
+	<div class="messageprev">
 		<h1>Messages</h1>
-		<div class="container">
-			<!--<h5>Welcome {{ firstname }}!</h5>-->
-			<div class="row">
-				<div class="col-8 offset-1">
-					<!-- //! primjer sa my previous tours, najbolje prilagoditi ka sta je tamo -->
-					<div id="msgcard">
-						<user-card id="msgucard" v-for="card in filteredCards" :key="card.url" :info="card" />
-					</div>
-					<div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
-						<i>Loading chat...</i>
+		<div class="container-fluid h-100">
+			<div class="row justify-content-center h-100">
+				<div class="col-md-8 col-xl-6 chat">
+					<div id="chatcard" class="card">
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img
+										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+										class="rounded-circle user_img"
+									/>
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>Chat with Khalid</span>
+									<p>8 Messages</p>
+								</div>
+								<div class="video_cam">
+									<span><i class="fas fa-video"></i></span>
+									<span><i class="fas fa-phone"></i></span>
+								</div>
+							</div>
+							<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+							<div class="action_menu">
+								<ul>
+									<li><i class="fas fa-user-circle"></i> View profile</li>
+									<li><i class="fas fa-users"></i> Add to close friends</li>
+									<li><i class="fas fa-plus"></i> Add to group</li>
+									<li><i class="fas fa-ban"></i> Block</li>
+								</ul>
+							</div>
+						</div>
+						<div class="card-body msg_card_body">
+							<div class="d-flex justify-content-start mb-4">
+								<div class="img_cont_msg">
+									<img
+										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+										class="rounded-circle user_img_msg"
+									/>
+								</div>
+								<div class="msg_cotainer">
+									Hi, how are you samim?
+									<span class="msg_time">8:40 AM, Today</span>
+								</div>
+							</div>
+							<div class="d-flex justify-content-end mb-4">
+								<div class="msg_cotainer_send">
+									Hi Khalid i am good tnx how about you?
+									<span class="msg_time_send">8:55 AM, Today</span>
+								</div>
+								<div class="img_cont_msg">
+									<img src="@/assets/Rectangle_2.png" class="rounded-circle user_img_msg" />
+								</div>
+							</div>
+							<div class="d-flex justify-content-start mb-4">
+								<div class="img_cont_msg">
+									<img
+										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+										class="rounded-circle user_img_msg"
+									/>
+								</div>
+								<div class="msg_cotainer">
+									I am good too, thank you for your chat template
+									<span class="msg_time">9:00 AM, Today</span>
+								</div>
+							</div>
+							<div class="d-flex justify-content-end mb-4">
+								<div class="msg_cotainer_send">
+									You are welcome
+									<span class="msg_time_send">9:05 AM, Today</span>
+								</div>
+								<div class="img_cont_msg">
+									<img src="@/assets/Rectangle_2.png" class="rounded-circle user_img_msg" />
+								</div>
+							</div>
+							<div class="d-flex justify-content-start mb-4">
+								<div class="img_cont_msg">
+									<img
+										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+										class="rounded-circle user_img_msg"
+									/>
+								</div>
+								<div class="msg_cotainer">
+									I am looking for your next templates
+									<span class="msg_time">9:07 AM, Today</span>
+								</div>
+							</div>
+							<div class="d-flex justify-content-end mb-4">
+								<div class="msg_cotainer_send">
+									Ok, thank you have a good day
+									<span class="msg_time_send">9:10 AM, Today</span>
+								</div>
+								<div class="img_cont_msg">
+									<img src="@/assets/Rectangle_2.png" class="rounded-circle user_img_msg" />
+								</div>
+							</div>
+							<div class="d-flex justify-content-start mb-4">
+								<div class="img_cont_msg">
+									<img
+										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+										class="rounded-circle user_img_msg"
+									/>
+								</div>
+								<div class="msg_cotainer">
+									Bye, see you
+									<span class="msg_time">9:12 AM, Today</span>
+								</div>
+							</div>
+						</div>
+						<div class="card-footer">
+							<div class="input-group">
+								<div class="input-group-append">
+									<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+								</div>
+								<textarea
+									id="Text_Area"
+									name="Text_Area"
+									class="form-control type_msg"
+									placeholder="Type your message..."
+								></textarea>
+								<div class="input-group-append">
+									<span class="input-group-text send_btn"
+										><i class="fas fa-location-arrow"></i>
+									</span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<!--<div class="container">
+			<div class="row">
+				<div class="col-8 offset-1">
+					<div id="msgcard">
+						<user-card id="msgucard" v-for="card in filteredCards" :key="card.url" :info="card" />
+					</div>
+				</div>
+			</div>
+		</div>-->
 	</div>
 </template>
 <script>
-(function(t, a, l, k, j, s) {
-	s = a.createElement('script');
-	s.async = 1;
-	s.src = 'https://cdn.talkjs.com/talk.js';
-	a.head.appendChild(s);
-	k = t.Promise;
-	t.Talk = {
-		v: 3,
-		ready: {
-			then: function(f) {
-				if (k)
-					return new k(function(r, e) {
-						l.push([f, r, e]);
-					});
-				l.push([f]);
-			},
-			catch: function() {
-				return k && new k();
-			},
-			c: l,
-		},
-	};
-})(window, document, []);
-
-Talk.ready.then(function() {
-	var me = new Talk.User({
-		id: '123456',
-		name: 'Alice',
-		email: 'alice@example.com',
-		photoUrl: 'https://demo.talkjs.com/img/alice.jpg',
-		welcomeMessage: 'Hey there! How are you? :-)',
-	});
-	window.talkSession = new Talk.Session({
-		appId: 'tcSgqmrC',
-		me: me,
-	});
-	var other = new Talk.User({
-		id: '654321',
-		name: 'Sebastian',
-		email: 'Sebastian@example.com',
-		photoUrl: 'https://demo.talkjs.com/img/sebastian.jpg',
-		welcomeMessage: 'Hey, how can I help?',
-	});
-
-	var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
-	conversation.setParticipant(me);
-	conversation.setParticipant(other);
-
-	var inbox = talkSession.createInbox({ selected: conversation });
-	inbox.mount(document.getElementById('talkjs-container'));
-});
 // @ is an alias to /src
 import UserCard from '@/components/UserMessage.vue';
 import store from '@/store';

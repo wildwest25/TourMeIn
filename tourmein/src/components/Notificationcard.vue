@@ -125,7 +125,20 @@ export default {
 	data: function() {
 		return {
 			store,
+			userFullname: '',
 		};
+	},
+	mounted() {
+		db.collection('user')
+			.where('email', '==', store.currentUser)
+			.get()
+			.then((querySnapshot) => {
+				querySnapshot.forEach((doc) => {
+					const data = doc.data();
+
+					this.userFullname = data.firstname + ' ' + data.lastname;
+				});
+			});
 	},
 	methods: {
 		cancel() {
@@ -168,6 +181,22 @@ export default {
 									accepted: true,
 								})
 								.then(() => {
+									db.collection('message')
+										.add({
+											user: store.currentUser,
+											guide: this.info.email,
+											username: this.info.name,
+											guidename: this.userFullname,
+											createdAt: new Date(),
+											text: 'You can now comunicate with this guide.',
+										})
+										.then(() => {
+											console.log('now message created');
+										})
+										.catch((e) => {
+											console.error(e);
+										});
+
 									alert(data.name + ' has been accepted!');
 									window.location.reload();
 								})

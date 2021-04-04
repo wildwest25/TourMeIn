@@ -5,7 +5,7 @@
 				<div class="col-sm">
 					<div class="d-flex justify-content-center">
 						<div class="form-group has-search">
-							<span class="fa fa-search form-control-feedback"></span>
+							<span class="form-control-feedback"></span>
 							<input
 								type="text"
 								class="form-control"
@@ -81,7 +81,7 @@
 			</div>
 			<div class="row">
 				<user-card v-for="card in filteredCards" :key="card.url" :info="card" />
-	        </div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -92,7 +92,6 @@ import store from '@/store';
 import { db } from '@/firebase';
 
 export default {
-
 	name: 'user_search',
 	props: ['id'],
 	data: function() {
@@ -134,13 +133,13 @@ export default {
 							endhour: data.endhour,
 							endminute: data.endminute,
 
-							monday : data.monday,
-							tuesday : data.tuesday,
-							wednesday : data.wednesday,
-							thursday : data.thursday,
-							friday : data.friday,
-							saturday : data.saturday,
-							sunday : data.sunday,
+							monday: data.monday,
+							tuesday: data.tuesday,
+							wednesday: data.wednesday,
+							thursday: data.thursday,
+							friday: data.friday,
+							saturday: data.saturday,
+							sunday: data.sunday,
 
 							fb: data.fblink,
 							tw: data.twlink,
@@ -185,5 +184,4 @@ export default {
 		UserCard,
 	},
 };
-
 </script>
