@@ -145,7 +145,7 @@
 </template>
 <script>
 // @ is an alias to /src
-import UserCard from '@/components/UserMessage.vue';
+import PreviousGuideCard from '@/components/PreviousGuideCard.vue';
 import store from '@/store';
 import { db } from '@/firebase';
 
@@ -191,7 +191,7 @@ export default {
 		},
 	},
 	components: {
-		UserCard,
+		PreviousGuideCard,
 	},
 };
 </script>

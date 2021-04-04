@@ -7,7 +7,7 @@
 				<div class="col-8 offset-1">
 					<!-- //! primjer sa my previous tours, najbolje prilagoditi ka sta je tamo -->
 					<div id="msgcard">
-						<user-card id="msgucard" v-for="card in filteredCards" :key="card.url" :info="card" />
+						<previous-guide-card id="msgucard" v-for="card in filteredCards" :key="card.url" :info="card" />
 					</div>
 				</div>
 			</div>
@@ -16,7 +16,7 @@
 </template>
 <script>
 // @ is an alias to /src
-import UserCard from '@/components/UserMessage.vue';
+import PreviousGuideCard from '@/components/PreviousGuideCard.vue';
 import store from '@/store';
 import { db } from '@/firebase';
 import moment from 'moment';
@@ -64,7 +64,7 @@ export default {
 		},
 	},
 	components: {
-		UserCard,
+		PreviousGuideCard,
 	},
 };
 </script>

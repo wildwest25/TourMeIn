@@ -327,23 +327,22 @@
 						</div>
 					</form>
 					<div class="form-group">
-						<label for="exampleFormControlTextarea1">About Me</label>
+						<label for="exampleFormControlTextarea1">About Me</label> <!-- polje za unos detaljnijeg opisa (podataka o sebi) registriranog guidea-->
 						<textarea class="form-control" id="aboutMe" rows="10" v-model="newaboutMe"></textarea>
 					</div>
 					<div class="form-group">
-						<button
+						<button 
 							type="button"
 							id="btRegister"
 							@click.prevent="saveNewInfo"
 							class="btn btn-primary"
-						>
-							Save
-						</button>
+						> Save 
+						</button> <!-- button za saveanje unesenih podataka na stranici profila-->
 					</div>
 				</div>
 				<div class="col-sm"></div>
 			</div>
-			<form name="someForm" method="post" action="/someAction.do" class="form-inline">
+			<form name="someForm" method="post" action="/someAction.do" class="form-inline"> <!-- od ove linije koda do linije 395. su polja za unos linkova FB, Twitter i Instagram profila vodiča -->
 				<div class="input-group">
 					<div style="width: 370px;" class="form-group">
 						<div>
@@ -401,13 +400,12 @@
 	</div>
 </template>
 <script>
-// @ is an alias to /src
 import store from '@/store';
-import { db, storage } from '@/firebase';
+import { db, storage } from '@/firebase'; // osim db ovdje importamo i storage jer su u njemu spremljene slike profila
 
 export default {
 	name: 'Guide_functions',
-	data: function() {
+	data: function() { //postavljanje praznih vrijednosti za unos podataka na stranici
 		return {
 			store,
 			image: null,
@@ -425,7 +423,7 @@ export default {
 			newEndHour: '',
 			newEndMinute: '',
 
-			newMonday: 'false',
+			newMonday: 'false', //postavljamo sve ove vrijednosti na false kako ne bi bile pre-selectane
 			newTuesday: 'false',
 			newWednesday: 'false',
 			newThursday: 'false',
@@ -446,17 +444,17 @@ export default {
 		};
 	},
 	mounted() {
-		//* dohvat iz Firebasea
+		//* dohvat podataka ulogiranog guidea iz Firebasea
 		this.getUserInfo();
 	},
-	methods: {
+	methods: { //za dohvaćanje podataka sa Firebasea
 		getUserInfo() {
 			console.log('firebase dohvat...');
 
 			db.collection('user')
 				.where('email', '==', store.currentUser)
 				.get()
-				.then((querySnapshot) => {
+				.then((querySnapshot) => { //querySnapshot služi da dohvaća željene podatke/dokumente za usera kojeg je pronašao
 					querySnapshot.forEach((doc) => {
 						// doc.data() is never undefined for query doc snapshots
 						console.log(doc.id, ' => ', doc.data());
@@ -502,9 +500,9 @@ export default {
 						document.getElementById('InputEmail').value = store.currentUser;
 						//document.getElementById('exampleContact').value = data.phone;
 
-						//* Asinkrona funckcija
+						//* Asinkrona funckcija za dohvaćanje slike (kako bi očitalo sliku na vrijeme i pravilno)
 						var img = new Image();
-						img.onload = (e) => {
+						img.onload = (e) => { //kad je učitana slika da ju pusha na stranicu
 							this.image = img;
 						};
 						img.src = data.image;
@@ -515,7 +513,7 @@ export default {
 					console.log('Error getting documents: ', error);
 				});
 		},
-		saveNewInfo() {
+		saveNewInfo() { //kako se podaci ne bi mijenjali bez saveanja
 			const phone = this.newPhoneNumber;
 			const languages = this.newLanguages;
 			const monuments = this.newMonuments;
@@ -545,7 +543,7 @@ export default {
 
 			db.collection('user')
 				.doc(this.id)
-				.update({
+				.update({ //funkcija za update podataka nakon eventualne izmjene/ažuriranja
 					phone: phone,
 					languages: languages,
 					monuments: monuments,
@@ -574,21 +572,21 @@ export default {
 					instalink: instalink,
 				})
 				.then(() => {
-					console.log('spremljeno, doc');
+					console.log('spremljeno, doc'); //vraća nam potvrdu na konzoli da su podaci spremljeni na Firebase
 				})
 				.catch((e) => {
 					console.error(e);
 				});
 		},
-		addImage() {
-			this.imageReference.generateBlob((blobData) => {
+		addImage() { 
+			this.imageReference.generateBlob((blobData) => { //spremanje slike u prikladni "blob" format
 				let imageName = 'profile_image/' + store.currentUser + '.png';
 				//let imageName = store.currentUser + '_' + Date.now() + '.png';
 				console.log(imageName);
 
 				storage
 					.ref(imageName)
-					.put(blobData)
+					.put(blobData) //funkcija koja se koristi za storage spremanje slike u blob-u
 					.then((result) => {
 						// ... uspjesna linija
 						console.log(result);
@@ -603,7 +601,7 @@ export default {
 										image: url,
 									})
 									.then(() => {
-										console.log('spremljena slika, doc');
+										console.log('spremljena slika, doc'); //potvrda da je slika spremljena
 									})
 									.catch((e) => {
 										console.error(e);
@@ -627,7 +625,7 @@ export default {
 					image: null,
 				})
 				.then(() => {
-					console.log('slika izbrisana, doc');
+					console.log('slika izbrisana, doc'); //Potvrda da je slika izbrisana
 				});
 		},
 	},

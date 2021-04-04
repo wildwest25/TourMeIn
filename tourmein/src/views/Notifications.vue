@@ -5,14 +5,14 @@
 			<div class="row">
 				<div class="col-8 offset-1">
 					<!-- //! primjer sa my previous tours, najbolje prilagoditi ka sta je tamo -->
-					<user-card v-for="card in filteredCards" :key="card.url" :info="card" /> <!--izlistava sve notifikacije-->
+					<previous-guide-card v-for="card in filteredCards" :key="card.url" :info="card" /> <!--izlistava sve notifikacije-->
 				</div>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
-import UserCard from '@/components/Notificationcard.vue';
+import PreviousGuideCard from '@/components/Notificationcard.vue';
 import store from '@/store';
 import { db } from '@/firebase';
 
