@@ -4,7 +4,7 @@
 		<div class="container-fluid h-100">
 			<div class="row justify-content-center h-100">
 				<div class="col-md-8 col-xl-6 chat">
-					<div class="card">
+					<div id="chatcard" class="card">
 						<div class="card-header msg_head">
 							<div class="d-flex bd-highlight">
 								<div class="img_cont">
@@ -116,14 +116,15 @@
 									<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
 								</div>
 								<textarea
-									name=""
+									id="Text_Area"
+									name="Text_Area"
 									class="form-control type_msg"
 									placeholder="Type your message..."
 								></textarea>
 								<div class="input-group-append">
 									<span class="input-group-text send_btn"
-										><i class="fas fa-location-arrow"></i
-									></span>
+										><i class="fas fa-location-arrow"></i>
+									</span>
 								</div>
 							</div>
 						</div>
@@ -201,8 +202,8 @@ body,
 	margin-top: auto;
 	margin-bottom: auto;
 }
-.card {
-	height: 500px;
+#chatcard {
+	height: 600px;
 	border-radius: 15px !important;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 }
@@ -211,9 +212,11 @@ body,
 	overflow-y: auto;
 	white-space: nowrap;
 }
+
 .msg_card_body {
 	overflow-y: auto;
 }
+
 .card-header {
 	border-radius: 15px 15px 0 0 !important;
 	border-bottom: 0 !important;
