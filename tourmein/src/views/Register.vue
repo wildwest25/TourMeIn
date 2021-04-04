@@ -1,5 +1,6 @@
 <style>
 /*
+BOOTSTRAP ZA COUNTRY SELECT
 Make bootstrap-select work with bootstrap 4 see:
 https://github.com/silviomoreto/bootstrap-select/issues/1135
 */
@@ -57,12 +58,12 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 
 <template>
 	<div class="register">
-		<h1>Registration Form</h1>
+		<h1>Registration Form</h1> 
 		<div class="container">
 			<div class="row justify-content-md-center">
 				<div class="col-lg-6">
 					<form>
-						<div class="form-group" :class="{ error: validation.hasError('email') }">
+						<div class="form-group" :class="{ error: validation.hasError('email') }"> <!--definiranje polja za unos Emaila uz pozivanje postavljenih validator pravila-->
 							<label for="exampleInputEmail1">Email address</label>
 							<input
 								type="email"
@@ -72,12 +73,12 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 								aria-describedby="emailHelp"
 								placeholder="Enter email"
 							/>
-							<div class="message" style="color">{{ validation.firstError('email') }}</div>
+							<div class="message" style="color">{{ validation.firstError('email') }}</div> 
 							<small id="emailHelp" class="form-text text-muted"
 								>We'll never share your email with anyone else.</small
 							>
 						</div>
-						<div class="form-group" :class="{ error: validation.hasError('password') }">
+						<div class="form-group" :class="{ error: validation.hasError('password') }"> <!--definiranje polja za postavljanje passworda uz pozivanje validator pravila-->
 							<label for="exampleInputPassword1">Password</label>
 							<input
 								type="password"
@@ -88,7 +89,7 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 							/>
 							<div class="message">{{ validation.firstError('password') }}</div>
 						</div>
-						<div class="form-group" :class="{ error: validation.hasError('repeat') }">
+						<div class="form-group" :class="{ error: validation.hasError('repeat') }"> <!--ukoliko ne upišemo isti password javlja nam error -->
 							<input
 								type="password"
 								v-model="repeat"
@@ -98,7 +99,7 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 							/>
 							<div class="message">{{ validation.firstError('repeat') }}</div>
 						</div>
-						<div class="form-group" :class="{ error: validation.hasError('newFirstname') }">
+						<div class="form-group" :class="{ error: validation.hasError('newFirstname') }"> <!-- polje za unos imena uz pozivanje validator pravila -->
 							<label for="exampleName">Name</label>
 							<input
 								type="name"
@@ -109,7 +110,7 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 							/>
 							<div class="message">{{ validation.firstError('newFirstname') }}</div>
 						</div>
-						<div class="form-group" :class="{ error: validation.hasError('newLastname') }">
+						<div class="form-group" :class="{ error: validation.hasError('newLastname') }"> <!-- polje za unos prezimena uz pozivanje definiranih validator pravila-->
 							<label for="exampleSurename">Last Name</label>
 							<input
 								type="lastname"
@@ -120,7 +121,7 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 							/>
 							<div class="message">{{ validation.firstError('newLastname') }}</div>
 						</div>
-						<div class="form-inline" :class="{ error: validation.hasError('newGender') }">
+						<div class="form-inline" :class="{ error: validation.hasError('newGender') }"> <!-- definiranje radio buttona za odabir spola uz validator pravila-->
 							<label for="gender"> Gender: </label>
 							<div>
 								<input
@@ -133,7 +134,7 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 									class="form-control"
 								/>
 							</div>
-							<label for="male"> Male </label>
+							<label for="male"> Male </label> 
 							<div>
 								<input
 									type="radio"
@@ -160,7 +161,7 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 							<label for="other"> Other </label>
 							<div class="message">{{ validation.firstError('newGender') }}</div>
 						</div>
-						<div class="form-inline" :class="{ error: validation.hasError('newdob') }">
+						<div class="form-inline" :class="{ error: validation.hasError('newdob') }"> <!-- polje za unos datuma rođenja -->
 							<label for="start"> Date of birth: </label>
 							<input 
 							id="DOB" 
@@ -169,15 +170,14 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 							required=""
 							v-model="newdob"
 							 />
-							 <div id="Text_age"> You must be atleast 18 years old to register </div> 
+							 <div id="Text_age"> You must be atleast 18 years old to register </div> <!-- napomena da se mora biti bar 18 godina star za registraciju-->
 							<div class="message">{{ validation.firstError('newdob') }}</div>
 						</div>
 						<div class="form-inline">
-							<label for="country"> Country: </label>
+							<label for="country"> Country: </label> 
 							<div id="CO">
 								<vue-country-code
 									@onSelect="onSelect"
-									:preferredCountries="['hr', 'de', 'it', 'gb']"
 								>
 								</vue-country-code>
 							</div>

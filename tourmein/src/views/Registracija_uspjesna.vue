@@ -6,7 +6,7 @@
 			height="50%"
 			width="100%"
 			loading="lazy"
-		/>
+		/> <!-- dodaje naslovni image na stranicu potvrde uspješne registracije-->
 		<div>
 			<div class="row">
 				<div class="col">
@@ -34,7 +34,7 @@
 								@click="resendVerification"
 							>
 								Resend
-							</button>
+							</button> <!--button za resendanje verifikacijskog emaila (može ga se koristiti tek kada prođe 60 sekundi od registracije)-->
 						</div>
 					</div>
 
@@ -74,14 +74,14 @@
 							width="190"
 							alt="logo aplikacije"
 							loading="lazy"
-						/>
+						/> <!-- slika loga aplikacije iznad home buttona-->
 					</div>
 
 					<div id="TRM">TourMeIn</div>
 
 					<div>
 						<br />
-						<a href="/" class="btn btn-primary" @click="goHomeandlogout">Home</a>
+						<a href="/" class="btn btn-primary" @click="goHomeandlogout">Home</a> <!-- button koji nas vraća na Home page-->
 					</div>
 				</div>
 			</div>
@@ -101,7 +101,7 @@ export default {
 		};
 	},
 	methods: {
-		resendVerification() {
+		resendVerification() { //funkcija za resendanje verifikacijskog maila
 			var user = firebase.auth().currentUser;
 
 			user
@@ -114,6 +114,7 @@ export default {
 					// An error happened.
 				});
 		},
+		
 		goHomeandlogout() {
 			firebase
 				.auth()

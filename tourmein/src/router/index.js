@@ -40,7 +40,7 @@ const routes = [
 		meta: {
 			needsUser: true,
 		},
-		component: () => import('../views/My_pervious_tours-guide.vue'),
+		component: () => import('../views/My_previous_tours-guide.vue'),
 	},
 	{
 		path: '/notifications',

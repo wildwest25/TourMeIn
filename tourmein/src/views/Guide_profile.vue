@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm">
-					<croppa
+					<croppa  
 						v-if="image"
 						:width="200"
 						:height="200"
@@ -11,7 +11,7 @@
 						:initial-image="image"
 						:show-remove-button="false"
 						v-model="imageReference"
-					></croppa>
+					></croppa> <!-- croppa je plugin za dodavanje profilne slike vodiča/korisnika i pozicioniranje iste-->
 					<croppa
 						v-if="imageisHere === null"
 						:width="200"
@@ -26,11 +26,11 @@
 						:show-loading="true"
 						v-model="imageReference"
 					></croppa>
-					<a href="#" class="btn btn-primary" @click="addImage()">Save image</a>
-					<a href="#" class="btn btn-secondary" @click="removeImage()">Remove image</a>
+					<a href="#" class="btn btn-primary" @click="addImage()">Save image</a> <!-- button za spremanje dodane slike na profil vodiča-->
+					<a href="#" class="btn btn-secondary" @click="removeImage()">Remove image</a> <!-- button za uklanjanje prethodno dodane slike profila -->
 
 					<!--<img src="@/assets/img-thumnail.svg" />-->
-					<div class="form-group">
+					<div class="form-group"> <!-- sve unutar ovog div classa je ono što nam piše ispod slike na profilu vodiča (ime i prezime, godine i ocjena)-->
 						<label for="nameSurname">{{ firstname }} {{ lastname }}</label
 						><br />
 						<label for="DOB">{{ dob }}</label
@@ -39,7 +39,7 @@
 					</div>
 				</div>
 				<div class="col-fluid">
-					<form>
+					<form> <!-- formular za popunjavanje podataka na profilnoj stranici vodiča -->
 						<div class="form-group">
 							<label for="InputEmail">Email address</label>
 							<input
@@ -57,8 +57,8 @@
 								class="form-control"
 								id="exampleContact"
 								placeholder="+385 00000-0000"
-								v-model="newPhoneNumber"
-							/>
+								v-model="newPhoneNumber" 
+							/> <!-- v-model koristimo kako bi olakšali pozivanje, slanje i prikazivanje podataka s Firebasea-->
 						</div>
 						<div class="form-group">
 							<label for="exampleInputLanguages">Languages</label>
@@ -148,7 +148,7 @@
 								</div>
 							</div>
 						</form>
-						<form name="someForm" method="post" action="/someAction.do" class="form-inline">
+						<form name="someForm" method="post" action="/someAction.do" class="form-inline"> <!-- napravljen novi form radi inline funkcionalnosti i istog tipa podataka-->
 							<div class="input-group">
 								<div class="form-group">
 									<label for="startDate"> Days Avaiable: </label>
@@ -246,7 +246,7 @@
 								</div>
 							</div>
 						</form>
-						<form name="someForm" method="post" action="/someAction.do" class="form-inline">
+						<form name="someForm" method="post" action="/someAction.do" class="form-inline"> <!-- napravljen novi form radi inline funkcionalnosti i istog tipa podataka--> 
 							<div class="input-group">
 								<div class="form-group">
 									<label for="pricing"> Pricing: </label>
@@ -281,7 +281,7 @@
 						</form>
 						<!--<button type="submit" class="btn btn-primary">Register</button> save? -->
 					</form>
-					<form name="someForm" method="post" action="/someAction.do" class="form-inline">
+					<form name="someForm" method="post" action="/someAction.do" class="form-inline"> <!-- napravljen novi form radi inline funkcionalnosti i istog tipa podataka-->
 						<div class="input-group">
 							<div class="form-group">
 								<label for="costPerHour"> Cost Per Hour: </label>
@@ -320,6 +320,7 @@
 										<option>£</option>
 										<option>$</option>
 										<option>¥</option>
+										<option>HRK</option>
 									</select>
 								</div>
 							</div>

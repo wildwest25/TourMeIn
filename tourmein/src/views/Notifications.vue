@@ -5,14 +5,13 @@
 			<div class="row">
 				<div class="col-8 offset-1">
 					<!-- //! primjer sa my previous tours, najbolje prilagoditi ka sta je tamo -->
-					<user-card v-for="card in filteredCards" :key="card.url" :info="card" />
+					<user-card v-for="card in filteredCards" :key="card.url" :info="card" /> <!--izlistava sve notifikacije-->
 				</div>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
-// @ is an alias to /src
 import UserCard from '@/components/Notificationcard.vue';
 import store from '@/store';
 import { db } from '@/firebase';
@@ -34,7 +33,7 @@ export default {
 		}
 	},
 	methods: {
-		getNotificationsGuide() {
+		getNotificationsGuide() { //dohvat notifikacija od strane guidea
 			console.log('firebase dohvat...');
 
 			db.collection('tour')
@@ -55,7 +54,7 @@ export default {
 					});
 				});
 		},
-		getNotificationsUser() {
+		getNotificationsUser() { //dohvat notificationa za usera
 			console.log('firebase dohvat...');
 
 			db.collection('tour')
@@ -79,11 +78,11 @@ export default {
 	},
 	computed: {
 		filteredCards() {
-			return this.notifications;
+			return this.notifications; //prikuplja sve notifikacije 
 		},
 	},
 	components: {
-		UserCard,
+		PreviousGuideCard, //pozivanje komponente
 	},
 };
 </script>

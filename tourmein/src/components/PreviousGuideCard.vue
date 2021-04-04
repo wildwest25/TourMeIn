@@ -1,5 +1,5 @@
-<template>
-	<div class="card text-left">
+<template> <!-- cijela ova komponenta služi za dohvaćanje kartica prethodnih Guideova (koji su nas vodili na turu) u "My_previous_tours-guide.vue"-->
+	<div class="card text-left"> 
 		<div class="row">
 			<div class="col-md-auto">
 				<div class="card-header">{{ info.description }}</div>

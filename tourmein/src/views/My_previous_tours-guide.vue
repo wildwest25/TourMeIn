@@ -15,7 +15,7 @@
 </template>
 <script>
 // @ is an alias to /src
-import UserCard from '@/components/UserCard.vue';
+import UserCard from '@/components/PreviousGuideCard.vue';
 import store from '@/store';
 import { db } from '@/firebase';
 
