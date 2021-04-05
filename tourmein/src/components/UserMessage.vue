@@ -47,6 +47,7 @@ export default {
 
 	methods: {
 		selectMessage() {
+			store.selectedUser = this.info.description;
 			router.push({ name: 'Msg_preview' });
 		},
 	},

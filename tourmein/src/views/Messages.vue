@@ -26,7 +26,7 @@ import { db } from '@/firebase';
 import moment from 'moment';
 
 export default {
-	name: 'message_functions',
+	name: 'message_users',
 	data: function() {
 		return {
 			messages: [],
