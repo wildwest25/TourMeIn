@@ -129,6 +129,7 @@ export default {
 		};
 	},
 	mounted() {
+		console.log('user ', this.info.user);
 		db.collection('user')
 			.where('email', '==', store.currentUser)
 			.get()
@@ -184,11 +185,11 @@ export default {
 									db.collection('message')
 										.add({
 											guide: store.currentUser,
-											user: this.info.email,
+											user: this.info.user,
 											username: this.info.name,
 											guidename: this.userFullname,
 											createdAt: new Date(),
-											text: 'You can now comunicate with this guide.',
+											text: 'You can now comunicate about the tour.',
 										})
 										.then(() => {
 											console.log('now message created');

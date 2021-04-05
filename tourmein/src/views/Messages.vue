@@ -35,10 +35,11 @@ export default {
 	},
 	mounted() {
 		//* dohvat iz Firebasea
-		this.getMessages();
+		this.getMessagesUser();
+		this.getMessagesGuide();
 	},
 	methods: {
-		getMessages() {
+		getMessagesUser() {
 			console.log('firebase dohvat...');
 
 			db.collection('message')
@@ -54,6 +55,27 @@ export default {
 							id: data.id,
 							time: moment(d).format('HH:mm:ss - DD.MM.YYYY.'),
 							description: data.guidename,
+							text: data.text,
+						});
+					});
+				});
+		},
+		getMessagesGuide() {
+			console.log('firebase dohvat...');
+
+			db.collection('message')
+				.where('guide', '==', store.currentUser)
+				.get()
+				.then((query) => {
+					this.messages = [];
+					query.forEach((doc) => {
+						const data = doc.data();
+						let d = data.createdAt.toDate();
+
+						this.messages.push({
+							id: data.id,
+							time: moment(d).format('HH:mm:ss - DD.MM.YYYY.'),
+							description: data.username,
 							text: data.text,
 						});
 					});
