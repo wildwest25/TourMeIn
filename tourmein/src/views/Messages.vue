@@ -35,8 +35,11 @@ export default {
 	},
 	mounted() {
 		//* dohvat iz Firebasea
-		this.getMessagesUser();
-		this.getMessagesGuide();
+		if (store.isGuide == 'true') {
+			this.getMessagesGuide();
+		} else {
+			this.getMessagesUser();
+		}
 	},
 	methods: {
 		getMessagesUser() {
