@@ -7,6 +7,7 @@ import 'vue-croppa/dist/vue-croppa.css';
 import SimpleVueValidation from 'simple-vue-validator';
 import VueCountryCode from 'vue-country-code-select';
 import VuePaginate from 'vue-paginate';
+import Raters from 'vue-rate-it';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
@@ -14,6 +15,8 @@ Vue.use(Croppa);
 Vue.use(SimpleVueValidation);
 Vue.use(VueCountryCode);
 Vue.use(VuePaginate);
+Vue.use(Raters)
+Vue.component('star-rating', Raters.StarRating);
 
 new Vue({
 	router,

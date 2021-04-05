@@ -93,6 +93,10 @@
 						other a message from the top of the further agreement.
 					</div>
 				</div>
+				<div class="col-md">
+						<div class="card-body p-0">Please rate {{info.guidename}} before asking for a new guide.</div>
+					<star-rating v-model="rating"></star-rating>
+				</div>
 			</div>
 			<div v-if="info.accepted === false">
 				<div class="col-md-auto">
@@ -118,8 +122,19 @@
 <script>
 import store from '@/store';
 import { db } from '@/firebase';
+import {StarRating} from 'vue-rate-it';
 
 export default {
+
+	components: {
+    StarRating
+  	},
+  data(){
+    return {
+      rating: 3
+    }
+  },
+
 	props: ['info'],
 	name: 'Notifications',
 	data: function() {
