@@ -125,6 +125,7 @@ export default {
 					this.$router.push({ name: 'Home' });
 					store.isGuide = null;
 					store.tourInProgress = null;
+					store.selectedUser = null;
 				});
 		},
 	},
