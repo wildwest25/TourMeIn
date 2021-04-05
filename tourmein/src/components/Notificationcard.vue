@@ -96,6 +96,7 @@
 				<div class="col-md">
 						<div class="card-body p-0">Please rate {{info.guidename}} before asking for a new guide.</div>
 					<star-rating v-model="rating"></star-rating>
+					<div>Current rating: {{rating}} </div>
 				</div>
 			</div>
 			<div v-if="info.accepted === false">
