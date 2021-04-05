@@ -5,7 +5,8 @@
 			<div class="row">
 				<div class="col-8 offset-1">
 					<!-- //! primjer sa my previous tours, najbolje prilagoditi ka sta je tamo -->
-					<previous-guide-card v-for="card in filteredCards" :key="card.url" :info="card" /> <!--izlistava sve notifikacije-->
+					<previous-guide-card v-for="card in filteredCards" :key="card.url" :info="card" />
+					<!--izlistava sve notifikacije-->
 				</div>
 			</div>
 		</div>
@@ -33,7 +34,8 @@ export default {
 		}
 	},
 	methods: {
-		getNotificationsGuide() { //dohvat notifikacija od strane guidea
+		getNotificationsGuide() {
+			//dohvat notifikacija od strane guidea
 			console.log('firebase dohvat...');
 
 			db.collection('tour')
@@ -50,11 +52,14 @@ export default {
 							name: data.name,
 							guidename: data.guidename,
 							accepted: data.accepted,
+							userimage: data.userimage,
+							guideimage: data.guideimage,
 						});
 					});
 				});
 		},
-		getNotificationsUser() { //dohvat notificationa za usera
+		getNotificationsUser() {
+			//dohvat notificationa za usera
 			console.log('firebase dohvat...');
 
 			db.collection('tour')
@@ -78,7 +83,7 @@ export default {
 	},
 	computed: {
 		filteredCards() {
-			return this.notifications; //prikuplja sve notifikacije 
+			return this.notifications; //prikuplja sve notifikacije
 		},
 	},
 	components: {

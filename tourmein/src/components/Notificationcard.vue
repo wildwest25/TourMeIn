@@ -189,6 +189,8 @@ export default {
 											username: this.info.name,
 											guidename: this.userFullname,
 											createdAt: new Date(),
+											guideimage: this.info.guideimage,
+											userimage: this.info.userimage,
 											text: 'You can now comunicate about the tour.',
 										})
 										.then(() => {

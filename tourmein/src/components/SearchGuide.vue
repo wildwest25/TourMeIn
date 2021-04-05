@@ -29,7 +29,7 @@
 						info.endminute
 					}}
 				</div>
-				<div class="col-md-auto" v-if="info.monday=== true">
+				<div class="col-md-auto" v-if="info.monday === true">
 					<div class="card-body p-0">
 						<img
 							class="card-img-top offset-1"
@@ -38,7 +38,7 @@
 						/>MON
 					</div>
 				</div>
-				<div class="col-md-auto" v-if="info.tuesday=== true">
+				<div class="col-md-auto" v-if="info.tuesday === true">
 					<div class="card-body p-0">
 						<img
 							class="card-img-top offset-1"
@@ -47,7 +47,7 @@
 						/>TUE
 					</div>
 				</div>
-				<div class="col-md-auto" v-if="info.wednesday=== true">
+				<div class="col-md-auto" v-if="info.wednesday === true">
 					<div class="card-body p-0">
 						<img
 							class="card-img-top offset-1"
@@ -56,7 +56,7 @@
 						/>WED
 					</div>
 				</div>
-				<div class="col-md-auto" v-if="info.thursday=== true">
+				<div class="col-md-auto" v-if="info.thursday === true">
 					<div class="card-body p-0">
 						<img
 							class="card-img-top offset-1"
@@ -65,7 +65,7 @@
 						/>THU
 					</div>
 				</div>
-				<div class="col-md-auto" v-if="info.friday=== true">
+				<div class="col-md-auto" v-if="info.friday === true">
 					<div class="card-body p-0">
 						<img
 							class="card-img-top offset-1"
@@ -74,7 +74,7 @@
 						/>FRI
 					</div>
 				</div>
-				<div class="col-md-auto" v-if="info.saturday=== true">
+				<div class="col-md-auto" v-if="info.saturday === true">
 					<div class="card-body p-0">
 						<img
 							class="card-img-top offset-1"
@@ -83,7 +83,7 @@
 						/>SAT
 					</div>
 				</div>
-				<div class="col-md-auto" v-if="info.sunday=== true">
+				<div class="col-md-auto" v-if="info.sunday === true">
 					<div class="card-body p-0">
 						<img
 							class="card-img-top offset-1"
@@ -92,7 +92,7 @@
 						/>SUN
 					</div>
 				</div>
-            </div>
+			</div>
 		</div>
 		<div class="row justify-content-between">
 			<a :href="info.fb" style="margin-left:50px;">
@@ -124,6 +124,7 @@ export default {
 			byRating: '',
 			byPrice: '',
 			userFullname: '',
+			userimage: '',
 		};
 	},
 	mounted() {
@@ -135,6 +136,7 @@ export default {
 					const data = doc.data();
 
 					this.userFullname = data.firstname + ' ' + data.lastname;
+					this.userimage = data.image;
 				});
 			});
 	},
@@ -153,7 +155,6 @@ export default {
 				const user = store.currentUser;
 				const guide = this.info.email;
 				const name = this.userFullname;
-				const guidename = this.guideFullname;
 				console.log('tour in progress: ', store.tourInProgress);
 				if (store.tourInProgress == null) {
 					db.collection('tour')
@@ -163,6 +164,8 @@ export default {
 							name: name,
 							guidename: this.info.name,
 							accepted: null,
+							guideimage: this.info.image,
+							userimage: this.userimage,
 						})
 						.then(() => {
 							console.log('spremljeno, doc');

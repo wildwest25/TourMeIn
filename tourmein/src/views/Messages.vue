@@ -34,7 +34,6 @@ export default {
 		};
 	},
 	mounted() {
-		//* dohvat iz Firebasea
 		if (store.isGuide == 'true') {
 			this.getMessagesGuide();
 		} else {
@@ -59,6 +58,8 @@ export default {
 							time: moment(d).format('HH:mm:ss - DD.MM.YYYY.'),
 							description: data.guidename,
 							text: data.text,
+							guideimage: data.guideimage,
+							userimage: data.userimage,
 						});
 					});
 				});
@@ -80,6 +81,8 @@ export default {
 							time: moment(d).format('HH:mm:ss - DD.MM.YYYY.'),
 							description: data.username,
 							text: data.text,
+							guideimage: data.guideimage,
+							userimage: data.userimage,
 						});
 					});
 				});
