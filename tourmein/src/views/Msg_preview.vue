@@ -37,7 +37,7 @@
 							<div class="d-flex justify-content-start mb-4">
 								<div class="img_cont_msg">
 									<img
-										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+										src="info.guideimage"
 										class="rounded-circle user_img_msg"
 									/>
 								</div>
@@ -58,7 +58,7 @@
 							<div class="d-flex justify-content-start mb-4">
 								<div class="img_cont_msg">
 									<img
-										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+										src="info.guideimage"
 										class="rounded-circle user_img_msg"
 									/>
 								</div>
@@ -79,7 +79,7 @@
 							<div class="d-flex justify-content-start mb-4">
 								<div class="img_cont_msg">
 									<img
-										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+										src="info.guideimage"
 										class="rounded-circle user_img_msg"
 									/>
 								</div>
@@ -100,7 +100,7 @@
 							<div class="d-flex justify-content-start mb-4">
 								<div class="img_cont_msg">
 									<img
-										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+										src="info.guideimage"
 										class="rounded-circle user_img_msg"
 									/>
 								</div>
