@@ -5,9 +5,13 @@
 			<!--<h5>Welcome {{ firstname }}!</h5>-->
 			<div class="row">
 				<div class="col-8 offset-1">
-					<!-- //! primjer sa my previous tours, najbolje prilagoditi ka sta je tamo -->
 					<div id="msgcard">
-						<previous-guide-card id="msgucard" v-for="card in filteredCards" :key="card.url" :info="card" />
+						<previous-guide-card
+							id="msgucard"
+							v-for="card in filteredCards"
+							:key="card.url"
+							:info="card"
+						/>
 					</div>
 				</div>
 			</div>
@@ -16,7 +20,7 @@
 </template>
 <script>
 // @ is an alias to /src
-import PreviousGuideCard from '@/components/PreviousGuideCard.vue';
+import PreviousGuideCard from '@/components/UserMessage.vue';
 import store from '@/store';
 import { db } from '@/firebase';
 import moment from 'moment';
@@ -38,6 +42,7 @@ export default {
 			console.log('firebase dohvat...');
 
 			db.collection('message')
+				.where('user', '==', store.currentUser)
 				.get()
 				.then((query) => {
 					this.messages = [];

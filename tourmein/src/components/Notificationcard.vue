@@ -183,8 +183,8 @@ export default {
 								.then(() => {
 									db.collection('message')
 										.add({
-											user: store.currentUser,
-											guide: this.info.email,
+											guide: store.currentUser,
+											user: this.info.email,
 											username: this.info.name,
 											guidename: this.userFullname,
 											createdAt: new Date(),
