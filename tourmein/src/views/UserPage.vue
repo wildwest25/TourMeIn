@@ -1,5 +1,5 @@
 <template>
-	<div class="user_page">
+	<div class="UserPage">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm">
@@ -16,7 +16,7 @@
 								<label> Show only guides that charge: </label>
 								<div>
 									<input
-										type="radio"
+										type="checkbox"
 										v-model="byHour"
 										name="gen"
 										id="male"
@@ -28,7 +28,7 @@
 								<label> By Hour </label>
 								<div>
 									<input
-										type="radio"
+										type="checkbox"
 										v-model="byMonument"
 										name="gen"
 										id="female"
@@ -43,7 +43,7 @@
 								<label> Sort by: </label>
 								<div>
 									<input
-										type="checkbox"
+										type="radio"
 										v-model="byRating"
 										name="gen"
 										id="other"
@@ -55,7 +55,7 @@
 								<label> Rating </label>
 								<div style="margin-left:12px;">
 									<input
-										type="checkbox"
+										type="radio"
 										v-model="byPrice"
 										name="gen"
 										id="other"
@@ -108,7 +108,8 @@ export default {
 	mounted() {
 		this.getGuides();
 	},
-	methods: {
+	methods:
+	{
 		getGuides() {
 			console.log('firebase dohvat...');
 
@@ -119,6 +120,37 @@ export default {
 					this.cards = [];
 					query.forEach((doc) => {
 						const data = doc.data();
+						
+
+							if(data.costhour == true && data.costlandmark == true){
+								this.cards.push({
+								Prices:
+								data.costhour +
+								data.currency +
+								' per Hour and ' +
+								data.costlandmark +
+								data.currency +
+								' per Landmark',
+								})
+								}
+							else if(data.costhour == true){
+								this.cards.push({
+								Prices:
+								data.costhour +
+								data.currency +
+								' per Hour'
+								})
+							} else if(data.costlandmark == true){
+								this.cards.push({
+								Prices:
+								
+								data.costlandmark +
+								data.currency +
+								' per Landmark'
+								})
+								};
+
+
 
 						this.cards.push({
 							id: doc.id,
@@ -145,13 +177,6 @@ export default {
 							tw: data.twlink,
 							inst: data.instalink,
 
-							prices:
-								data.costhour +
-								data.currency +
-								' per Hour and ' +
-								data.costlandmark +
-								data.currency +
-								' per Landmark',
 							image: data.image,
 						});
 					});
@@ -159,27 +184,29 @@ export default {
 		},
 	},
 	computed: {
-		//! treba jos doraditi search
-		filteredCards() {
-			// logika koja filtrira cards
-			let termin = this.store.searchTerm.toLowerCase();
 
-			console.log(termin);
 
-			//! experimentno za sad
-			if (this.byHour) {
-				return this.cards.filter((card) => card.prices.toLowerCase().includes(termin));
-			} else if (this.byMonument) {
-				return this.cards.filter((card) => card.monuments.toLowerCase().includes(termin));
-			}
+		 filteredCards() {
+            // logika koja filtrira cards
+            let termin = this.store.searchTerm.toLowerCase();
 
-			return this.cards.filter(
-				(card) => card.name.toLowerCase().includes(termin)
-				//(card) => card.lang.toLowerCase().includes(termin),
-				//(card) => card.monuments.toLowerCase().includes(termin)
-			);
-		},
-	},
+            console.log(termin);
+
+            //! experimentno za sad
+            if (this.byHour.checked) {
+                return this.cards.filter((card) => card.prices.includes(termin));
+            } 
+			if (this.byMonument.checked) {
+                return this.cards.filter((card) => card.monuments.includes(termin));
+            }
+
+            return this.cards.filter(
+                (card) => card.name.toLowerCase().includes(termin)
+                //(card) => card.lang.toLowerCase().includes(termin),
+                //(card) => card.monuments.toLowerCase().includes(termin)
+            );
+        },
+    },
 	components: {
 		UserCard,
 	},
