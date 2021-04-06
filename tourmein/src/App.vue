@@ -38,7 +38,7 @@
 				/>
 				<h1>TourMeIn</h1>
 				<router-link to="/user_profile" class="offset-1">My Profile</router-link> |
-				<router-link to="/user_page">Search Guides</router-link> |
+				<router-link to="/UserPage">Search Guides</router-link> |
 				<router-link to="/my_guides">My Guides</router-link> |
 				<router-link to="/notifications">Notifications</router-link> |
 				<router-link to="/messages">Messages</router-link>
@@ -88,7 +88,7 @@ firebase.auth().onAuthStateChanged((user) => {
 						router.replace({ name: 'Guide_profile' });
 					} else {
 						// ak ne na user page
-						router.replace({ name: 'User_page' });
+						router.replace({ name: 'UserPage' });
 					}
 				});
 			})

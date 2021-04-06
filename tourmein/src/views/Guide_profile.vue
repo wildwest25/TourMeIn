@@ -485,10 +485,19 @@ export default {
 						this.newSaturday = data.saturday;
 						this.newSunday = data.sunday;
 
-						this.newperHour = data.perhour;
-						this.newperLandmark = data.perlandmark;
-						this.newcostPerHour = data.costhour;
-						this.newcostPerLandmark = data.costlandmark;
+						if(this.newperHour != 'false' && this.newperLandmark != 'false' && this.newcostPerHour != '' && this.newcostPerLandmark != '' ){
+								this.newperHour = data.perhour;
+								this.newperLandmark = data.perlandmark;
+								this.newcostPerHour = data.costhour;
+								this.newcostPerLandmark = data.costlandmark;
+						} else if(this.newperHour != 'false' && this.newcostPerHour != ''){
+							this.newperHour = data.perhour;
+							this.newcostPerHour = data.costhour;
+						}
+						else if(this.newperLandmark != 'false' && this.newcostPerLandmark != ''){
+							this.newperLandmark = data.perlandmark;
+							this.newcostPerLandmark = data.costlandmark;
+						}
 						this.newCurrency = data.currency;
 						this.newaboutMe = data.aboutme;
 						this.dob = data.dob;

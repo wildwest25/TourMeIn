@@ -67,20 +67,20 @@ const routes = [
 		component: () => import('../views/Msg_preview.vue'),
 	},
 	{
-		path: '/user_profile',
-		name: 'User_profile',
+		path: '/UserProfile',
+		name: 'UserProfile',
 		meta: {
 			needsUser: true,
 		},
-		component: () => import('../views/User_profile.vue'),
+		component: () => import('../views/UserProfile.vue'),
 	},
 	{
-		path: '/user_page',
-		name: 'User_page',
+		path: '/UserPage',
+		name: 'UserPage',
 		meta: {
 			needsUser: true,
 		},
-		component: () => import('../views/User_page.vue'),
+		component: () => import('../views/UserPage.vue'),
 	},
 	{
 		path: '/my_guides',
