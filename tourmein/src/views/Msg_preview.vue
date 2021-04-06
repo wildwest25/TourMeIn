@@ -46,8 +46,10 @@
 									name="Text_Area"
 									class="form-control type_msg"
 									placeholder="Type your message..."
+									v-model="msgToSend"
+									@keyup.enter="sendmsg()"
 								></textarea>
-								<div class="input-group-append">
+								<div class="input-group-append" @click="sendmsg">
 									<span class="input-group-text send_btn"
 										><i class="fas fa-location-arrow"></i>
 									</span>
@@ -76,7 +78,10 @@ export default {
 			recieverimg: '',
 			senderimg: '',
 			recievername: '',
+			sendername: '',
 			msgtotal: '',
+			msgToSend: '',
+			recievermail: '',
 		};
 	},
 	mounted() {
@@ -101,6 +106,8 @@ export default {
 							this.senderimg = data.userimage;
 							this.recieverimg = data.guideimage;
 							this.recievername = data.guidename;
+							this.sendername = data.username;
+							this.recievermail = data.guide;
 							let d = data.createdAt.toDate();
 
 							this.msgtotal++;
@@ -133,6 +140,8 @@ export default {
 							this.senderimg = data.guideimage;
 							this.recieverimg = data.userimage;
 							this.recievername = data.username;
+							this.sendername = data.guidename;
+							this.recievermail = data.user;
 
 							this.msgtotal++;
 
@@ -149,10 +158,57 @@ export default {
 					});
 				});
 		},
+		sendmsg() {
+			if (store.isGuide == 'true') {
+				db.collection('message')
+					.doc(new Date() + ' ' + store.currentUser)
+					.set({
+						guide: store.currentUser,
+						user: this.recievermail,
+						username: this.recievername,
+						guidename: this.sendername,
+						sendermail: store.currentUser,
+						createdAt: new Date(),
+						guideimage: this.senderimg,
+						userimage: this.recieverimg,
+						text: this.msgToSend,
+					})
+					.then(() => {
+						console.log('message sent');
+						this.msgToSend = '';
+						this.getMessagesGuide();
+					})
+					.catch((e) => {
+						console.error(e);
+					});
+			} else {
+				db.collection('message')
+					.doc(new Date() + ' ' + store.currentUser)
+					.set({
+						guide: this.recievermail,
+						user: store.currentUser,
+						username: this.sendername,
+						guidename: this.recievername,
+						sendermail: store.currentUser,
+						createdAt: new Date(),
+						guideimage: this.recieverimg,
+						userimage: this.senderimg,
+						text: this.msgToSend,
+					})
+					.then(() => {
+						console.log('message sent');
+						this.msgToSend = '';
+						this.getMessagesUser();
+					})
+					.catch((e) => {
+						console.error(e);
+					});
+			}
+		},
 	},
 	computed: {
 		filteredCards() {
-			return this.messages.reverse();
+			return this.messages;
 		},
 	},
 	components: {
