@@ -13,7 +13,7 @@
 								</div>
 								<div class="user_info">
 									<span>Chat with {{ this.recievername }}</span>
-									<p>8 Messages</p>
+									<p>{{ this.msgtotal }} Messages</p>
 								</div>
 							</div>
 							<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
@@ -27,78 +27,13 @@
 							</div>
 						</div>
 						<div class="card-body msg_card_body">
-							<div class="d-flex justify-content-start mb-4">
-								<div id="msgcard">
-									<previous-guide-card
-										id="msgucard"
-										v-for="card in filteredCards"
-										:key="card.url"
-										:info="card"
-									/>
-								</div>
-							</div>
-							<div class="d-flex justify-content-end mb-4">
-								<div class="msg_cotainer_send">
-									Hi Khalid i am good tnx how about you?
-									<span class="msg_time_send">8:55 AM, Today</span>
-								</div>
-								<div class="img_cont_msg">
-									<img src="@/assets/Rectangle_2.png" class="rounded-circle user_img_msg" />
-								</div>
-							</div>
-							<div class="d-flex justify-content-start mb-4">
-								<div class="img_cont_msg">
-									<img
-										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-										class="rounded-circle user_img_msg"
-									/>
-								</div>
-								<div class="msg_cotainer">
-									I am good too, thank you for your chat template
-									<span class="msg_time">9:00 AM, Today</span>
-								</div>
-							</div>
-							<div class="d-flex justify-content-end mb-4">
-								<div class="msg_cotainer_send">
-									You are welcome
-									<span class="msg_time_send">9:05 AM, Today</span>
-								</div>
-								<div class="img_cont_msg">
-									<img src="@/assets/Rectangle_2.png" class="rounded-circle user_img_msg" />
-								</div>
-							</div>
-							<div class="d-flex justify-content-start mb-4">
-								<div class="img_cont_msg">
-									<img
-										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-										class="rounded-circle user_img_msg"
-									/>
-								</div>
-								<div class="msg_cotainer">
-									I am looking for your next templates
-									<span class="msg_time">9:07 AM, Today</span>
-								</div>
-							</div>
-							<div class="d-flex justify-content-end mb-4">
-								<div class="msg_cotainer_send">
-									Ok, thank you have a good day
-									<span class="msg_time_send">9:10 AM, Today</span>
-								</div>
-								<div class="img_cont_msg">
-									<img src="@/assets/Rectangle_2.png" class="rounded-circle user_img_msg" />
-								</div>
-							</div>
-							<div class="d-flex justify-content-start mb-4">
-								<div class="img_cont_msg">
-									<img
-										src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-										class="rounded-circle user_img_msg"
-									/>
-								</div>
-								<div class="msg_cotainer">
-									Bye, see you
-									<span class="msg_time">9:12 AM, Today</span>
-								</div>
+							<div id="msgcard">
+								<previous-guide-card
+									id="msgucard"
+									v-for="card in filteredCards"
+									:key="card.url"
+									:info="card"
+								/>
 							</div>
 						</div>
 						<div class="card-footer">
@@ -141,6 +76,7 @@ export default {
 			recieverimg: '',
 			senderimg: '',
 			recievername: '',
+			msgtotal: '',
 		};
 	},
 	mounted() {
@@ -167,6 +103,8 @@ export default {
 							this.recievername = data.guidename;
 							let d = data.createdAt.toDate();
 
+							this.msgtotal++;
+
 							this.messages.push({
 								id: data.id,
 								time: moment(d).format('HH:mm:ss - DD.MM.YYYY.'),
@@ -174,6 +112,7 @@ export default {
 								text: data.text,
 								recieverimg: data.guideimage,
 								senderimg: data.userimage,
+								sendermail: data.sendermail,
 							});
 						}
 					});
@@ -195,6 +134,8 @@ export default {
 							this.recieverimg = data.userimage;
 							this.recievername = data.username;
 
+							this.msgtotal++;
+
 							this.messages.push({
 								id: data.id,
 								time: moment(d).format('HH:mm:ss - DD.MM.YYYY.'),
@@ -202,6 +143,7 @@ export default {
 								text: data.text,
 								senderimg: data.guideimage,
 								recieverimg: data.userimage,
+								sendermail: data.sendermail,
 							});
 						}
 					});
@@ -210,14 +152,19 @@ export default {
 	},
 	computed: {
 		filteredCards() {
-			// logika koja filtrira cards
-			let termin = this.store.searchTerm;
-
-			return this.messages.filter((card) => card.description.includes(termin));
+			return this.messages.reverse();
 		},
 	},
 	components: {
 		PreviousGuideCard,
 	},
 };
+
+jQuery(document).ready(function($) {
+	$(document).ready(function() {
+		$('#action_menu_btn').click(function() {
+			$('.action_menu').toggle();
+		});
+	});
+});
 </script>

@@ -31,6 +31,7 @@ export default {
 		return {
 			messages: [],
 			store,
+			last: '',
 		};
 	},
 	mounted() {
@@ -51,16 +52,19 @@ export default {
 					this.messages = [];
 					query.forEach((doc) => {
 						const data = doc.data();
-						let d = data.createdAt.toDate();
 
-						this.messages.push({
-							id: data.id,
-							time: moment(d).format('HH:mm:ss - DD.MM.YYYY.'),
-							description: data.guidename,
-							text: data.text,
-							guideimage: data.guideimage,
-							userimage: data.userimage,
-						});
+						if (this.last != data.user) {
+							let d = data.createdAt.toDate();
+							this.messages.push({
+								id: data.id,
+								time: moment(d).format('HH:mm:ss - DD.MM.YYYY.'),
+								description: data.guidename,
+								text: data.text,
+								guideimage: data.guideimage,
+								userimage: data.userimage,
+							});
+							this.last = data.user;
+						}
 					});
 				});
 		},
@@ -74,16 +78,19 @@ export default {
 					this.messages = [];
 					query.forEach((doc) => {
 						const data = doc.data();
-						let d = data.createdAt.toDate();
 
-						this.messages.push({
-							id: data.id,
-							time: moment(d).format('HH:mm:ss - DD.MM.YYYY.'),
-							description: data.username,
-							text: data.text,
-							guideimage: data.guideimage,
-							userimage: data.userimage,
-						});
+						if (this.last != data.user) {
+							let d = data.createdAt.toDate();
+							this.messages.push({
+								id: data.id,
+								time: moment(d).format('HH:mm:ss - DD.MM.YYYY.'),
+								description: data.username,
+								text: data.text,
+								guideimage: data.guideimage,
+								userimage: data.userimage,
+							});
+							this.last = data.user;
+						}
 					});
 				});
 		},
