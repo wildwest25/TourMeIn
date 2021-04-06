@@ -94,9 +94,11 @@
 					</div>
 				</div>
 				<div class="col-md">
-						<div class="card-body p-0">Please rate {{info.guidename}} before asking for a new guide.</div>
+					<div class="card-body p-0">
+						Please rate {{ info.guidename }} before asking for a new guide.
+					</div>
 					<star-rating v-model="rating"></star-rating>
-					<div>Current rating: {{rating}} </div>
+					<div>Current rating: {{ rating }}</div>
 				</div>
 			</div>
 			<div v-if="info.accepted === false">
@@ -123,18 +125,17 @@
 <script>
 import store from '@/store';
 import { db } from '@/firebase';
-import {StarRating} from 'vue-rate-it';
+import { StarRating } from 'vue-rate-it';
 
 export default {
-
 	components: {
-    StarRating
-  	},
-  data(){
-    return {
-      rating: 3
-    }
-  },
+		StarRating,
+	},
+	data() {
+		return {
+			rating: 3,
+		};
+	},
 
 	props: ['info'],
 	name: 'Notifications',
@@ -199,7 +200,8 @@ export default {
 								})
 								.then(() => {
 									db.collection('message')
-										.add({
+										.doc(new Date() + ' ' + store.currentUser)
+										.set({
 											guide: store.currentUser,
 											user: this.info.user,
 											username: this.info.name,
