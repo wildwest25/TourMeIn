@@ -79,6 +79,7 @@ firebase.auth().onAuthStateChanged((user) => {
 					const data = doc.data();
 					console.log('is guide: ', store.isGuide);
 					store.isGuide = data.guide;
+					store.guideID = doc.id;
 
 					if (currentRoute.name == 'Register') {
 						router.replace({ name: 'Registracija_uspjesna' });
@@ -126,6 +127,7 @@ export default {
 					store.isGuide = null;
 					store.tourInProgress = null;
 					store.selectedUser = null;
+					store.guideID = null;
 				});
 		},
 	},
