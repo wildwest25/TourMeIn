@@ -120,35 +120,6 @@ export default {
 					this.cards = [];
 					query.forEach((doc) => {
 						const data = doc.data();
-						
-
-							if(data.costhour == true && data.costlandmark == true){
-								this.cards.push({
-								Prices:
-								data.costhour +
-								data.currency +
-								' per Hour and ' +
-								data.costlandmark +
-								data.currency +
-								' per Landmark',
-								})
-								}
-							else if(data.costhour == true){
-								this.cards.push({
-								Prices:
-								data.costhour +
-								data.currency +
-								' per Hour'
-								})
-							} else if(data.costlandmark == true){
-								this.cards.push({
-								Prices:
-								
-								data.costlandmark +
-								data.currency +
-								' per Landmark'
-								})
-								};
 
 
 
@@ -175,11 +146,19 @@ export default {
 
 							fb: data.fblink,
 							tw: data.twlink,
-							inst: data.instalink,
+							inst: data.instalink,	
 
 							image: data.image,
 							ratedpreview: data.rated / data.ratedusers,
-							ratedusers: data.ratedusers
+							ratedusers: data.ratedusers,
+
+							Prices:
+								data.costhour +
+								data.currency +
+								' per Hour and ' +
+								data.costlandmark +
+								data.currency +
+								' per Landmark'
 						});
 					});
 				});
