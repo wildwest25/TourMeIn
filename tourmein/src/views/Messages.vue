@@ -97,10 +97,7 @@ export default {
 	},
 	computed: {
 		filteredCards() {
-			// logika koja filtrira cards
-			let termin = this.store.searchTerm;
-
-			return this.messages.filter((card) => card.description.includes(termin));
+			return this.messages;
 		},
 	},
 	components: {

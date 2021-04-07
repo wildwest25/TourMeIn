@@ -10,7 +10,7 @@
 			<div class="col-sm">
 				<div id="card_text_Star">
 					<img src=@/assets/A_star.png height=30% width=30% />
-					<div id="star_text">{{ info.rated }}</div>
+					<div id="star_text">{{ info.ratedpreview }}</div>
 				</div>
 				<button type="button" id="btRegister" @click="startTouring" class="btn btn-primary">
 					<div id="btn_txt">Start touring with this guide</div>

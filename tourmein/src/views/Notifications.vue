@@ -75,7 +75,9 @@ export default {
 							user: data.user,
 							name: data.name,
 							guidename: data.guidename,
+							guide: data.guide,
 							accepted: data.accepted,
+							guideID: data.guideID,
 						});
 					});
 				});

@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm">
-					<croppa  
+					<croppa
 						v-if="image"
 						:width="200"
 						:height="200"
@@ -11,7 +11,8 @@
 						:initial-image="image"
 						:show-remove-button="false"
 						v-model="imageReference"
-					></croppa> <!-- croppa je plugin za dodavanje profilne slike vodiča/korisnika i pozicioniranje iste-->
+					></croppa>
+					<!-- croppa je plugin za dodavanje profilne slike vodiča/korisnika i pozicioniranje iste-->
 					<croppa
 						v-if="imageisHere === null"
 						:width="200"
@@ -26,20 +27,26 @@
 						:show-loading="true"
 						v-model="imageReference"
 					></croppa>
-					<a href="#" class="btn btn-primary" @click="addImage()">Save image</a> <!-- button za spremanje dodane slike na profil vodiča-->
-					<a href="#" class="btn btn-secondary" @click="removeImage()">Remove image</a> <!-- button za uklanjanje prethodno dodane slike profila -->
+					<a href="#" class="btn btn-primary" @click="addImage()">Save image</a>
+					<!-- button za spremanje dodane slike na profil vodiča-->
+					<a href="#" class="btn btn-secondary" @click="removeImage()">Remove image</a>
+					<!-- button za uklanjanje prethodno dodane slike profila -->
 
 					<!--<img src="@/assets/img-thumnail.svg" />-->
-					<div class="form-group"> <!-- sve unutar ovog div classa je ono što nam piše ispod slike na profilu vodiča (ime i prezime, godine i ocjena)-->
+					<div class="form-group">
+						<!-- sve unutar ovog div classa je ono što nam piše ispod slike na profilu vodiča (ime i prezime, godine i ocjena)-->
 						<label for="nameSurname">{{ firstname }} {{ lastname }}</label
 						><br />
 						<label for="DOB">{{ dob }}</label
 						><br />
-						<label for="rating"> <img src=@/assets/A_star.png height=15% width=15% /> 4.6</label>
+						<label for="rating">
+							<img src=@/assets/A_star.png height=15% width=15% />{{ ratedpreview }}</label
+						>
 					</div>
 				</div>
 				<div class="col-fluid">
-					<form> <!-- formular za popunjavanje podataka na profilnoj stranici vodiča -->
+					<form>
+						<!-- formular za popunjavanje podataka na profilnoj stranici vodiča -->
 						<div class="form-group">
 							<label for="InputEmail">Email address</label>
 							<input
@@ -57,8 +64,9 @@
 								class="form-control"
 								id="exampleContact"
 								placeholder="+385 00000-0000"
-								v-model="newPhoneNumber" 
-							/> <!-- v-model koristimo kako bi olakšali pozivanje, slanje i prikazivanje podataka s Firebasea-->
+								v-model="newPhoneNumber"
+							/>
+							<!-- v-model koristimo kako bi olakšali pozivanje, slanje i prikazivanje podataka s Firebasea-->
 						</div>
 						<div class="form-group">
 							<label for="exampleInputLanguages">Languages</label>
@@ -156,7 +164,8 @@
 								</div>
 							</div>
 						</form>
-						<form name="someForm" method="post" action="/someAction.do" class="form-inline"> <!-- napravljen novi form radi inline funkcionalnosti i istog tipa podataka-->
+						<form name="someForm" method="post" action="/someAction.do" class="form-inline">
+							<!-- napravljen novi form radi inline funkcionalnosti i istog tipa podataka-->
 							<div class="input-group">
 								<div class="form-group">
 									<label for="startDate"> Days Avaiable: </label>
@@ -254,7 +263,8 @@
 								</div>
 							</div>
 						</form>
-						<form name="someForm" method="post" action="/someAction.do" class="form-inline"> <!-- napravljen novi form radi inline funkcionalnosti i istog tipa podataka--> 
+						<form name="someForm" method="post" action="/someAction.do" class="form-inline">
+							<!-- napravljen novi form radi inline funkcionalnosti i istog tipa podataka-->
 							<div class="input-group">
 								<div class="form-group">
 									<label for="pricing"> Pricing: </label>
@@ -289,7 +299,8 @@
 						</form>
 						<!--<button type="submit" class="btn btn-primary">Register</button> save? -->
 					</form>
-					<form name="someForm" method="post" action="/someAction.do" class="form-inline"> <!-- napravljen novi form radi inline funkcionalnosti i istog tipa podataka-->
+					<form name="someForm" method="post" action="/someAction.do" class="form-inline">
+						<!-- napravljen novi form radi inline funkcionalnosti i istog tipa podataka-->
 						<div class="input-group">
 							<div class="form-group">
 								<label for="costPerHour"> Cost Per Hour: </label>
@@ -337,22 +348,26 @@
 						</div>
 					</form>
 					<div class="form-group">
-						<label for="exampleFormControlTextarea1">About Me</label> <!-- polje za unos detaljnijeg opisa (podataka o sebi) registriranog guidea-->
+						<label for="exampleFormControlTextarea1">About Me</label>
+						<!-- polje za unos detaljnijeg opisa (podataka o sebi) registriranog guidea-->
 						<textarea class="form-control" id="aboutMe" rows="10" v-model="newaboutMe"></textarea>
 					</div>
 					<div class="form-group">
-						<button 
+						<button
 							type="button"
 							id="btRegister"
 							@click.prevent="saveNewInfo"
 							class="btn btn-primary"
-						> Save 
-						</button> <!-- button za saveanje unesenih podataka na stranici profila-->
+						>
+							Save
+						</button>
+						<!-- button za saveanje unesenih podataka na stranici profila-->
 					</div>
 				</div>
 				<div class="col-sm"></div>
 			</div>
-			<form name="someForm" method="post" action="/someAction.do" class="form-inline"> <!-- od ove linije koda do linije 395. su polja za unos linkova FB, Twitter i Instagram profila vodiča -->
+			<form name="someForm" method="post" action="/someAction.do" class="form-inline">
+				<!-- od ove linije koda do linije 395. su polja za unos linkova FB, Twitter i Instagram profila vodiča -->
 				<div class="input-group">
 					<div style="width: 370px;" class="form-group">
 						<div>
@@ -415,7 +430,8 @@ import { db, storage } from '@/firebase'; // osim db ovdje importamo i storage j
 
 export default {
 	name: 'Guide_functions',
-	data: function() { //postavljanje praznih vrijednosti za unos podataka na stranici
+	data: function() {
+		//postavljanje praznih vrijednosti za unos podataka na stranici
 		return {
 			store,
 			image: null,
@@ -451,26 +467,28 @@ export default {
 			newFBlink: '',
 			newTwitterlink: '',
 			newInstalink: '',
+			ratedpreview: '',
 		};
 	},
 	mounted() {
 		//* dohvat podataka ulogiranog guidea iz Firebasea
 		this.getUserInfo();
 	},
-	methods: { //za dohvaćanje podataka sa Firebasea
+	methods: {
+		//za dohvaćanje podataka sa Firebasea
 		getUserInfo() {
 			console.log('firebase dohvat...');
 
 			db.collection('user')
 				.where('email', '==', store.currentUser)
 				.get()
-				.then((querySnapshot) => { //querySnapshot služi da dohvaća željene podatke/dokumente za usera kojeg je pronašao
+				.then((querySnapshot) => {
+					//querySnapshot služi da dohvaća željene podatke/dokumente za usera kojeg je pronašao
 					querySnapshot.forEach((doc) => {
 						// doc.data() is never undefined for query doc snapshots
 						console.log(doc.id, ' => ', doc.data());
 
 						const data = doc.data();
-						//store.isGuide = data.guide;
 
 						this.id = doc.id;
 
@@ -516,12 +534,15 @@ export default {
 						this.newTwitterlink = data.twlink;
 						this.newInstalink = data.instalink;
 
+						this.ratedpreview = data.rated / data.ratedusers;
+
 						document.getElementById('InputEmail').value = store.currentUser;
 						//document.getElementById('exampleContact').value = data.phone;
 
 						//* Asinkrona funckcija za dohvaćanje slike (kako bi očitalo sliku na vrijeme i pravilno)
 						var img = new Image();
-						img.onload = (e) => { //kad je učitana slika da ju pusha na stranicu
+						img.onload = (e) => {
+							//kad je učitana slika da ju pusha na stranicu
 							this.image = img;
 						};
 						img.src = data.image;
@@ -532,7 +553,8 @@ export default {
 					console.log('Error getting documents: ', error);
 				});
 		},
-		saveNewInfo() { //kako se podaci ne bi mijenjali bez saveanja
+		saveNewInfo() {
+			//kako se podaci ne bi mijenjali bez saveanja
 			const phone = this.newPhoneNumber;
 			const languages = this.newLanguages;
 			const monuments = this.newMonuments;
@@ -562,7 +584,8 @@ export default {
 
 			db.collection('user')
 				.doc(this.id)
-				.update({ //funkcija za update podataka nakon eventualne izmjene/ažuriranja
+				.update({
+					//funkcija za update podataka nakon eventualne izmjene/ažuriranja
 					phone: phone,
 					languages: languages,
 					monuments: monuments,
@@ -597,8 +620,9 @@ export default {
 					console.error(e);
 				});
 		},
-		addImage() { 
-			this.imageReference.generateBlob((blobData) => { //spremanje slike u prikladni "blob" format
+		addImage() {
+			this.imageReference.generateBlob((blobData) => {
+				//spremanje slike u prikladni "blob" format
 				let imageName = 'profile_image/' + store.currentUser + '.png';
 				//let imageName = store.currentUser + '_' + Date.now() + '.png';
 				console.log(imageName);

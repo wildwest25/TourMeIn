@@ -155,7 +155,6 @@ export default {
 						this.cards.push({
 							id: doc.id,
 							name: data.firstname + ' ' + data.lastname,
-							rated: data.rated,
 							monuments: data.monuments,
 							lang: data.languages,
 							email: data.email,
@@ -178,6 +177,7 @@ export default {
 							inst: data.instalink,
 
 							image: data.image,
+							ratedpreview: data.rated / data.ratedusers,
 						});
 					});
 				});
