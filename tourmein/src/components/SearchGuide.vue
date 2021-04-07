@@ -148,7 +148,12 @@ export default {
 				.get()
 				.then((querySnapshot) => {
 					querySnapshot.forEach((doc) => {
-						store.tourInProgress = true;
+						const data = doc.data();
+
+						console.log(data.accepted);
+						if (data.accepted != 'rated') {
+							store.tourInProgress = true;
+						}
 					});
 				});
 

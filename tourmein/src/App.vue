@@ -16,6 +16,7 @@
 				<router-link to="/my_previous_tours_guide">My Previous Tours</router-link> |
 				<router-link to="/notifications">Notifications</router-link> |
 				<router-link to="/messages">Messages</router-link>
+				<div v-if="store.counter" id="text_notification">{{ store.counter }}</div>
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
@@ -42,6 +43,7 @@
 				<router-link to="/my_guides">My Guides</router-link> |
 				<router-link to="/notifications">Notifications</router-link> |
 				<router-link to="/messages">Messages</router-link>
+				<div v-if="store.counter" id="text_notification">{{ store.counter }}</div>
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
@@ -80,6 +82,33 @@ firebase.auth().onAuthStateChanged((user) => {
 					console.log('is guide: ', store.isGuide);
 					store.isGuide = data.guide;
 					store.guideID = doc.id;
+
+					if (store.isGuide == 'true') {
+						// za zbrajanje notificationa
+						db.collection('tour')
+							.where('guide', '==', store.currentUser)
+							.get()
+							.then((query) => {
+								query.forEach((doc) => {
+									const data = doc.data();
+
+									store.counter = store.counter + 1;
+								});
+							});
+					} else {
+						// za zbrajanje notificationa
+						db.collection('tour')
+							.where('user', '==', store.currentUser)
+							.get()
+							.then((query) => {
+								this.notifications = [];
+								query.forEach((doc) => {
+									const data = doc.data();
+
+									store.counter = store.counter + 1;
+								});
+							});
+					}
 
 					if (currentRoute.name == 'Register') {
 						router.replace({ name: 'Registracija_uspjesna' });
@@ -128,6 +157,7 @@ export default {
 					store.tourInProgress = null;
 					store.selectedUser = null;
 					store.guideID = null;
+					store.counter = null;
 				});
 		},
 	},

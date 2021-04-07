@@ -293,10 +293,9 @@ export default {
 				.get()
 				.then((querySnapshot) => {
 					querySnapshot.forEach((doc) => {
-						console.log(doc.id, ' => ', doc.data());
-
 						const data = doc.data();
 						this.id = doc.id;
+						console.log(this.info.name, ' => ', data.name);
 
 						if (this.info.name === data.name) {
 							db.collection('tour')
@@ -306,11 +305,13 @@ export default {
 									rated: false,
 									finishedAt: new Date(),
 								})
+								.then(() => {
+									alert('Tour with ' + data.name + ' has been completed!');
+									window.location.reload();
+								})
 								.catch((e) => {
 									console.error(e);
 								});
-							alert('Tour with ' + data.name + ' has been completed!');
-							window.location.reload();
 						}
 					});
 				});
@@ -331,6 +332,7 @@ export default {
 								.update({
 									accepted: 'rated',
 									rated: true,
+									ratedwith: this.rating,
 								});
 							db.collection('user')
 								.doc(this.info.guideID)

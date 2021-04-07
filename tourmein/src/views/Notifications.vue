@@ -23,6 +23,7 @@ export default {
 		return {
 			notifications: [],
 			store,
+			counter: 0,
 		};
 	},
 	mounted() {
@@ -55,6 +56,8 @@ export default {
 							userimage: data.userimage,
 							guideimage: data.guideimage,
 						});
+						this.counter = this.counter + 1;
+						console.log(this.counter);
 					});
 				});
 		},
@@ -79,6 +82,8 @@ export default {
 							accepted: data.accepted,
 							guideID: data.guideID,
 						});
+						this.counter = this.counter + 1;
+						console.log(this.counter);
 					});
 				});
 		},

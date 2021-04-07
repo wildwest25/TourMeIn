@@ -5,4 +5,5 @@ export default {
 	isGuide: null,
 	tourInProgress: null,
 	selectedUser: null,
+	counter: 0,
 };
