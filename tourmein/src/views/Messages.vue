@@ -1,6 +1,7 @@
 <template>
 	<div class="messages">
 		<h1>Messages</h1>
+		<div id="poruka">Click on wanted message to open chat window.</div>
 		<div class="container">
 			<!--<h5>Welcome {{ firstname }}!</h5>-->
 			<div class="row">

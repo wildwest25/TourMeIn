@@ -158,6 +158,7 @@ export default {
 							monuments: data.monuments,
 							lang: data.languages,
 							email: data.email,
+							city: data.city,
 
 							starthour: data.starthour,
 							startminute: data.startminute,

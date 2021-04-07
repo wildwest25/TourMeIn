@@ -21,6 +21,7 @@
 		<div class="row-sm">
 			<div id="c_info" class="col-sm">
 				<div class="card-body p-0">
+					<div id="card_text">City: {{ info.city }}</div>
 					<div id="card_text">Languages: {{ info.lang }}</div>
 					<div id="card_text">Monuments I tour: {{ info.monuments }}</div>
 					<div id="card_text">Prices: {{ info.prices }}</div>
