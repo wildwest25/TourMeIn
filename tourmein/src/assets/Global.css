@@ -38,6 +38,92 @@ body
   
 }
 
+#PTName
+{
+    position: absolute;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    right: 850px;
+    font-size:x-large;
+}
+
+#PTTime
+{
+    position: absolute;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    left:250px;
+    top: 60px;
+}
+
+#PTCard
+{
+    background-color: rgba(0, 0, 0, 0);
+    max-width: 100%;
+    border-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0);
+    margin: 20px;
+}
+
+#PGName
+{
+    position: relative;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    left: 200px;
+}
+
+#PGTime
+{
+    position: relative;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    left: 200px;
+    bottom: 40px;
+}
+
+#PGRated
+{
+    position: relative;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    right: 550px;
+    top: 30px;
+}
+
+#PGLang
+{
+    position: relative;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    right:550px;
+    top: 10px;
+}
+
+#PGMon
+{
+    position: relative;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    right:550px;
+    top: 60px;
+}
+
+#PGCard
+{
+    background-color: rgba(0, 0, 0, 0);
+    max-width: 100%;
+    border-color: rgba(0, 0, 0, 0);
+    margin: 20px;
+}
+
 #msgucard
 {
     background-color: rgba(0, 0, 0, 0);

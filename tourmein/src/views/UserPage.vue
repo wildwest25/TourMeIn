@@ -201,11 +201,8 @@ export default {
                 return this.cards.filter((card) => card.name.includes(this.byMonument)), this.cards.filter((card) => card.name.includes(termin));
             }
 
-            return this.cards.filter(
-                (card) => card.name.toLowerCase().includes(termin)
-                //(card) => card.lang.toLowerCase().includes(termin),
-                //(card) => card.monuments.toLowerCase().includes(termin)
-            );
+            return this.cards.filter((card) => card.name.toLowerCase().includes(termin))
+                
         },
     },
 	components: {

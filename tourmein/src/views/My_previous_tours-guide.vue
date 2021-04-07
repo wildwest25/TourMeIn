@@ -8,44 +8,16 @@
 		<div class="col-8 offset-1">
 			<user-card v-for="card in filteredCards" :key="card.url" :info="card" />
 		</div>
-		<!--<div class="col-4">
-            Sidebar
-        </div>-->
 	</div>
 </template>
 <script>
 // @ is an alias to /src
-import UserCard from '@/components/PreviousGuideCard.vue';
+import UserCard from '@/components/PreviousTourCard.vue';
 import store from '@/store';
 import { db } from '@/firebase';
 
-// let cards = [];
-
-//... API/Firebase -> sve kartice -> cards
-/*
-cards = [
-  {
-    url: "https://picsum.photos/id/1/400/400",
-    description: "Tina Mandarić",
-    time: "19.03.2020",
-    rated: 3,
-    languages: "English, Polish",
-    monuments: "Arena Amphitheater, Arco dei Sergi",
-  },
-  {
-    url: "https://picsum.photos/id/2/400/400",
-    description: "Lucijan Separović",
-    time: "hour ago...",
-  },
-  {
-    url: "https://picsum.photos/id/3/400/400",
-    description: "David Janković",
-    time: "few hours ago...",
-  },
-];*/
-
 export default {
-	name: 'home',
+	name: 'My_Guides',
 	props: ['id'],
 	data: function() {
 		return {
@@ -59,26 +31,29 @@ export default {
 	},
 	methods: {
 		getPrevTours() {
-			console.log('firebase dohvat...');
-
-			db.collection('tours')
+			db.collection('tour')
+				.where('guide', '==', store.currentUser)
 				.get()
 				.then((query) => {
 					this.cards = [];
 					query.forEach((doc) => {
-						//console.log('ID: ', doc.id);
-						//console.log('Podaci: ', doc.data());
-
 						const data = doc.data();
 
-						this.cards.push({
-							id: doc.id,
-							time: data.date, //TODO: 17:31 timestamp #5 part 2
-							description: data.userName,
-							rated: data.rated,
-							monuments: data.monuments,
-							lang: doc.languages,
-						});
+						if (data.accepted == 'done' || data.accepted == 'rated') {
+							this.cards.push({
+								id: data.id,
+								user: data.user,
+								name: data.name,
+								guidename: data.guidename,
+								username: data.name,
+								guide: data.guide,
+								accepted: data.accepted,
+								guideID: data.guideID,
+								ratedwith: data.ratedwith,
+								finishedAt: data.finishedAt,
+								userimage: data.userimage,
+							});
+						}
 					});
 				});
 		},
@@ -88,7 +63,7 @@ export default {
 			// logika koja filtrira cards
 			let termin = this.store.searchTerm;
 
-			return this.cards.filter((card) => card.description.includes(termin));
+			return this.cards;
 		},
 	},
 	components: {
