@@ -742,3 +742,10 @@ box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(0, 0, 0, 
 		margin-bottom: 15px !important;
 	}
 }
+
+#bigwarning {
+	margin-top: 20px;
+	margin-bottom: auto;
+	margin-left: -80px;
+	position: relative;
+}
