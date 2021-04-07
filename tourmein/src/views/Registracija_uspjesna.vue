@@ -24,7 +24,7 @@
 							To ensure you're a legitimate user and not a robot, Email with verification link has
 							been sent.
 						</p>
-						<p>If you didn’t get any mail please click resend.</p>
+						<p>If you didn’t get any mail please click resend (button starts working 60 seconds after registration).</p>
 
 						<div class="form-group">
 							<button
