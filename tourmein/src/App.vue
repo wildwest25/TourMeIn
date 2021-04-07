@@ -14,9 +14,10 @@
 				<!--<router-link to="/">Home</router-link> | -->
 				<router-link to="/guide_profile" class="offset-1">My Profile</router-link> |
 				<router-link to="/my_previous_tours_guide">My Previous Tours</router-link> |
-				<router-link to="/notifications">Notifications</router-link> |
+				<router-link to="/notifications">Notifications</router-link>
+				<div v-if="store.counter" id="MSGCount">{{ store.counter }}</div> |
 				<router-link to="/messages">Messages</router-link>
-				<div v-if="store.counter" id="text_notification">{{ store.counter }}</div>
+				
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">

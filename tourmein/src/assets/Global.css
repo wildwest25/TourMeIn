@@ -26,6 +26,15 @@ body
     background-size: cover;
 }
 
+#MSGCount
+{
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    width:20px;
+    height:20px;
+    color: white;
+}
+
 #card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
