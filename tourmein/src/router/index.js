@@ -67,8 +67,8 @@ const routes = [
 		component: () => import('../views/Msg_preview.vue'),
 	},
 	{
-		path: '/UserProfile',
-		name: 'UserProfile',
+		path: '/user_profile',
+		name: 'User_profile',
 		meta: {
 			needsUser: true,
 		},

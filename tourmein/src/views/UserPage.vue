@@ -178,6 +178,7 @@ export default {
 
 							image: data.image,
 							ratedpreview: data.rated / data.ratedusers,
+							ratedusers: data.ratedusers
 						});
 					});
 				});
@@ -194,10 +195,10 @@ export default {
 
             //! experimentno za sad
             if (this.byHour.checked) {
-                return this.cards.filter((card) => card.prices.includes(termin));
+                return this.cards.filter((card) => card.name.includes(this.byHour)) && this.cards.filter((card) => card.name.includes(termin));
             } 
 			if (this.byMonument.checked) {
-                return this.cards.filter((card) => card.monuments.includes(termin));
+                return this.cards.filter((card) => card.name.includes(this.byMonument)), this.cards.filter((card) => card.name.includes(termin));
             }
 
             return this.cards.filter(
