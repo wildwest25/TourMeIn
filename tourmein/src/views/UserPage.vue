@@ -76,7 +76,6 @@
 			</div>
 			<div class="row">
 				<div class="form-group float-left" v-if="this.store.searchTerm === ''">
-					<label> Guides near you: </label>
 				</div>
 			</div>
 			<div class="row">
@@ -152,7 +151,7 @@ export default {
 							ratedpreview: data.rated / data.ratedusers,
 							ratedusers: data.ratedusers,
 
-							Prices:
+							prices:
 								data.costhour +
 								data.currency +
 								' per Hour and ' +
