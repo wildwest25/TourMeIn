@@ -152,7 +152,7 @@ export default {
 							ratedpreview: data.rated / data.ratedusers,
 							ratedusers: data.ratedusers,
 
-							Prices:
+							prices:
 								data.costhour +
 								data.currency +
 								' per Hour and ' +
