@@ -94,6 +94,8 @@
 											placeholder="00"
 											step="1"
 											maxlength="2"
+											min="0"
+											max="24"
 											v-model="newStartHour"
 										/>
 									</div>
@@ -110,6 +112,8 @@
 											placeholder="00"
 											step="1"
 											maxlength="2"
+											min="0"
+											max="60"
 											v-model="newStartMinute"
 										/>
 									</div>
@@ -126,6 +130,8 @@
 											placeholder="00"
 											step="1"
 											maxlength="2"
+											min="0"
+											max="24"
 											v-model="newEndHour"
 										/>
 									</div>
@@ -142,6 +148,8 @@
 											placeholder="00"
 											step="1"
 											maxlength="2"
+											min="0"
+											max="60"
 											v-model="newEndMinute"
 										/>
 									</div>
@@ -287,13 +295,14 @@
 								<label for="costPerHour"> Cost Per Hour: </label>
 								<div>
 									<input
-										type="text"
+										type="number"
 										name="costPerHour"
 										id="costPerHour"
 										style="width: 55px"
 										class="form-control"
 										placeholder="---"
 										maxlength="3"
+										min="0"
 										v-model="newcostPerHour"
 									/>
 								</div>
@@ -302,13 +311,14 @@
 								<label for="costPerLandmark"> Cost Per Landmark: </label>
 								<div>
 									<input
-										type="text"
+										type="number"
 										name="costPerLandmark"
 										id="costPerLandmark"
 										style="width: 55px"
 										class="form-control"
 										placeholder="---"
 										maxlength="3"
+										min="0"
 										v-model="newcostPerLandmark"
 									/>
 								</div>
