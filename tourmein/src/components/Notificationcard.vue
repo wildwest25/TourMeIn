@@ -109,7 +109,7 @@
 				</div>
 				<div class="col-md">
 					<div class="card-body p-0">
-						Guide {{ info.guidename }} Marko Markić accepted your request. You can now ask each
+						Guide {{ info.guidename }} accepted your request. You can now ask each
 						other a message from the top of the further agreement.
 					</div>
 				</div>
