@@ -12,7 +12,7 @@
 								placeholder="Search"
 								v-model="store.searchTerm"
 							/>
-							<div id="charge" class="form-inline">
+							<!--<div id="charge" class="form-inline">
 								<label> Show only guides that charge: </label>
 								<div>
 									<input
@@ -65,7 +65,7 @@
 									/>
 								</div>
 								<label> Price </label>
-							</div>
+							</div>-->
 						</div>
 						<div class="form-outline" style="width:1000;"></div>
 						<!--<button id="Search-butt" type="button" class="btn btn-primary" @click="filteredCards">
