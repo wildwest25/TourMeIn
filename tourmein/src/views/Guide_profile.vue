@@ -444,10 +444,10 @@ export default {
 			registered: '',
 			newLanguages: '',
 			newMonuments: '',
-			newStartHour: '',
-			newStartMinute: '',
-			newEndHour: '',
-			newEndMinute: '',
+			newStartHour: 0,
+			newStartMinute: 0,
+			newEndHour: 0,
+			newEndMinute: 0,
 
 			newMonday: 'false', //postavljamo sve ove vrijednosti na false kako ne bi bile pre-selectane
 			newTuesday: 'false',
@@ -457,8 +457,8 @@ export default {
 			newSaturday: 'false',
 			newSunday: 'false',
 
-			newperHour: 'false',
-			newperLandmark: 'false',
+			newperHour: '',
+			newperLandmark: '',
 			newcostPerHour: '',
 			newcostPerLandmark: '',
 			newCurrency: '',
@@ -467,7 +467,7 @@ export default {
 			newFBlink: '',
 			newTwitterlink: '',
 			newInstalink: '',
-			ratedpreview: '',
+			ratedpreview: 0,
 		};
 	},
 	mounted() {
@@ -521,12 +521,13 @@ export default {
 						this.newCurrency = data.currency;
 						this.newaboutMe = data.aboutme;
 						this.dob = data.dob;
-						
+
 						this.newFBlink = data.fblink;
 						this.newTwitterlink = data.twlink;
 						this.newInstalink = data.instalink;
 
-						this.ratedpreview = data.rated / data.ratedusers;
+						const calc = data.rated / data.ratedusers;
+						this.ratedpreview = calc.toFixed(2); // jer nece kad je direktno u div
 
 						document.getElementById('InputEmail').value = store.currentUser;
 						//document.getElementById('exampleContact').value = data.phone;
@@ -607,6 +608,7 @@ export default {
 				})
 				.then(() => {
 					console.log('spremljeno, doc'); //vraća nam potvrdu na konzoli da su podaci spremljeni na Firebase
+					alert('You have successfully saved your changes!');
 				})
 				.catch((e) => {
 					console.error(e);
@@ -637,6 +639,7 @@ export default {
 									})
 									.then(() => {
 										console.log('spremljena slika, doc'); //potvrda da je slika spremljena
+										alert('Image uploaded!');
 									})
 									.catch((e) => {
 										console.error(e);

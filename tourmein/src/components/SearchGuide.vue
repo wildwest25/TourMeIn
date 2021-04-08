@@ -10,7 +10,7 @@
 			<div class="col-sm">
 				<div id="card_text_Star">
 					<img src=@/assets/A_star.png height=30% width=30% />
-					<div v-if="info.ratedusers" id="star_text">{{ info.ratedpreview }}</div>
+					<div v-if="info.ratedusers >= 3" id="star_text">{{ info.ratedpreview.toFixed(2) }}</div>
 					<div v-else id="star_text" style="font-size:17px;">Not enough ratings.</div>
 				</div>
 				<button type="button" id="btRegister" @click="startTouring" class="btn btn-primary">
@@ -24,7 +24,12 @@
 					<div id="card_text">City: {{ info.city }}</div>
 					<div id="card_text">Languages: {{ info.lang }}</div>
 					<div id="card_text">Monuments I tour: {{ info.monuments }}</div>
-					<div id="card_text">Prices: {{ info.prices }}</div>
+					<div id="card_text" v-if="info.costhour">
+						Prices per hour: {{ info.costhour }} {{ info.currency }}
+					</div>
+					<div id="card_text" v-if="info.costlandmark">
+						Price per monument: {{ info.costlandmark }} {{ info.currency }}
+					</div>
 				</div>
 				<div class="card_text" style="margin-left:15px;">
 					Hours Avaiable: {{ info.starthour }}:{{ info.startminute }} - {{ info.endhour }}:{{
@@ -177,6 +182,7 @@ export default {
 						.then(() => {
 							console.log('spremljeno, doc');
 							alert('Request has been sent!');
+							window.location.reload();
 						})
 						.catch((e) => {
 							console.error(e);

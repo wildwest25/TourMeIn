@@ -203,6 +203,7 @@ export default {
 				})
 				.then(() => {
 					console.log('spremljeno, doc');
+					alert('You have successfully saved your changes!');
 				})
 				.catch((e) => {
 					console.error(e);
@@ -232,6 +233,7 @@ export default {
 									})
 									.then(() => {
 										console.log('spremljena slika, doc');
+										alert('Image uploaded!');
 									})
 									.catch((e) => {
 										console.error(e);

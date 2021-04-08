@@ -75,8 +75,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="form-group float-left" v-if="this.store.searchTerm === ''">
-				</div>
+				<div class="form-group float-left" v-if="this.store.searchTerm === ''"></div>
 			</div>
 			<div class="row">
 				<user-card v-for="card in filteredCards" :key="card.url" :info="card" />
@@ -107,8 +106,7 @@ export default {
 	mounted() {
 		this.getGuides();
 	},
-	methods:
-	{
+	methods: {
 		getGuides() {
 			console.log('firebase dohvat...');
 
@@ -119,8 +117,6 @@ export default {
 					this.cards = [];
 					query.forEach((doc) => {
 						const data = doc.data();
-
-
 
 						this.cards.push({
 							id: doc.id,
@@ -145,45 +141,44 @@ export default {
 
 							fb: data.fblink,
 							tw: data.twlink,
-							inst: data.instalink,	
+							inst: data.instalink,
 
 							image: data.image,
 							ratedpreview: data.rated / data.ratedusers,
 							ratedusers: data.ratedusers,
 
-							prices:
-								data.costhour +
-								data.currency +
-								' per Hour and ' +
-								data.costlandmark +
-								data.currency +
-								' per Landmark'
+							costhour: data.costhour,
+							currency: data.currency,
+							costlandmark: data.costlandmark,
 						});
 					});
 				});
 		},
 	},
 	computed: {
+		filteredCards() {
+			// logika koja filtrira cards
+			let termin = this.store.searchTerm.toLowerCase();
 
+			console.log(termin);
 
-		 filteredCards() {
-            // logika koja filtrira cards
-            let termin = this.store.searchTerm.toLowerCase();
-
-            console.log(termin);
-
-            //! experimentno za sad
-            if (this.byHour.checked) {
-                return this.cards.filter((card) => card.name.includes(this.byHour)) && this.cards.filter((card) => card.name.includes(termin));
-            } 
+			//! experimentno za sad
+			if (this.byHour.checked) {
+				return (
+					this.cards.filter((card) => card.name.includes(this.byHour)) &&
+					this.cards.filter((card) => card.name.includes(termin))
+				);
+			}
 			if (this.byMonument.checked) {
-                return this.cards.filter((card) => card.name.includes(this.byMonument)), this.cards.filter((card) => card.name.includes(termin));
-            }
+				return (
+					this.cards.filter((card) => card.name.includes(this.byMonument)),
+					this.cards.filter((card) => card.name.includes(termin))
+				);
+			}
 
-            return this.cards.filter((card) => card.name.toLowerCase().includes(termin))
-                
-        },
-    },
+			return this.cards.filter((card) => card.name.toLowerCase().includes(termin));
+		},
+	},
 	components: {
 		UserCard,
 	},
