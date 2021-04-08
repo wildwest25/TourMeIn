@@ -15,9 +15,9 @@
 				<router-link to="/guide_profile" class="offset-1">My Profile</router-link> |
 				<router-link to="/my_previous_tours_guide">My Previous Tours</router-link> |
 				<router-link to="/notifications">Notifications</router-link>
-				<div v-if="store.counter" id="MSGCount">{{ store.counter }}</div> |
+				<div v-if="store.counter" id="MSGCount">{{ store.counter }}</div>
+				|
 				<router-link to="/messages">Messages</router-link>
-				
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
@@ -42,9 +42,10 @@
 				<router-link to="/user_profile" class="offset-1">My Profile</router-link> |
 				<router-link to="/UserPage">Search Guides</router-link> |
 				<router-link to="/my_guides">My Guides</router-link> |
-				<router-link to="/notifications">Notifications</router-link> |
+				<router-link to="/notifications">Notifications</router-link>
+				<div v-if="store.counter" id="MSGCount">{{ store.counter }}</div>
+				|
 				<router-link to="/messages">Messages</router-link>
-				<div v-if="store.counter" id="text_notification">{{ store.counter }}</div>
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
@@ -67,6 +68,7 @@ import router from '@/router';
 
 firebase.auth().onAuthStateChanged((user) => {
 	const currentRoute = router.currentRoute;
+	store.counter = 0;
 
 	if (user) {
 		// User is signed in.
@@ -93,7 +95,13 @@ firebase.auth().onAuthStateChanged((user) => {
 								query.forEach((doc) => {
 									const data = doc.data();
 
-									store.counter = store.counter + 1;
+									if (data.accepted == null) {
+										store.counter = store.counter + 1;
+									} else if (data.accepted == true) {
+										store.counter = store.counter + 1;
+									} else if (data.accepted == false) {
+										store.counter = store.counter + 1;
+									}
 								});
 							});
 					} else {
@@ -102,11 +110,18 @@ firebase.auth().onAuthStateChanged((user) => {
 							.where('user', '==', store.currentUser)
 							.get()
 							.then((query) => {
-								this.notifications = [];
 								query.forEach((doc) => {
 									const data = doc.data();
 
-									store.counter = store.counter + 1;
+									if (data.accepted == null) {
+										store.counter = store.counter + 1;
+									} else if (data.accepted == true) {
+										store.counter = store.counter + 1;
+									} else if (data.accepted == false) {
+										store.counter = store.counter + 1;
+									} else if (data.accepted == 'done') {
+										store.counter = store.counter + 1;
+									}
 								});
 							});
 					}
@@ -130,6 +145,11 @@ firebase.auth().onAuthStateChanged((user) => {
 		// User is not signed in.
 		console.log('No user');
 		store.currentUser = null;
+		store.isGuide = null;
+		store.tourInProgress = null;
+		store.selectedUser = null;
+		store.guideID = null;
+		store.counter = 0;
 
 		if (currentRoute.meta.needsUser) {
 			// u slucaju da manualno idemo na neku stranicu kao npr search guides bez logina ce nas vratiti na home page
@@ -153,12 +173,13 @@ export default {
 				.auth()
 				.signOut()
 				.then(() => {
-					this.$router.push({ name: 'Home' });
 					store.isGuide = null;
 					store.tourInProgress = null;
 					store.selectedUser = null;
 					store.guideID = null;
-					store.counter = null;
+					store.counter = 0;
+					this.$router.push({ name: 'Home' });
+					window.location.reload();
 				});
 		},
 	},

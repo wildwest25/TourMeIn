@@ -159,7 +159,7 @@ export default {
 				});
 		},
 		sendmsg() {
-			if (store.isGuide == 'true') {
+			if (store.isGuide == 'true' && this.msgToSend != '' && this.msgToSend != null) {
 				db.collection('message')
 					.doc(new Date() + ' ' + store.currentUser)
 					.set({
@@ -181,7 +181,7 @@ export default {
 					.catch((e) => {
 						console.error(e);
 					});
-			} else {
+			} else if (store.isGuide == 'false' && this.msgToSend != '' && this.msgToSend != null) {
 				db.collection('message')
 					.doc(new Date() + ' ' + store.currentUser)
 					.set({
