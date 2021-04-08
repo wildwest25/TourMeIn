@@ -216,11 +216,11 @@ export default {
 	},
 };
 
-jQuery(document).ready(function($) {
+/*jQuery(document).ready(function($) {
 	$(document).ready(function() {
 		$('#action_menu_btn').click(function() {
 			$('.action_menu').toggle();
 		});
 	});
-});
+});*/
 </script>
