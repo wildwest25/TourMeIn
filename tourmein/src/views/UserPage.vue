@@ -173,7 +173,8 @@ export default {
                 (item) =>
                     item.name.toLowerCase().includes(termin.toLowerCase()) ||
 					item.monuments.toLowerCase().includes(termin.toLowerCase()) || 
-                    item.lang.toLowerCase().includes(termin.toLowerCase())
+                    item.lang.toLowerCase().includes(termin.toLowerCase()) ||
+					item.city.toLowerCase().includes(termin.toLowerCase())
             );
 		},
 	},
