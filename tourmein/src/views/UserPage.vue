@@ -118,6 +118,8 @@ export default {
 					query.forEach((doc) => {
 						const data = doc.data();
 
+						if (data.languages != null && data.monuments != null)
+						{
 						this.cards.push({
 							id: doc.id,
 							name: data.firstname + ' ' + data.lastname,
@@ -151,32 +153,28 @@ export default {
 							currency: data.currency,
 							costlandmark: data.costlandmark,
 						});
+						}
 					});
 				});
 		},
 	},
 	computed: {
-		filteredCards() {
-			// logika koja filtrira cards
-			let termin = this.store.searchTerm.toLowerCase();
+			filteredCards() {
+            // logika koja filtrira cards
+            let termin = this.store.searchTerm;
 
-			console.log(termin);
+            console.log(termin);
 
-			//! experimentno za sad
-			if (this.byHour.checked) {
-				return (
-					this.cards.filter((card) => card.name.includes(this.byHour)) &&
-					this.cards.filter((card) => card.name.includes(termin))
-				);
-			}
-			if (this.byMonument.checked) {
-				return (
-					this.cards.filter((card) => card.name.includes(this.byMonument)),
-					this.cards.filter((card) => card.name.includes(termin))
-				);
+			if (this.byHour.checked){
+				return (item) => item.costhour.toLowerCase().includes(costhour)
 			}
 
-			return this.cards.filter((card) => card.name.toLowerCase().includes(termin));
+            return this.cards.filter(
+                (item) =>
+                    item.name.toLowerCase().includes(termin.toLowerCase()) ||
+					item.monuments.toLowerCase().includes(termin.toLowerCase()) || 
+                    item.lang.toLowerCase().includes(termin.toLowerCase())
+            );
 		},
 	},
 	components: {
