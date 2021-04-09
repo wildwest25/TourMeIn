@@ -94,7 +94,7 @@ export default {
 	methods: {
 		getMessagesUser() {
 			console.log('firebase dohvat...');
-
+			this.msgtotal = 0;
 			db.collection('message')
 				.where('user', '==', store.currentUser)
 				.get()
@@ -127,6 +127,7 @@ export default {
 		},
 		getMessagesGuide() {
 			console.log('firebase dohvat...');
+			this.msgtotal = 0;
 
 			db.collection('message')
 				.where('guide', '==', store.currentUser)
