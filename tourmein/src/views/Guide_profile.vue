@@ -473,8 +473,14 @@ export default {
 	mounted() {
 		//* dohvat podataka ulogiranog guidea iz Firebasea
 		this.getUserInfo();
+		this.loginAlertG();
 	},
 	methods: {
+
+		loginAlertG(){
+			alert("Welcome:  " + store.currentUser)
+		},
+
 		//za dohvaćanje podataka sa Firebasea
 		getUserInfo() {
 			console.log('firebase dohvat...');
@@ -546,6 +552,7 @@ export default {
 					console.log('Error getting documents: ', error);
 				});
 		},
+		
 		saveNewInfo() {
 			//kako se podaci ne bi mijenjali bez saveanja
 			const phone = this.newPhoneNumber;
@@ -649,7 +656,7 @@ export default {
 								console.error(e);
 							});
 					})
-					.catch((e) => {
+					.catch((e) => { 
 						console.error(e);
 					});
 			});
