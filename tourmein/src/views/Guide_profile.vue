@@ -473,9 +473,18 @@ export default { //definiramo varijable koje ćemo pozivati kasnije u methods
 	mounted() {
 		//* dohvat podataka ulogiranog guidea iz Firebasea, poziva funkciju čim se otvori stranica 
 		this.getUserInfo();
+<<<<<<< HEAD
 		this.alert();
+=======
+		this.loginAlertG();
+>>>>>>> main
 	},
 	methods: {
+
+		loginAlertG(){
+			alert("Welcome:  " + store.currentUser)
+		},
+
 		//za dohvaćanje podataka sa Firebasea
 		getUserInfo() {
 			console.log('firebase dohvat...');
@@ -547,6 +556,7 @@ export default { //definiramo varijable koje ćemo pozivati kasnije u methods
 					console.log('Error getting documents: ', error);
 				});
 		},
+		
 		saveNewInfo() {
 			//kako se podaci ne bi mijenjali bez saveanja
 			const phone = this.newPhoneNumber;
@@ -650,7 +660,7 @@ export default { //definiramo varijable koje ćemo pozivati kasnije u methods
 								console.error(e);
 							});
 					})
-					.catch((e) => {
+					.catch((e) => { 
 						console.error(e);
 					});
 			});
