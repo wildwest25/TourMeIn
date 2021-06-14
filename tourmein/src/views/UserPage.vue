@@ -105,11 +105,6 @@ export default {
 	},
 	mounted() {
 		this.getGuides();
-<<<<<<< HEAD
-		this.message();
-=======
-		this.loginAlertU();
->>>>>>> main
 	},
 	methods: {
 		getGuides() {
@@ -161,10 +156,6 @@ export default {
 						}
 					});
 				});
-		},
-
-		loginAlertU(){
-			alert("Welcome:  " + store.currentUser)
 		},
 
 	},

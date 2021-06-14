@@ -473,11 +473,7 @@ export default { //definiramo varijable koje ćemo pozivati kasnije u methods
 	mounted() {
 		//* dohvat podataka ulogiranog guidea iz Firebasea, poziva funkciju čim se otvori stranica 
 		this.getUserInfo();
-<<<<<<< HEAD
 		this.alert();
-=======
-		this.loginAlertG();
->>>>>>> main
 	},
 	methods: {
 
