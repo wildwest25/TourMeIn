@@ -239,7 +239,6 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 
 <script>
 import { firebase, db } from '@/firebase';
-import store from '@/store';
 import SimpleVueValidation from 'simple-vue-validator';
 const Validator = SimpleVueValidation.Validator;
 

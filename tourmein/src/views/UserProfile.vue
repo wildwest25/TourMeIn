@@ -260,6 +260,10 @@ export default {
 					console.log('slika izbrisana, doc');
 				});
 		},
+		
+		message (){
+		alert('Dobrodosli' + doc.data().firstname);
+		}
 	},
 };
 </script>

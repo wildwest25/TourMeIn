@@ -68,7 +68,7 @@ import router from '@/router';
 
 firebase.auth().onAuthStateChanged((user) => {
 	const currentRoute = router.currentRoute;
-	store.counter = 0;
+	store.counter = 0; //brojač za notifikacije
 
 	if (user) {
 		// User is signed in.

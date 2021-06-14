@@ -356,9 +356,9 @@
 						<button
 							type="button"
 							id="btRegister"
-							@click.prevent="saveNewInfo"
+							@click.prevent="saveNewInfo" 
 							class="btn btn-primary"
-						>
+						> <!-- @click.prevent nam sprječava refresh stranice na klik-->
 							Save
 						</button>
 						<!-- button za saveanje unesenih podataka na stranici profila-->
@@ -428,7 +428,7 @@
 import store from '@/store';
 import { db, storage } from '@/firebase'; // osim db ovdje importamo i storage jer su u njemu spremljene slike profila
 
-export default {
+export default { //definiramo varijable koje ćemo pozivati kasnije u methods 
 	name: 'Guide_functions',
 	data: function() {
 		//postavljanje praznih vrijednosti za unos podataka na stranici
@@ -471,8 +471,9 @@ export default {
 		};
 	},
 	mounted() {
-		//* dohvat podataka ulogiranog guidea iz Firebasea
+		//* dohvat podataka ulogiranog guidea iz Firebasea, poziva funkciju čim se otvori stranica 
 		this.getUserInfo();
+		this.alert();
 	},
 	methods: {
 		//za dohvaćanje podataka sa Firebasea
@@ -488,7 +489,7 @@ export default {
 						// doc.data() is never undefined for query doc snapshots
 						console.log(doc.id, ' => ', doc.data());
 
-						const data = doc.data();
+						const data = doc.data(); //kako se ne bi moralo pisati za svaki atribut posebno napravili smo varijablu data 
 
 						this.id = doc.id;
 

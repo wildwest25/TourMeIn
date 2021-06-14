@@ -105,6 +105,7 @@ export default {
 	},
 	mounted() {
 		this.getGuides();
+		this.message();
 	},
 	methods: {
 		getGuides() {

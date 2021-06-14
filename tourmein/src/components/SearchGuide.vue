@@ -126,10 +126,6 @@ export default {
 		return {
 			store,
 
-			byHour: '',
-			byMonument: '',
-			byRating: '',
-			byPrice: '',
 			userFullname: '',
 			userimage: '',
 		};
@@ -148,7 +144,7 @@ export default {
 			});
 	},
 	methods: {
-		startTouring() {
+		startTouring() { //metoda provjerava je li user spremljen vec u nekom touru na Firebaseu, ako je ne da mu da zatrazi novog vodica 
 			db.collection('tour')
 				.where('user', '==', store.currentUser)
 				.get()
@@ -157,13 +153,13 @@ export default {
 						const data = doc.data();
 
 						console.log(data.accepted);
-						if (data.accepted != 'rated') {
+						if (data.accepted != 'rated') { //ako je razlicito od rated znaci da je accepted/declined tour i također nam ne da zatraziti novog guidea
 							store.tourInProgress = true;
 						}
 					});
 				});
 
-			setTimeout((async) => {
+			setTimeout((async) => { //asinkrona funkcija koja čeka vremenski da pogleda da li je user u touru te ukoliko je javlja obavijest, ukoliko nije šalje request
 				const user = store.currentUser;
 				const guide = this.info.email;
 				const name = this.userFullname;
@@ -193,8 +189,6 @@ export default {
 			}, 500);
 		},
 	},
-	computed: {},
-	components: {},
 };
 </script>
 
